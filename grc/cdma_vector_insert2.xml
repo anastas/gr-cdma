@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<block>
+  <name>vector_insert2</name>
+  <key>cdma_vector_insert2</key>
+  <category>cdma</category>
+  <import>import cdma</import>
+  <make>cdma.vector_insert2($data, $periodicity, $offset)</make>
+  <!-- Make one 'param' node for every Parameter you want settable from the GUI.
+       Sub-nodes:
+       * name
+       * key (makes the value accessible as $keyname, e.g. in the make node)
+       * type -->
+  <param>
+    <name>vector</name>
+    <key>data</key>
+    <type>complex_vector</type>
+  </param>
+  <param>
+    <name>input period</name>
+    <key>periodicity</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>input offset</name>
+    <key>offset</key>
+    <type>int</type>
+  </param>
+
+
+  <!-- Make one 'sink' node per input. Sub-nodes:
+       * name (an identifier for the GUI)
+       * type
+       * vlen
+       * optional (set to 1 for optional inputs) -->
+  <sink>
+    <name>in</name>
+    <type>complex</type>
+  </sink>
+
+  <!-- Make one 'source' node per output. Sub-nodes:
+       * name (an identifier for the GUI)
+       * type
+       * vlen
+       * optional (set to 1 for optional inputs) -->
+  <source>
+    <name>out</name>
+    <type>complex</type>
+  </source>
+</block>
