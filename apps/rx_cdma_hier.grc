@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Tue Sep 24 15:21:43 2013</timestamp>
+  <timestamp>Thu Sep 26 19:50:18 2013</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -64,29 +64,6 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>var</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>(1+(training_percent/100.0)*(2*chips_per_symbol-1.0)/chips_per_symbol)*chips_per_frame - (training_percent/100.0)*chips_per_symbol + chips_per_symbol*10**(-EsN0dBest/10) </value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(510, 475)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
       <value>peak_sq</value>
     </param>
     <param>
@@ -99,7 +76,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(407, 475)</value>
+      <value>(507, 410)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -110,7 +87,7 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>chips_per_symbol</value>
+      <value>training</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -118,218 +95,11 @@
     </param>
     <param>
       <key>value</key>
-      <value>cdma_parameters.chips_per_symbol</value>
+      <value>cdma_parameters.training</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(212, 291)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>header_formatter</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>cdma_parameters.header_formatter</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(670, 93)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>length_tag_name</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>cdma_parameters.length_tag_name</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(671, 32)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>payload_mod</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>cdma_parameters.payload_mod</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(415, 291)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>header_mod</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>cdma_parameters.header_mod</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(418, 227)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>symbols_per_header</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>cdma_parameters.symbols_per_header</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(419, 161)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>symbols_per_frame</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>cdma_parameters.symbols_per_frame</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(420, 94)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>pn_data</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>cdma_parameters.pn_data</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(419, 24)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>chips_per_frame</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>cdma_parameters.chips_per_frame</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(213, 230)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>training_percent</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>cdma_parameters.training_percent</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(211, 162)</value>
+      <value>(207, 23)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -363,7 +133,7 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>training</value>
+      <value>training_percent</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -371,11 +141,264 @@
     </param>
     <param>
       <key>value</key>
-      <value>cdma_parameters.training</value>
+      <value>cdma_parameters.training_percent</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(207, 23)</value>
+      <value>(211, 162)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>chips_per_frame</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>cdma_parameters.chips_per_frame</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(213, 230)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>symbols_per_frame</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>cdma_parameters.symbols_per_frame</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(420, 94)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>symbols_per_header</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>cdma_parameters.symbols_per_header</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(419, 161)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>header_mod</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>cdma_parameters.header_mod</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(418, 227)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>payload_mod</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>cdma_parameters.payload_mod</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(415, 291)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>length_tag_name</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>cdma_parameters.length_tag_name</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(671, 32)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>header_formatter</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>cdma_parameters.header_formatter</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(670, 93)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>chips_per_symbol</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>cdma_parameters.chips_per_symbol</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(212, 291)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>var</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>(1+(training_percent/100.0)*(2*chips_per_symbol-1.0)/chips_per_symbol)*chips_per_frame - (training_percent/100.0)*chips_per_symbol + chips_per_symbol*10**(-EsN0dBest/10) </value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(510, 474)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>pn_data</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>cdma_parameters.pn_data</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(419, 24)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>peak_factor</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>cdma_parameters.peak_factor</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(608, 222)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -994,29 +1017,6 @@
     </param>
   </block>
   <block>
-    <key>virtual_sink</key>
-    <param>
-      <key>id</key>
-      <value>RX_training_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>stream_id</key>
-      <value>sync_flag</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(802, 797)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
     <key>analog_pll_refout_cc</key>
     <param>
       <key>id</key>
@@ -1049,41 +1049,6 @@
     <param>
       <key>_coordinate</key>
       <value>(132, 1810)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>parameter</key>
-    <param>
-      <key>id</key>
-      <value>EsN0dBest</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value>EsN0dBest</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>eng_float</value>
-    </param>
-    <param>
-      <key>short_id</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(294, 447)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1368,72 +1333,6 @@
     </param>
   </block>
   <block>
-    <key>blocks_keep_m_in_n</key>
-    <param>
-      <key>id</key>
-      <value>blocks_keep_m_in_n_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>complex</value>
-    </param>
-    <param>
-      <key>m</key>
-      <value>symbols_per_frame</value>
-    </param>
-    <param>
-      <key>n</key>
-      <value>symbols_per_frame+1</value>
-    </param>
-    <param>
-      <key>offset</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(385, 1298)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>virtual_sink</key>
-    <param>
-      <key>id</key>
-      <value>RX_training_0_2_0_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>stream_id</key>
-      <value>symbols</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(620, 1312)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
     <key>virtual_source</key>
     <param>
       <key>id</key>
@@ -1516,53 +1415,6 @@
     <param>
       <key>_coordinate</key>
       <value>(347, 804)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>blocks_peak_detector_xb</key>
-    <param>
-      <key>id</key>
-      <value>blocks_peak_detector_xb_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>float</value>
-    </param>
-    <param>
-      <key>threshold_factor_rise</key>
-      <value>0.5* (  peak_sq/var   )</value>
-    </param>
-    <param>
-      <key>threshold_factor_fall</key>
-      <value>0.5* (  peak_sq/var   )</value>
-    </param>
-    <param>
-      <key>look_ahead</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>alpha</key>
-      <value>0.001</value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(564, 777)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1660,45 +1512,6 @@
     <param>
       <key>_coordinate</key>
       <value>(338, 1097)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>fir_filter_xxx</key>
-    <param>
-      <key>id</key>
-      <value>fir_filter_xxx_0_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>ccc</value>
-    </param>
-    <param>
-      <key>decim</key>
-      <value>chips_per_symbol</value>
-    </param>
-    <param>
-      <key>taps</key>
-      <value>pn_data[::-1]</value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(118, 1305)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1816,6 +1629,216 @@
     <param>
       <key>_coordinate</key>
       <value>(670, 1094)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>virtual_sink</key>
+    <param>
+      <key>id</key>
+      <value>RX_training_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>stream_id</key>
+      <value>sync_flag</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(789, 800)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>fir_filter_xxx</key>
+    <param>
+      <key>id</key>
+      <value>fir_filter_xxx_0_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>ccc</value>
+    </param>
+    <param>
+      <key>decim</key>
+      <value>chips_per_symbol</value>
+    </param>
+    <param>
+      <key>taps</key>
+      <value>pn_data[::-1]</value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(81, 1302)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>virtual_sink</key>
+    <param>
+      <key>id</key>
+      <value>RX_training_0_2_0_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>stream_id</key>
+      <value>symbols</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(676, 1309)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_keep_m_in_n</key>
+    <param>
+      <key>id</key>
+      <value>blocks_keep_m_in_n_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>complex</value>
+    </param>
+    <param>
+      <key>m</key>
+      <value>symbols_per_frame</value>
+    </param>
+    <param>
+      <key>n</key>
+      <value>symbols_per_frame+1</value>
+    </param>
+    <param>
+      <key>offset</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(320, 1295)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>parameter</key>
+    <param>
+      <key>id</key>
+      <value>EsN0dBest</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>EsN0dBest</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>10</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>eng_float</value>
+    </param>
+    <param>
+      <key>short_id</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(288, 426)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_peak_detector_xb</key>
+    <param>
+      <key>id</key>
+      <value>blocks_peak_detector_xb_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>float</value>
+    </param>
+    <param>
+      <key>threshold_factor_rise</key>
+      <value>peak_factor * (  peak_sq/var   )</value>
+    </param>
+    <param>
+      <key>threshold_factor_fall</key>
+      <value>peak_factor * (  peak_sq/var   )</value>
+    </param>
+    <param>
+      <key>look_ahead</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>alpha</key>
+      <value>0.001</value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(564, 779)</value>
     </param>
     <param>
       <key>_rotation</key>
