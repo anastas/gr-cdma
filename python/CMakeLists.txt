@@ -31,7 +31,9 @@ endif()
 GR_PYTHON_INSTALL(
     FILES
     __init__.py
-    kronecker_filter.py DESTINATION ${GR_PYTHON_DIR}/cdma
+    kronecker_filter.py 
+    cdma_parameters.py
+    DESTINATION ${GR_PYTHON_DIR}/cdma
 )
 
 ########################################################################

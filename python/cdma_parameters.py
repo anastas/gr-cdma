@@ -13,6 +13,7 @@ symbols_per_header = bits_per_header/header_mod.bits_per_symbol()
 if (1.0*bits_per_header)/header_mod.bits_per_symbol() != symbols_per_header:
   print "Error in evaluating symbols per header; adjusting bits per header"
   bits_per_header=(symbols_per_header+1)*header_mod.bits_per_symbol()
+  symbols_per_header = bits_per_header/header_mod.bits_per_symbol()
 header_formatter = digital.packet_header_default(bits_per_header,  length_tag_name,num_tag_name,header_mod.bits_per_symbol());
 
 print "symbols_per_header=",symbols_per_header
@@ -76,15 +77,3 @@ pn_data = code_data*pn_spreading;
 
 
 training_percent = 10; # % of power for training
-peak_factor = 0.2; # for peak finder in CDMA Rx
-
-# parameters determining absolute data rates
-payload_bytes_per_sec=100000;
-frames_per_sec = payload_bytes_per_sec/payload_bytes_per_frame
-symbols_per_sec = symbols_per_frame*frames_per_sec
-chips_per_sec = symbols_per_sec*chips_per_symbol
-
-print "payload_bytes_per_sec= ",payload_bytes_per_sec
-print "frames_per_sec= ",frames_per_sec
-print "symbols_per_sec= ",symbols_per_sec
-print "chips_per_sec= ",chips_per_sec
