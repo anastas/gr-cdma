@@ -46,6 +46,8 @@ from cdma_swig import *
 
 # import any pure python here
 from kronecker_filter import kronecker_filter
+from myselector import myselector
+from timing_estimator_hier import timing_estimator_hier
 
 #
 

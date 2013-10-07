@@ -23,5 +23,7 @@
 install(FILES
     api.h
     chopper.h
-    vector_insert2.h DESTINATION include/cdma
+    vector_insert2.h
+    passordrop.h
+    flag_gen.h DESTINATION include/cdma
 )
