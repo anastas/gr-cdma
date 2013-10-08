@@ -10,7 +10,6 @@
 %{
 #include "cdma/chopper.h"
 #include "cdma/vector_insert2.h"
-#include "cdma/passordrop.h"
 #include "cdma/flag_gen.h"
 %}
 
@@ -20,8 +19,7 @@ GR_SWIG_BLOCK_MAGIC2(cdma, chopper);
 
 %include "cdma/vector_insert2.h"
 GR_SWIG_BLOCK_MAGIC2(cdma, vector_insert2);
-%include "cdma/passordrop.h"
-GR_SWIG_BLOCK_MAGIC2(cdma, passordrop);
+
 
 %include "cdma/flag_gen.h"
 GR_SWIG_BLOCK_MAGIC2(cdma, flag_gen);

@@ -27,7 +27,6 @@ link_directories(${Boost_LIBRARY_DIRS})
 list(APPEND cdma_sources
     chopper_impl.cc
     vector_insert2_impl.cc
-    passordrop_impl.cc
     flag_gen_impl.cc )
 
 add_library(gnuradio-cdma SHARED ${cdma_sources})
