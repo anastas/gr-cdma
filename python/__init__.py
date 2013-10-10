@@ -48,6 +48,8 @@ from cdma_swig import *
 from kronecker_filter import kronecker_filter
 from myselector import myselector
 from timing_estimator_hier import timing_estimator_hier
+from amp_var_est_hier import amp_var_est_hier
+from freq_timing_estimator_hier import freq_timing_estimator_hier
 
 #
 

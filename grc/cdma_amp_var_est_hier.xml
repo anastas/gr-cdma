@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='ASCII'?>
+<block>
+  <name>amp_var_est_hier</name>
+  <key>cdma_amp_var_est_hier</key>
+  <category>cdma</category>
+  <import>import cdma</import>
+  <make>cdma.amp_var_est_hier(
+    alpha=$alpha,
+)</make>
+  <callback>set_alpha($alpha)</callback>
+  <param>
+    <name>alpha</name>
+    <key>alpha</key>
+    <value>0.001</value>
+    <type>raw</type>
+  </param>
+  <sink>
+    <name>in</name>
+    <type>complex</type>
+    <vlen>1</vlen>
+  </sink>
+  <source>
+    <name>amp</name>
+    <type>float</type>
+    <vlen>1</vlen>
+  </source>
+  <source>
+    <name>noise_var</name>
+    <type>float</type>
+    <vlen>1</vlen>
+  </source>
+  <doc>Achilleas Anastasopoulos
+Estimate signal amplitude and noise variance using method of moments
+/home/anastasl/.grc_gnuradio/amp_var_est_hier.py</doc>
+  <grc_source>/home/anastasl/Dropbox/gnuradio_source/gr-cdma/apps/amp_var_est_hier_source.grc</grc_source>
+</block>

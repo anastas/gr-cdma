@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='ASCII'?>
+<block>
+  <name>freq_timing_estimator_hier</name>
+  <key>freq_timing_estimator_hier</key>
+  <category>cdma</category>
+  <import>import cdma</import>
+  <make>cdma.freq_timing_estimator_hier(
+    ts=$ts,
+    factor=$factor,
+    alpha=$alpha,
+    samp_rate=$samp_rate,
+    freqs=$freqs,
+)</make>
+  <callback>set_ts($ts)</callback>
+  <callback>set_factor($factor)</callback>
+  <callback>set_alpha($alpha)</callback>
+  <callback>set_samp_rate($samp_rate)</callback>
+  <callback>set_freqs($freqs)</callback>
+  <param>
+    <name>ts</name>
+    <key>ts</key>
+    <value>(0+0j,)</value>
+    <type>raw</type>
+  </param>
+  <param>
+    <name>factor</name>
+    <key>factor</key>
+    <value>0</value>
+    <type>raw</type>
+  </param>
+  <param>
+    <name>alpha</name>
+    <key>alpha</key>
+    <value>0.01</value>
+    <type>raw</type>
+  </param>
+  <param>
+    <name>samp_rate</name>
+    <key>samp_rate</key>
+    <value>0</value>
+    <type>raw</type>
+  </param>
+  <param>
+    <name>freqs</name>
+    <key>freqs</key>
+    <value>9*(0,)</value>
+    <type>raw</type>
+  </param>
+  <sink>
+    <name>in</name>
+    <type>complex</type>
+    <vlen>1</vlen>
+  </sink>
+  <source>
+    <name>out</name>
+    <type>byte</type>
+    <vlen>1</vlen>
+  </source>
+  <source>
+    <name>out_freq</name>
+    <type>float</type>
+    <vlen>1</vlen>
+  </source>
+  <doc>Achilleas Anastasopoulos
+
+/home/anastasl/.grc_gnuradio/freq_timing_estimator_hier.py</doc>
+  <grc_source>/home/anastasl/Dropbox/gnuradio_source/gr-cdma/apps/freq_timing_estimator_hier_source.grc</grc_source>
+</block>
