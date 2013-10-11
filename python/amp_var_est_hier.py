@@ -36,7 +36,6 @@ class amp_var_est_hier(gr.hier_block2):
         self.blocks_multiply_const_vxx_0 = blocks.multiply_const_vff((0.5, ))
         self.blocks_complex_to_mag_squared_0 = blocks.complex_to_mag_squared(1)
         self.blocks_complex_to_mag_0 = blocks.complex_to_mag(1)
-        self.blocks_add_const_vxx_0 = blocks.add_const_vff((1e-12, ))
 
         ##################################################
         # Connections
@@ -51,8 +50,7 @@ class amp_var_est_hier(gr.hier_block2):
         self.connect((self.single_pole_iir_filter_xx_0_0_1_0, 0), (self.blocks_complex_to_mag_0, 0))
         self.connect((self.blocks_complex_to_mag_0, 0), (self.blocks_sub_xx_0_0, 1))
         self.connect((self.blocks_complex_to_mag_0, 0), (self, 0))
-        self.connect((self.blocks_multiply_const_vxx_0, 0), (self.blocks_add_const_vxx_0, 0))
-        self.connect((self.blocks_add_const_vxx_0, 0), (self, 1))
+        self.connect((self.blocks_multiply_const_vxx_0, 0), (self, 1))
 
 
 # QT sink close method reimplementation
