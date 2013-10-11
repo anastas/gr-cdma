@@ -31,7 +31,6 @@ class amp_var_est_hier(gr.hier_block2):
         ##################################################
         self.single_pole_iir_filter_xx_0_0_1_0 = filter.single_pole_iir_filter_cc(alpha, 1)
         self.single_pole_iir_filter_xx_0_0_1 = filter.single_pole_iir_filter_ff(alpha, 1)
-        self.blocks_transcendental_0 = blocks.transcendental("sqrt", "float")
         self.blocks_sub_xx_0_0 = blocks.sub_ff(1)
         self.blocks_multiply_xx_1 = blocks.multiply_vcc(1)
         self.blocks_multiply_const_vxx_0 = blocks.multiply_const_vff((0.5, ))
@@ -51,8 +50,7 @@ class amp_var_est_hier(gr.hier_block2):
         self.connect((self.blocks_sub_xx_0_0, 0), (self.blocks_multiply_const_vxx_0, 0))
         self.connect((self.single_pole_iir_filter_xx_0_0_1_0, 0), (self.blocks_complex_to_mag_0, 0))
         self.connect((self.blocks_complex_to_mag_0, 0), (self.blocks_sub_xx_0_0, 1))
-        self.connect((self.blocks_complex_to_mag_0, 0), (self.blocks_transcendental_0, 0))
-        self.connect((self.blocks_transcendental_0, 0), (self, 0))
+        self.connect((self.blocks_complex_to_mag_0, 0), (self, 0))
         self.connect((self.blocks_multiply_const_vxx_0, 0), (self.blocks_add_const_vxx_0, 0))
         self.connect((self.blocks_add_const_vxx_0, 0), (self, 1))
 

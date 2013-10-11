@@ -51,8 +51,9 @@ training_long=[
   1.,  1.,
   ] # random long sequence (ideally should be designed to have good autocorrelation properties up to the training_length)
 
+numpy.random.seed(666)
 training_long=[];
-for i in range(symbols_per_frame):
+for i in range(symbols_per_frame):    
   x=random.randint(0,1)*2-1
   training_long=training_long+[x];
   

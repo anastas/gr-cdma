@@ -20,7 +20,7 @@
     <vlen>1</vlen>
   </sink>
   <source>
-    <name>amp</name>
+    <name>amp2</name>
     <type>float</type>
     <vlen>1</vlen>
   </source>
