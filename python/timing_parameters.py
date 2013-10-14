@@ -2,8 +2,8 @@ import random
 import numpy
 from gnuradio import digital
 
-samp_rate=100000
-N=1000
+symbol_rate=50000
+N=100
 
 seed=666
 numpy.random.seed(seed)
