@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Wed Oct  9 21:10:22 2013</timestamp>
+  <timestamp>Fri Oct 18 13:46:14 2013</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -61,49 +61,6 @@
     </param>
   </block>
   <block>
-    <key>blocks_delay</key>
-    <param>
-      <key>id</key>
-      <value>blocks_delay_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>complex</value>
-    </param>
-    <param>
-      <key>delay</key>
-      <value>N-1</value>
-    </param>
-    <param>
-      <key>num_ports</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(249, 147)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
     <key>pad_source</key>
     <param>
       <key>id</key>
@@ -135,7 +92,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(44, 204)</value>
+      <value>(18, 200)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -193,7 +150,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(543, 35)</value>
+      <value>(916, 41)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -201,26 +158,174 @@
     </param>
   </block>
   <block>
-    <key>cdma_vector_insert2</key>
+    <key>parameter</key>
     <param>
       <key>id</key>
-      <value>cdma_vector_insert2_0</value>
+      <value>ts</value>
     </param>
     <param>
       <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>ts</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>(0+0j,)</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value></value>
+    </param>
+    <param>
+      <key>short_id</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(667, 33)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>parameter</key>
+    <param>
+      <key>id</key>
+      <value>pulse</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>pulse</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>(0+0j,)</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value></value>
+    </param>
+    <param>
+      <key>short_id</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(495, 37)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>pad_source</key>
+    <param>
+      <key>id</key>
+      <value>pad_source_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>in</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>complex</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>num_streams</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>optional</key>
       <value>False</value>
     </param>
     <param>
-      <key>data</key>
-      <value>0,</value>
+      <key>_coordinate</key>
+      <value>(16, 133)</value>
     </param>
     <param>
-      <key>periodicity</key>
-      <value>N</value>
-    </param>
-    <param>
-      <key>offset</key>
+      <key>_rotation</key>
       <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>parameter</key>
+    <param>
+      <key>id</key>
+      <value>Q</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>Q</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>4</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>intx</value>
+    </param>
+    <param>
+      <key>short_id</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(325, 29)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_delay</key>
+    <param>
+      <key>id</key>
+      <value>blocks_delay_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>complex</value>
+    </param>
+    <param>
+      <key>delay</key>
+      <value>(N-1)*Q</value>
+    </param>
+    <param>
+      <key>num_ports</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
     </param>
     <param>
       <key>affinity</key>
@@ -232,7 +337,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(67, 288)</value>
+      <value>(187, 133)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -240,26 +345,18 @@
     </param>
   </block>
   <block>
-    <key>cdma_vector_insert2</key>
+    <key>cdma_chopper</key>
     <param>
       <key>id</key>
-      <value>cdma_vector_insert2_1</value>
+      <value>cdma_chopper_0</value>
     </param>
     <param>
       <key>_enabled</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
-      <key>data</key>
-      <value>(N-1)*(0,)</value>
-    </param>
-    <param>
-      <key>periodicity</key>
-      <value>N+1</value>
-    </param>
-    <param>
-      <key>offset</key>
-      <value>N+1</value>
+      <key>length</key>
+      <value>N*Q</value>
     </param>
     <param>
       <key>affinity</key>
@@ -271,7 +368,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(126, 312)</value>
+      <value>(372, 164)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -282,11 +379,11 @@
     <key>fir_filter_xxx</key>
     <param>
       <key>id</key>
-      <value>fir_filter_xxx_0_0</value>
+      <value>fir_filter_xxx_0_0_0</value>
     </param>
     <param>
       <key>_enabled</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
       <key>type</key>
@@ -294,11 +391,11 @@
     </param>
     <param>
       <key>decim</key>
-      <value>N</value>
+      <value>Q</value>
     </param>
     <param>
       <key>taps</key>
-      <value>numpy.conjugate(ts[::-1])</value>
+      <value>numpy.conjugate(pulse[::-1])</value>
     </param>
     <param>
       <key>affinity</key>
@@ -310,7 +407,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(179, 342)</value>
+      <value>(571, 169)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -318,120 +415,53 @@
     </param>
   </block>
   <block>
-    <key>blocks_keep_m_in_n</key>
+    <key>virtual_sink</key>
     <param>
       <key>id</key>
-      <value>blocks_keep_m_in_n_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>complex</value>
-    </param>
-    <param>
-      <key>m</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>n</key>
-      <value>2</value>
-    </param>
-    <param>
-      <key>offset</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(288, 364)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>pad_sink</key>
-    <param>
-      <key>id</key>
-      <value>pad_sink_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value>out</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>complex</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>num_streams</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>optional</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(356, 402)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>pad_sink</key>
-    <param>
-      <key>id</key>
-      <value>pad_sink_0_0_1</value>
+      <value>decimated</value>
     </param>
     <param>
       <key>_enabled</key>
       <value>True</value>
     </param>
     <param>
-      <key>label</key>
-      <value>corrected_out</value>
+      <key>stream_id</key>
+      <value>decimated</value>
     </param>
     <param>
-      <key>type</key>
-      <value>complex</value>
+      <key>_coordinate</key>
+      <value>(814, 176)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_multiply_conjugate_cc</key>
+    <param>
+      <key>id</key>
+      <value>blocks_multiply_conjugate_cc_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
     </param>
     <param>
       <key>vlen</key>
       <value>1</value>
     </param>
     <param>
-      <key>num_streams</key>
-      <value>1</value>
+      <key>affinity</key>
+      <value></value>
     </param>
     <param>
-      <key>optional</key>
-      <value>False</value>
+      <key>minoutbuf</key>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(746, 947)</value>
+      <value>(545, 340)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -478,7 +508,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(560, 431)</value>
+      <value>(336, 366)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -517,7 +547,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(451, 569)</value>
+      <value>(411, 544)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -544,256 +574,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(681, 590)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>pad_sink</key>
-    <param>
-      <key>id</key>
-      <value>pad_sink_0_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value>pll_out</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>complex</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>num_streams</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>optional</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(889, 586)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>pad_source</key>
-    <param>
-      <key>id</key>
-      <value>pad_source_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value>in</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>complex</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>num_streams</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>optional</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(48, 147)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>parameter</key>
-    <param>
-      <key>id</key>
-      <value>ts</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value>ts</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>(0+0j,)</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value></value>
-    </param>
-    <param>
-      <key>short_id</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(347, 26)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>parameter</key>
-    <param>
-      <key>id</key>
-      <value>samp_rate</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value>samp_rate</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>eng_float</value>
-    </param>
-    <param>
-      <key>short_id</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(440, 20)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>pad_sink</key>
-    <param>
-      <key>id</key>
-      <value>pad_sink_0_0_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value>out</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>complex</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>num_streams</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>optional</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(863, 188)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>blocks_multiply_conjugate_cc</key>
-    <param>
-      <key>id</key>
-      <value>blocks_multiply_conjugate_cc_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(755, 407)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>cdma_chopper</key>
-    <param>
-      <key>id</key>
-      <value>cdma_chopper_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>length</key>
-      <value>N</value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(439, 163)</value>
+      <value>(627, 562)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -832,7 +613,186 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(461, 936)</value>
+      <value>(403, 797)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>pad_sink</key>
+    <param>
+      <key>id</key>
+      <value>pad_sink_0_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>pll_out</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>complex</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>num_streams</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>optional</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(843, 558)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>pad_sink</key>
+    <param>
+      <key>id</key>
+      <value>pad_sink_0_0_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>out</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>complex</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>num_streams</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>optional</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(824, 262)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>pad_sink</key>
+    <param>
+      <key>id</key>
+      <value>pad_sink_0_0_0_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>unmodulated_out</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>complex</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>num_streams</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>optional</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(836, 352)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>virtual_source</key>
+    <param>
+      <key>id</key>
+      <value>RX_0_2_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>stream_id</key>
+      <value>decimated</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(8, 335)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>pad_sink</key>
+    <param>
+      <key>id</key>
+      <value>pad_sink_0_0_1</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>corrected_out</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>complex</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>num_streams</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>optional</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(782, 809)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -840,26 +800,8 @@
     </param>
   </block>
   <connection>
-    <source_block_id>cdma_vector_insert2_1</source_block_id>
-    <sink_block_id>fir_filter_xxx_0_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>cdma_vector_insert2_0</source_block_id>
-    <sink_block_id>cdma_vector_insert2_1</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
     <source_block_id>blocks_delay_0</source_block_id>
     <sink_block_id>cdma_chopper_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>fir_filter_xxx_0_0</source_block_id>
-    <sink_block_id>blocks_keep_m_in_n_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
@@ -874,12 +816,6 @@
     <sink_block_id>cdma_chopper_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>1</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>blocks_keep_m_in_n_0</source_block_id>
-    <sink_block_id>pad_sink_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
   </connection>
   <connection>
     <source_block_id>analog_pll_refout_cc_0</source_block_id>
@@ -906,32 +842,50 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>blocks_conjugate_cc_0</source_block_id>
-    <sink_block_id>blocks_multiply_xx_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>1</sink_key>
-  </connection>
-  <connection>
     <source_block_id>blocks_multiply_xx_0</source_block_id>
     <sink_block_id>pad_sink_0_0_1</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>cdma_chopper_0</source_block_id>
-    <sink_block_id>pad_sink_0_0_0</sink_block_id>
+    <source_block_id>blocks_multiply_conjugate_cc_0</source_block_id>
+    <sink_block_id>pad_sink_0_0_0_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>cdma_chopper_0</source_block_id>
+    <source_block_id>RX_0_2_0</source_block_id>
     <sink_block_id>blocks_multiply_conjugate_cc_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>cdma_chopper_0</source_block_id>
+    <source_block_id>blocks_conjugate_cc_0</source_block_id>
     <sink_block_id>blocks_multiply_xx_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>RX_0_2_0</source_block_id>
+    <sink_block_id>blocks_multiply_xx_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>1</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>cdma_chopper_0</source_block_id>
+    <sink_block_id>fir_filter_xxx_0_0_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>fir_filter_xxx_0_0_0</source_block_id>
+    <sink_block_id>decimated</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>fir_filter_xxx_0_0_0</source_block_id>
+    <sink_block_id>pad_sink_0_0_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>

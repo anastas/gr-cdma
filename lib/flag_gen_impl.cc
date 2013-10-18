@@ -76,6 +76,9 @@ namespace gr {
 
           if(d_onoff==1) { // Acquisition
             out[i]=in[i];
+            if(in[i]==1) { // reset counter
+              d_counter=d_period;
+            }
           }
           else if (d_onoff==0) { // tracking
             if(d_counter==0) {

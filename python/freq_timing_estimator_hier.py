@@ -19,7 +19,7 @@ class freq_timing_estimator_hier(gr.hier_block2):
         gr.hier_block2.__init__(
             self, "freq_timing_estimator_hier",
             gr.io_signature(1, 1, gr.sizeof_gr_complex*1),
-            gr.io_signaturev(2, 2, [gr.sizeof_char*1, gr.sizeof_float*1]),
+            gr.io_signaturev(3, 3, [gr.sizeof_char*1, gr.sizeof_float*1, gr.sizeof_float*1]),
         )
 
         ##################################################
@@ -64,6 +64,7 @@ class freq_timing_estimator_hier(gr.hier_block2):
         self.connect((self.digital_chunks_to_symbols, 0), (self.blocks_sample_and_hold, 0))
         self.connect((self.blocks_peak_detector, 0), (self.blocks_sample_and_hold, 1))
         self.connect((self.blocks_sample_and_hold, 0), (self, 1))
+        self.connect((self.blocks_max, 0), (self, 2))
 
 
 # QT sink close method reimplementation

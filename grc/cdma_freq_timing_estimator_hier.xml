@@ -52,12 +52,17 @@
     <vlen>1</vlen>
   </sink>
   <source>
-    <name>out</name>
+    <name>flag</name>
     <type>byte</type>
     <vlen>1</vlen>
   </source>
   <source>
     <name>out_freq</name>
+    <type>float</type>
+    <vlen>1</vlen>
+  </source>
+  <source>
+    <name>out_corr</name>
     <type>float</type>
     <vlen>1</vlen>
   </source>
