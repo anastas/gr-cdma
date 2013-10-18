@@ -8,3 +8,5 @@ N=100
 seed=666
 numpy.random.seed(seed)
 ts = (2*numpy.random.randint(0,2,N)-1+0j)
+
+rolloff=0.35

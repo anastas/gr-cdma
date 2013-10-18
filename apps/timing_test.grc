@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Fri Oct 18 13:49:51 2013</timestamp>
+  <timestamp>Fri Oct 18 15:28:00 2013</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -87,6 +87,29 @@
     <key>variable</key>
     <param>
       <key>id</key>
+      <value>onoff_auto</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>0 if EsN0dBest&gt;EsN0dBthreshold else 1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(350, 1904)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
       <value>freqs</value>
     </param>
     <param>
@@ -133,52 +156,6 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>pulse</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>filter.firdes.root_raised_cosine(Q,samp_rate,symbol_rate,0.35,5*Q)</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(216, 189)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>onoff_auto</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>0 if EsN0dBest&gt;EsN0dBthreshold else 1</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(350, 1904)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
       <value>ts1</value>
     </param>
     <param>
@@ -192,29 +169,6 @@
     <param>
       <key>_coordinate</key>
       <value>(694, 67)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>total</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>numpy.convolve(pulse, numpy.kron(ts,(1,)+(Q-1)*(0,))[:(N-1)*Q+1:])</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(695, 5)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -317,29 +271,6 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>N</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>1000</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(215, 8)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
       <value>Es</value>
     </param>
     <param>
@@ -386,29 +317,6 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>ts</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>2*numpy.random.randint(0,2,N)-1+0j</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(216, 68)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
       <value>onoff</value>
     </param>
     <param>
@@ -440,7 +348,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>Q**2 * N</value>
+      <value>Es * Q**2 * N</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -467,7 +375,99 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(742, 132)</value>
+      <value>(738, 134)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>N</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>1000</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(215, 8)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>ts</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>2*numpy.random.randint(0,2,N)-1+0j</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(216, 68)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>pulse</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>filter.firdes.root_raised_cosine(Q,samp_rate,symbol_rate,0.35,5*Q)</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(216, 189)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>total</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>numpy.convolve(pulse, numpy.kron(ts,(1,)+(Q-1)*(0,))[:(N-1)*Q+1:])</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(695, 4)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1930,45 +1930,6 @@
     </param>
   </block>
   <block>
-    <key>variable_function_probe</key>
-    <param>
-      <key>id</key>
-      <value>EsN0dBest</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>20</value>
-    </param>
-    <param>
-      <key>block_id</key>
-      <value>blocks_probe_signal_snr</value>
-    </param>
-    <param>
-      <key>function_name</key>
-      <value>level</value>
-    </param>
-    <param>
-      <key>function_args</key>
-      <value></value>
-    </param>
-    <param>
-      <key>poll_rate</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(171, 1866)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
     <key>blocks_multiply_conjugate_cc</key>
     <param>
       <key>id</key>
@@ -2264,19 +2225,19 @@
     <key>variable_function_probe</key>
     <param>
       <key>id</key>
-      <value>N0est</value>
+      <value>EsN0dBest</value>
     </param>
     <param>
       <key>_enabled</key>
-      <value>False</value>
+      <value>True</value>
     </param>
     <param>
       <key>value</key>
-      <value>1e-2</value>
+      <value>20</value>
     </param>
     <param>
       <key>block_id</key>
-      <value>blocks_probe_signal_n0</value>
+      <value>blocks_probe_signal_snr</value>
     </param>
     <param>
       <key>function_name</key>
@@ -2292,7 +2253,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(629, 1535)</value>
+      <value>(216, 1762)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2332,6 +2293,45 @@
     <param>
       <key>_coordinate</key>
       <value>(464, 1535)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable_function_probe</key>
+    <param>
+      <key>id</key>
+      <value>N0est</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>1e-2</value>
+    </param>
+    <param>
+      <key>block_id</key>
+      <value>blocks_probe_signal_n0</value>
+    </param>
+    <param>
+      <key>function_name</key>
+      <value>level</value>
+    </param>
+    <param>
+      <key>function_args</key>
+      <value></value>
+    </param>
+    <param>
+      <key>poll_rate</key>
+      <value>10</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(629, 1535)</value>
     </param>
     <param>
       <key>_rotation</key>
