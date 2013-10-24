@@ -30,22 +30,27 @@ namespace gr {
   namespace cdma {
 
     chopper::sptr
-    chopper::make(int length)
+    chopper::make(int lengtho, int lengthi, size_t itemsize)
     {
       return gnuradio::get_initial_sptr
-        (new chopper_impl(length));
+        (new chopper_impl(lengtho, lengthi,itemsize));
     }
 
     /*
      * The private constructor
      */
-    chopper_impl::chopper_impl(int length)
+    chopper_impl::chopper_impl(int lengtho, int lengthi, size_t itemsize)
       : gr::block("chopper",
-                      gr::io_signature::make2(2, 2, sizeof (gr_complex),sizeof (char)),
-                      gr::io_signature::make(1, 1, sizeof (gr_complex))),
-      d_length(length),
-      d_remaining(0)
-    {}
+                      gr::io_signature::make2(2, 2, itemsize*sizeof(char),sizeof (char)),
+                      gr::io_signature::make(1, 1, itemsize*sizeof(char))),
+      d_itemsize(itemsize),
+      d_lengtho(lengtho),
+      d_lengthi(lengthi),
+      d_found(false)
+    {
+      assert(d_lengtho>=d_lengthi);
+      set_output_multiple(d_lengtho);
+    }
 
     /*
      * Our virtual destructor.
@@ -67,54 +72,38 @@ namespace gr {
                        gr_vector_const_void_star &input_items,
                        gr_vector_void_star &output_items)
     {
-        const gr_complex *in_data = (const gr_complex *) input_items[0];
+        const char *in_data = (const char *) input_items[0];
         const char *in_flag = (const char *) input_items[1];
-        gr_complex *out = (gr_complex *) output_items[0];
+        char *out = (char *) output_items[0];
         bool found;
-        int i,ni;
+        int i,ni,no,n;
 
         ni=std::min(ninput_items[0],ninput_items[1]);
-
+        //no=noutput_items;
+        //n=std::min(ni,no); 
+        //printf("ni=%d, no=%d, n=%d\n",ni,no,n);
 
         // Do <+signal processing+>
-        if(d_remaining==0) {
-          found=false;
+        if(d_found==false) {
           for(i=0;i<ni;i++) {
             if (in_flag[i]!=0) {
-              found=true;
-              break;
+              d_found=true;
+              consume_each(i);
+              //printf("Found flag at i=%d,     consumed=%d\n",i,i);
+              return 0;  
             }
           }
-          if(found==true) {
-            //printf("Found flag at i=%d\n",i);
-            int n=std::min(d_length,ni-i);
-            n=std::min(n,noutput_items);
-            memcpy(out,in_data+i,n*sizeof(gr_complex));
-            consume_each (i+n);
-            d_remaining=d_length-n;
-            //printf("copied=%d, consumed=%d\n",n,i+n);
-            return n;
-          }
-          else { // found==false
-            //printf("Did not find flag \n");
-            consume_each (ni);
-            return 0;
-          }
-        }
-        else { //d_remaining >0
-          // copy as many items as you can to the output: min(ni,nout,d_remaining)
-          int n=std::min(d_remaining,ni);
-          n=std::min(n,noutput_items);
-          //printf("n=%d\n",n);
-          memcpy(out,in_data,n*sizeof(gr_complex));
-          consume_each (n);
-          d_remaining-=n;
-          //printf("copied=%d, consumed=%d\n",n,n);
-          return n;
         }
 
-        printf("We should never get here\n");
-    }
+        // if you get here a flag was found
+
+        memcpy(out,in_data,d_itemsize*d_lengtho);
+        //printf("Copying No  and consuming Ni\n");
+        consume_each(d_lengthi);
+        d_found=false;
+        return d_lengtho;
+
+    } //work
 
   } /* namespace cdma */
 } /* namespace gr */

@@ -29,12 +29,14 @@ namespace gr {
     class chopper_impl : public chopper
     {
      private:
-       int d_length;
-       int d_remaining;
+       size_t d_itemsize;
+       int d_lengtho;
+       int d_lengthi;
+       bool d_found;
 
 
      public:
-      chopper_impl(int length);
+      chopper_impl(int lengtho, int lengthi, size_t itemsize);
       ~chopper_impl();
 
       // Where all the action really happens

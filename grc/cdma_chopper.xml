@@ -4,18 +4,61 @@
   <key>cdma_chopper</key>
   <category>cdma</category>
   <import>import cdma</import>
-  <make>cdma.chopper($length)</make>
+  <make>cdma.chopper($length, $lengthi,$type.size * $vlen)</make>
   <!-- Make one 'param' node for every Parameter you want settable from the GUI.
        Sub-nodes:
        * name
        * key (makes the value accessible as $keyname, e.g. in the make node)
        * type -->
   <param>
-    <name>length</name>
+    <name>Type</name>
+    <key>type</key>
+    <type>enum</type>
+    <option>
+      <name>Complex</name>
+      <key>complex</key>
+      <opt>size:gr.sizeof_gr_complex</opt>
+    </option>
+    <option>
+      <name>Float</name>
+      <key>float</key>
+      <opt>size:gr.sizeof_float</opt>
+    </option>
+    <option>
+      <name>Int</name>
+      <key>int</key>
+      <opt>size:gr.sizeof_int</opt>
+    </option>
+    <option>
+      <name>Short</name>
+      <key>short</key>
+      <opt>size:gr.sizeof_short</opt>
+    </option>
+    <option>
+      <name>Byte</name>
+      <key>byte</key>
+      <opt>size:gr.sizeof_char</opt>
+    </option>
+  </param>
+
+  <param>
+    <name>Vec Length</name>
+    <key>vlen</key>
+    <value>1</value>
+    <type>int</type>
+  </param>
+
+  <param>
+    <name>length out</name>
     <key>length</key>
     <type>int</type>
   </param>
 
+  <param>
+    <name>length in</name>
+    <key>lengthi</key>
+    <type>int</type>
+  </param>
 
   <!-- Make one 'sink' node per input. Sub-nodes:
        * name (an identifier for the GUI)
@@ -24,8 +67,10 @@
        * optional (set to 1 for optional inputs) -->
   <sink>
     <name>in_data</name>
-    <type>complex</type>
+    <type>$type</type>
+    <vlen>$vlen</vlen>
   </sink>
+
   <sink>
     <name>in_flag</name>
     <type>byte</type>
@@ -38,6 +83,7 @@
        * optional (set to 1 for optional inputs) -->
   <source>
     <name>out</name>
-    <type>complex</type>
+    <type>$type</type>
+    <vlen>$vlen</vlen>
   </source>
 </block>

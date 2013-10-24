@@ -46,7 +46,7 @@ namespace gr {
        * class. cdma::chopper::make is the public interface for
        * creating new instances.
        */
-      static sptr make(int length);
+      static sptr make(int length, int lengthi, size_t itemsize);
     };
 
   } // namespace cdma
