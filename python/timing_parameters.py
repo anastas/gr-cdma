@@ -2,7 +2,7 @@ import random
 import numpy
 from gnuradio import digital
 
-symbol_rate=50000
+symbol_rate=100000
 N=100
 
 seed=666
