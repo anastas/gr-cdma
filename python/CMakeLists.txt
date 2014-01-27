@@ -37,7 +37,9 @@ GR_PYTHON_INSTALL(
     amp_var_est_hier.py
     freq_timing_estimator_hier.py
     timing_parameters.py
-    myselector.py DESTINATION ${GR_PYTHON_DIR}/cdma
+    myselector.py
+    kronecker_filter2.py
+    freq_timing_estimator_hier2.py DESTINATION ${GR_PYTHON_DIR}/cdma
 )
 
 ########################################################################

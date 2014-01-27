@@ -1,10 +1,23 @@
 #!/usr/bin/env python
-##################################################
-# Gnuradio Python Flow Graph
-# Title: freq_timing_estimator_hier
-# Author: Achilleas Anastasopoulos
-# Generated: Wed Oct  9 09:05:28 2013
-##################################################
+# -*- coding: utf-8 -*-
+# 
+# Copyright 2014 <+YOU OR YOUR COMPANY+>.
+# 
+# This is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3, or (at your option)
+# any later version.
+# 
+# This software is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this software; see the file COPYING.  If not, write to
+# the Free Software Foundation, Inc., 51 Franklin Street,
+# Boston, MA 02110-1301, USA.
+# 
 
 from gnuradio import blocks
 from gnuradio import filter
@@ -12,12 +25,16 @@ from gnuradio import gr
 from gnuradio import digital
 from gnuradio.filter import firdes
 import numpy
+import cdma
 
-class freq_timing_estimator_hier(gr.hier_block2):
 
-    def __init__(self, ts, factor, alpha, samp_rate, freqs):
-        gr.hier_block2.__init__(
-            self, "freq_timing_estimator_hier",
+class freq_timing_estimator_hier2(gr.hier_block2):
+    """
+    docstring for block freq_timing_estimator_hier2
+    """
+    def __init__(self, seq1, seq2, factor, alpha, samp_rate, freqs):
+        gr.hier_block2.__init__(self,
+            "freq_timing_estimator_hier2",
             gr.io_signature(1, 1, gr.sizeof_gr_complex*1),
             gr.io_signaturev(3, 3, [gr.sizeof_char*1, gr.sizeof_float*1, gr.sizeof_float*1]),
         )
@@ -25,7 +42,8 @@ class freq_timing_estimator_hier(gr.hier_block2):
         ##################################################
         # Parameters
         ##################################################
-        self.ts = ts
+        self.seq1 = seq1
+        self.seq2 = seq2
         self.factor = factor
         self.alpha = alpha
         self.samp_rate = samp_rate
@@ -38,7 +56,8 @@ class freq_timing_estimator_hier(gr.hier_block2):
         self._filter=[0]*self.n
         self._c2mag2=[0]*self.n
         for i in range(self.n):
-          self._filter[i]= filter.freq_xlating_fir_filter_ccc(1, (numpy.conjugate(self.ts[::-1])), self.freqs[i], self.samp_rate)
+          self._filter[i]= cdma.kronecker_filter2(seq1,seq2,samp_rate,self.freqs[i])
+          #self._filter[i]= filter.freq_xlating_fir_filter_ccc(1, (numpy.conjugate(self.ts[::-1])), self.freqs[i], self.samp_rate)
           self._c2mag2[i] = blocks.complex_to_mag_squared(1)
 
         self.blocks_max = blocks.max_ff(1)
@@ -66,15 +85,21 @@ class freq_timing_estimator_hier(gr.hier_block2):
         self.connect((self.blocks_sample_and_hold, 0), (self, 1))
         self.connect((self.blocks_max, 0), (self, 2))
 
+    def get_seq1(self):
+	return self.seq1
 
+    def set_seq1(self, seq1):
+	self.seq1=seq1
+	for i in range(self.n):
+	  self._filter[i].set_sequence1((self.seq1))
 
-    def get_ts(self):
-        return self.ts
+    def get_seq2(self):
+	return self.seq2
 
-    def set_ts(self, ts):
-        self.ts = ts
-        for i in range(self.n):
-          self._filter[i].set_taps((numpy.conjugate(self.ts[::-1])))
+    def set_seq2(self,seq2):
+	self.seq2=seq2
+	for i in range(self.n):
+	  self._filter[i].set_sequence2((self.seq2))
 
     def get_factor(self):
         return self.factor

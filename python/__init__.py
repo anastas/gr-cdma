@@ -50,6 +50,8 @@ from myselector import myselector
 from timing_estimator_hier import timing_estimator_hier
 from amp_var_est_hier import amp_var_est_hier
 from freq_timing_estimator_hier import freq_timing_estimator_hier
+from kronecker_filter2 import kronecker_filter2
+from freq_timing_estimator_hier2 import freq_timing_estimator_hier2
 
 #
 
