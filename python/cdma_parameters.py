@@ -21,15 +21,20 @@ print "symbols_per_header=",symbols_per_header
 
 
 #payload info
-payload_bytes_per_frame = 50;
+payload_bytes_per_frame = 51;
 crc_bytes=4;
 coded_payload_bytes_per_frame = payload_bytes_per_frame+crc_bytes
-payload_mod = digital.constellation_qpsk()
+payload_mod = digital.constellation_8psk()
 coded_payload_symbols_per_frame = (coded_payload_bytes_per_frame * 8)/payload_mod.bits_per_symbol()
 if (coded_payload_bytes_per_frame * 8.0)/payload_mod.bits_per_symbol() != coded_payload_symbols_per_frame:
   print "Error in evaluating payload symbols per frame; adjusting payload bytes per frame"
-  # add code to fix payload_bytes_per_frame
+  k = coded_payload_bytes_per_frame / payload_mod.bits_per_symbol()
+  coded_payload_bytes_per_frame = (k+1)*payload_mod.bits_per_symbol()
+  payload_bytes_per_frame = coded_payload_bytes_per_frame - crc_bytes
+  coded_payload_symbols_per_frame = (coded_payload_bytes_per_frame * 8)/payload_mod.bits_per_symbol()
 
+print "payload_bytes_per_frame=", payload_bytes_per_frame
+print "coded_payload_bytes_per_frame=", coded_payload_bytes_per_frame
 print "coded_payload_symbols_per_frame=", coded_payload_symbols_per_frame
 
 symbols_per_frame = symbols_per_header + coded_payload_symbols_per_frame
