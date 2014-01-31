@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Wed Jan 29 18:48:24 2014</timestamp>
+  <timestamp>Thu Jan 30 19:03:04 2014</timestamp>
   <block>
     <key>options</key>
     <param>
       <key>id</key>
-      <value>timing_test_tx</value>
+      <value>cdma_tx</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -13,11 +13,11 @@
     </param>
     <param>
       <key>title</key>
-      <value></value>
+      <value>cdma_tx</value>
     </param>
     <param>
       <key>author</key>
-      <value></value>
+      <value>Achilleas Anastasopoulos, Zhe Feng</value>
     </param>
     <param>
       <key>description</key>
@@ -25,7 +25,7 @@
     </param>
     <param>
       <key>window_size</key>
-      <value>2000, 2000</value>
+      <value>2000,2000</value>
     </param>
     <param>
       <key>generate_options</key>
@@ -53,7 +53,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(10, 10)</value>
+      <value>(11, 9)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -64,7 +64,7 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>samp_rate</value>
+      <value>symbol_rate</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -72,11 +72,11 @@
     </param>
     <param>
       <key>value</key>
-      <value>tp.symbol_rate*Q</value>
+      <value>150000</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(268, 93)</value>
+      <value>(179, 10)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -87,7 +87,7 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>Q</value>
+      <value>payload_bytes_per_frame</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -95,11 +95,11 @@
     </param>
     <param>
       <key>value</key>
-      <value>15</value>
+      <value>cdma_parameters.payload_bytes_per_frame</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(273, 20)</value>
+      <value>(413, 72)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -110,7 +110,7 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>Es</value>
+      <value>chips_per_symbol</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -118,11 +118,11 @@
     </param>
     <param>
       <key>value</key>
-      <value>1</value>
+      <value>cdma_parameters.chips_per_symbol</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(679, 28)</value>
+      <value>(288, 72)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -145,7 +145,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(681, 201)</value>
+      <value>(200, 74)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -156,30 +156,7 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>pulse</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>filter.firdes.root_raised_cosine(Q,Q,1,tp.rolloff,7*Q)</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(479, 157)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>pulse</value>
+      <value>Es</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -187,11 +164,57 @@
     </param>
     <param>
       <key>value</key>
-      <value>numpy.array((1, 1, 1, -1, -1, -1, 1, -1, -1, 1, 1, -1, 1, -1, 1))+0j</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(477, 215)</value>
+      <value>(504, 9)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>length_tag_name</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>cdma_parameters.length_tag_name</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(378, 9)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>samp_rate</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>symbol_rate*chips_per_symbol</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(278, 9)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -210,11 +233,11 @@
     </param>
     <param>
       <key>import</key>
-      <value>import numpy</value>
+      <value>import numpy ; numpy.random.seed(666)</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(12, 71)</value>
+      <value>(9, 103)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -222,33 +245,10 @@
     </param>
   </block>
   <block>
-    <key>import</key>
+    <key>blocks_throttle</key>
     <param>
       <key>id</key>
-      <value>import_0_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>import</key>
-      <value>import cdma.timing_parameters as tp</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(16, 119)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>analog_noise_source_x</key>
-    <param>
-      <key>id</key>
-      <value>analog_noise_source_x_0</value>
+      <value>blocks_throttle_0</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -259,16 +259,12 @@
       <value>complex</value>
     </param>
     <param>
-      <key>noise_type</key>
-      <value>analog.GR_GAUSSIAN</value>
+      <key>samples_per_second</key>
+      <value>samp_rate</value>
     </param>
     <param>
-      <key>amp</key>
-      <value>(Q*N0/2)**0.5</value>
-    </param>
-    <param>
-      <key>seed</key>
-      <value>0</value>
+      <key>vlen</key>
+      <value>1</value>
     </param>
     <param>
       <key>affinity</key>
@@ -280,7 +276,42 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(17, 553)</value>
+      <value>(274, 579)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_null_source</key>
+    <param>
+      <key>id</key>
+      <value>blocks_null_source_0_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>complex</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(435, 613)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -331,7 +362,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(17, 409)</value>
+      <value>(16, 433)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -339,10 +370,10 @@
     </param>
   </block>
   <block>
-    <key>interp_fir_filter_xxx</key>
+    <key>blocks_multiply_const_vxx</key>
     <param>
       <key>id</key>
-      <value>interp_fir_filter_xxx_0</value>
+      <value>blocks_multiply_const_vxx_1</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -350,15 +381,15 @@
     </param>
     <param>
       <key>type</key>
-      <value>ccc</value>
+      <value>complex</value>
     </param>
     <param>
-      <key>interp</key>
-      <value>Q</value>
+      <key>const</key>
+      <value>Es**0.5</value>
     </param>
     <param>
-      <key>taps</key>
-      <value>pulse</value>
+      <key>vlen</key>
+      <value>1</value>
     </param>
     <param>
       <key>affinity</key>
@@ -370,7 +401,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(219, 323)</value>
+      <value>(430, 468)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -409,7 +440,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(475, 409)</value>
+      <value>(279, 454)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -417,10 +448,10 @@
     </param>
   </block>
   <block>
-    <key>blocks_add_xx</key>
+    <key>blocks_tag_gate</key>
     <param>
       <key>id</key>
-      <value>blocks_add_xx_0_0</value>
+      <value>blocks_tag_gate_0</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -431,12 +462,12 @@
       <value>complex</value>
     </param>
     <param>
-      <key>num_inputs</key>
-      <value>2</value>
-    </param>
-    <param>
       <key>vlen</key>
       <value>1</value>
+    </param>
+    <param>
+      <key>propagate_tags</key>
+      <value>False</value>
     </param>
     <param>
       <key>affinity</key>
@@ -448,7 +479,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(585, 539)</value>
+      <value>(743, 563)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -456,54 +487,45 @@
     </param>
   </block>
   <block>
-    <key>variable_slider</key>
+    <key>import</key>
     <param>
       <key>id</key>
-      <value>EsN0dB</value>
+      <value>import_1</value>
     </param>
     <param>
       <key>_enabled</key>
       <value>True</value>
     </param>
     <param>
-      <key>label</key>
-      <value>EsN0dB</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>20</value>
-    </param>
-    <param>
-      <key>min</key>
-      <value>-20</value>
-    </param>
-    <param>
-      <key>max</key>
-      <value>80</value>
-    </param>
-    <param>
-      <key>num_steps</key>
-      <value>100</value>
-    </param>
-    <param>
-      <key>style</key>
-      <value>wx.SL_HORIZONTAL</value>
-    </param>
-    <param>
-      <key>converver</key>
-      <value>float_converter</value>
-    </param>
-    <param>
-      <key>grid_pos</key>
-      <value></value>
-    </param>
-    <param>
-      <key>notebook</key>
-      <value></value>
+      <key>import</key>
+      <value>from gnuradio.digital.utils import tagged_streams</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(680, 87)</value>
+      <value>(10, 199)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>import</key>
+    <param>
+      <key>id</key>
+      <value>import_0_1</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>import</key>
+      <value>import cdma.cdma_parameters as cdma_parameters</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(9, 152)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -558,7 +580,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(682, 260)</value>
+      <value>(581, 127)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -566,22 +588,38 @@
     </param>
   </block>
   <block>
-    <key>import</key>
+    <key>blocks_add_xx</key>
     <param>
       <key>id</key>
-      <value>import_0_0_0</value>
+      <value>blocks_add_xx_0_0</value>
     </param>
     <param>
       <key>_enabled</key>
       <value>True</value>
     </param>
     <param>
-      <key>import</key>
-      <value>from gnuradio import filter</value>
+      <key>type</key>
+      <value>complex</value>
+    </param>
+    <param>
+      <key>num_inputs</key>
+      <value>2</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(115, 71)</value>
+      <value>(616, 549)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -592,7 +630,7 @@
     <key>blocks_null_sink</key>
     <param>
       <key>id</key>
-      <value>blocks_null_sink_0</value>
+      <value>blocks_null_sink_0_0</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -612,7 +650,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(599, 752)</value>
+      <value>(1036, 566)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -620,26 +658,14 @@
     </param>
   </block>
   <block>
-    <key>blocks_multiply_const_vxx</key>
+    <key>CDMA_Tx2</key>
     <param>
       <key>id</key>
-      <value>blocks_multiply_const_vxx_1_0_0_0</value>
+      <value>CDMA_Tx2_0</value>
     </param>
     <param>
       <key>_enabled</key>
       <value>True</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>complex</value>
-    </param>
-    <param>
-      <key>const</key>
-      <value>0.1</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>1</value>
     </param>
     <param>
       <key>affinity</key>
@@ -651,220 +677,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(161, 751)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>blocks_multiply_const_vxx</key>
-    <param>
-      <key>id</key>
-      <value>blocks_multiply_const_vxx_1</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>complex</value>
-    </param>
-    <param>
-      <key>const</key>
-      <value>Es**0.5</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(614, 421)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>wxgui_scopesink2</key>
-    <param>
-      <key>id</key>
-      <value>wxgui_scopesink2_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>complex</value>
-    </param>
-    <param>
-      <key>title</key>
-      <value>Scope Plot</value>
-    </param>
-    <param>
-      <key>samp_rate</key>
-      <value>samp_rate</value>
-    </param>
-    <param>
-      <key>v_scale</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>v_offset</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>t_scale</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>ac_couple</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>xy_mode</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>num_inputs</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>win_size</key>
-      <value></value>
-    </param>
-    <param>
-      <key>grid_pos</key>
-      <value></value>
-    </param>
-    <param>
-      <key>notebook</key>
-      <value></value>
-    </param>
-    <param>
-      <key>trig_mode</key>
-      <value>wxgui.TRIG_MODE_AUTO</value>
-    </param>
-    <param>
-      <key>y_axis_label</key>
-      <value>Counts</value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(361, 931)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>wxgui_fftsink2</key>
-    <param>
-      <key>id</key>
-      <value>wxgui_fftsink2_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>complex</value>
-    </param>
-    <param>
-      <key>title</key>
-      <value>FFT Plot</value>
-    </param>
-    <param>
-      <key>samp_rate</key>
-      <value>samp_rate</value>
-    </param>
-    <param>
-      <key>baseband_freq</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>y_per_div</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>y_divs</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>ref_level</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>ref_scale</key>
-      <value>2.0</value>
-    </param>
-    <param>
-      <key>fft_size</key>
-      <value>1024</value>
-    </param>
-    <param>
-      <key>fft_rate</key>
-      <value>15</value>
-    </param>
-    <param>
-      <key>peak_hold</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>average</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>avg_alpha</key>
-      <value>0.05</value>
-    </param>
-    <param>
-      <key>win</key>
-      <value>None</value>
-    </param>
-    <param>
-      <key>win_size</key>
-      <value></value>
-    </param>
-    <param>
-      <key>grid_pos</key>
-      <value></value>
-    </param>
-    <param>
-      <key>notebook</key>
-      <value></value>
-    </param>
-    <param>
-      <key>freqvar</key>
-      <value>None</value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(741, 755)</value>
+      <value>(368, 325)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -883,7 +696,7 @@
     </param>
     <param>
       <key>file</key>
-      <value>/tmp/timing.fifo</value>
+      <value>/tmp/cdma.fifo</value>
     </param>
     <param>
       <key>type</key>
@@ -907,7 +720,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(589, 677)</value>
+      <value>(1016, 453)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -915,10 +728,53 @@
     </param>
   </block>
   <block>
-    <key>blocks_vector_source_x</key>
+    <key>blocks_file_sink</key>
     <param>
       <key>id</key>
-      <value>blocks_vector_source_x_0</value>
+      <value>blocks_file_sink_0_1</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>file</key>
+      <value>/home/zhe/Dropbox/Fall2013/GNU/cdma1</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>complex</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>unbuffered</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>append</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(993, 608)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>analog_noise_source_x</key>
+    <param>
+      <key>id</key>
+      <value>analog_noise_source_x_0</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -929,12 +785,55 @@
       <value>complex</value>
     </param>
     <param>
+      <key>noise_type</key>
+      <value>analog.GR_GAUSSIAN</value>
+    </param>
+    <param>
+      <key>amp</key>
+      <value>(chips_per_symbol*N0/2)**0.5</value>
+    </param>
+    <param>
+      <key>seed</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(18, 565)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_vector_source_x</key>
+    <param>
+      <key>id</key>
+      <value>blocks_vector_source_x_0_1</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>byte</value>
+    </param>
+    <param>
       <key>vector</key>
-      <value>tp.ts</value>
+      <value>map(int,numpy.random.randint(0,256,payload_bytes_per_frame))</value>
     </param>
     <param>
       <key>tags</key>
-      <value>""</value>
+      <value>tagged_streams.make_lengthtags((payload_bytes_per_frame,), (0,), length_tag_name)</value>
     </param>
     <param>
       <key>repeat</key>
@@ -954,7 +853,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(17, 313)</value>
+      <value>(15, 307)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -962,38 +861,54 @@
     </param>
   </block>
   <block>
-    <key>blocks_throttle</key>
+    <key>variable_slider</key>
     <param>
       <key>id</key>
-      <value>blocks_throttle_0</value>
+      <value>EsN0dB</value>
     </param>
     <param>
       <key>_enabled</key>
       <value>True</value>
     </param>
     <param>
-      <key>type</key>
-      <value>complex</value>
+      <key>label</key>
+      <value>EsN0dB</value>
     </param>
     <param>
-      <key>samples_per_second</key>
-      <value>tp.symbol_rate</value>
+      <key>value</key>
+      <value>20</value>
     </param>
     <param>
-      <key>vlen</key>
-      <value>1</value>
+      <key>min</key>
+      <value>-20</value>
     </param>
     <param>
-      <key>affinity</key>
+      <key>max</key>
+      <value>80</value>
+    </param>
+    <param>
+      <key>num_steps</key>
+      <value>100</value>
+    </param>
+    <param>
+      <key>style</key>
+      <value>wx.SL_HORIZONTAL</value>
+    </param>
+    <param>
+      <key>converver</key>
+      <value>float_converter</value>
+    </param>
+    <param>
+      <key>grid_pos</key>
       <value></value>
     </param>
     <param>
-      <key>minoutbuf</key>
-      <value>0</value>
+      <key>notebook</key>
+      <value></value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(67, 196)</value>
+      <value>(580, 2)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1001,26 +916,50 @@
     </param>
   </block>
   <connection>
-    <source_block_id>blocks_multiply_const_vxx_1_0_0_0</source_block_id>
-    <sink_block_id>blocks_file_sink_0</sink_block_id>
+    <source_block_id>CDMA_Tx2_0</source_block_id>
+    <sink_block_id>blocks_multiply_xx_0_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>blocks_multiply_const_vxx_1_0_0_0</source_block_id>
-    <sink_block_id>wxgui_fftsink2_0</sink_block_id>
+    <source_block_id>blocks_vector_source_x_0_1</source_block_id>
+    <sink_block_id>CDMA_Tx2_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>analog_noise_source_x_0</source_block_id>
+    <source_block_id>blocks_throttle_0</source_block_id>
     <sink_block_id>blocks_add_xx_0_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>1</sink_key>
   </connection>
   <connection>
-    <source_block_id>blocks_vector_source_x_0</source_block_id>
+    <source_block_id>analog_noise_source_x_0</source_block_id>
     <sink_block_id>blocks_throttle_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_add_xx_0_0</source_block_id>
+    <sink_block_id>blocks_tag_gate_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_null_source_0_0</source_block_id>
+    <sink_block_id>blocks_add_xx_0_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>1</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_multiply_const_vxx_1</source_block_id>
+    <sink_block_id>blocks_add_xx_0_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_multiply_xx_0_0</source_block_id>
+    <sink_block_id>blocks_multiply_const_vxx_1</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
@@ -1031,44 +970,20 @@
     <sink_key>1</sink_key>
   </connection>
   <connection>
-    <source_block_id>blocks_multiply_xx_0_0</source_block_id>
-    <sink_block_id>blocks_multiply_const_vxx_1</sink_block_id>
+    <source_block_id>blocks_tag_gate_0</source_block_id>
+    <sink_block_id>blocks_null_sink_0_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>blocks_multiply_const_vxx_1</source_block_id>
-    <sink_block_id>blocks_add_xx_0_0</sink_block_id>
+    <source_block_id>blocks_tag_gate_0</source_block_id>
+    <sink_block_id>blocks_file_sink_0_1</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>blocks_throttle_0</source_block_id>
-    <sink_block_id>interp_fir_filter_xxx_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>interp_fir_filter_xxx_0</source_block_id>
-    <sink_block_id>blocks_multiply_xx_0_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>blocks_add_xx_0_0</source_block_id>
-    <sink_block_id>blocks_multiply_const_vxx_1_0_0_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>blocks_multiply_const_vxx_1_0_0_0</source_block_id>
-    <sink_block_id>blocks_null_sink_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>blocks_multiply_const_vxx_1_0_0_0</source_block_id>
-    <sink_block_id>wxgui_scopesink2_0</sink_block_id>
+    <source_block_id>blocks_tag_gate_0</source_block_id>
+    <sink_block_id>blocks_file_sink_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
