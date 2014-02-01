@@ -56,7 +56,6 @@ class kronecker_filter2(gr.hier_block2):
 
     def set_sequence1(self, sequence1):
 	self.sequence1 = sequence1
-
 	for i in range(self.n):
           self._filter[i].set_taps((self.sequence1))
 
