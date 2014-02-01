@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Fri Jan 31 18:55:22 2014</timestamp>
+  <timestamp>Sat Feb  1 00:06:48 2014</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -64,7 +64,7 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>peak_o_var</value>
+      <value>training_percent</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -72,11 +72,11 @@
     </param>
     <param>
       <key>value</key>
-      <value>cdma_parameters.peak_o_var</value>
+      <value>cdma_parameters.training_percent</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(405, 140)</value>
+      <value>(396, 79)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -110,7 +110,7 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>training_percent</value>
+      <value>peak_o_var</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -118,11 +118,11 @@
     </param>
     <param>
       <key>value</key>
-      <value>cdma_parameters.training_percent</value>
+      <value>cdma_parameters.peak_o_var</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(396, 79)</value>
+      <value>(405, 140)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -843,76 +843,6 @@
     <param>
       <key>_coordinate</key>
       <value>(93, 1708)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>parameter</key>
-    <param>
-      <key>id</key>
-      <value>acq_threshold_dB</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value></value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>-10</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value></value>
-    </param>
-    <param>
-      <key>short_id</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(591, 91)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>parameter</key>
-    <param>
-      <key>id</key>
-      <value>onoff</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value></value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value></value>
-    </param>
-    <param>
-      <key>short_id</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(604, 21)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1648,11 +1578,54 @@
     <key>blocks_file_sink</key>
     <param>
       <key>id</key>
+      <value>blocks_file_sink_0_2_0_0_0_0_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>file</key>
+      <value>flag1.data</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>byte</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>unbuffered</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>append</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(963, 223)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_file_sink</key>
+    <param>
+      <key>id</key>
       <value>blocks_file_sink_0_2_0_0_0_0_0_0</value>
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>False</value>
     </param>
     <param>
       <key>file</key>
@@ -1688,42 +1661,69 @@
     </param>
   </block>
   <block>
-    <key>blocks_file_sink</key>
+    <key>parameter</key>
     <param>
       <key>id</key>
-      <value>blocks_file_sink_0_2_0_0_0_0_0</value>
+      <value>onoff</value>
     </param>
     <param>
       <key>_enabled</key>
       <value>True</value>
     </param>
     <param>
-      <key>file</key>
-      <value>flag1.data</value>
+      <key>label</key>
+      <value></value>
     </param>
     <param>
-      <key>type</key>
-      <value>byte</value>
-    </param>
-    <param>
-      <key>vlen</key>
+      <key>value</key>
       <value>1</value>
     </param>
     <param>
-      <key>unbuffered</key>
-      <value>True</value>
+      <key>type</key>
+      <value></value>
     </param>
     <param>
-      <key>append</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>affinity</key>
+      <key>short_id</key>
       <value></value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(963, 223)</value>
+      <value>(595, 19)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>parameter</key>
+    <param>
+      <key>id</key>
+      <value>acq_threshold_dB</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value></value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>-10</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value></value>
+    </param>
+    <param>
+      <key>short_id</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(584, 85)</value>
     </param>
     <param>
       <key>_rotation</key>
