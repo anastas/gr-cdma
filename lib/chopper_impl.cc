@@ -93,9 +93,12 @@ namespace gr {
               return 0;  
             }
           }
+          //if you get here no flag found in this call
+          consume_each(ni);
+          return 0;
         }
 
-        // if you get here a flag was found
+        // if you get here a flag was found before work was called
 
         memcpy(out,in_data,d_itemsize*d_lengtho);
         //printf("Copying No  and consuming Ni\n");
