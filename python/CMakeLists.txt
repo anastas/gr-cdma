@@ -33,13 +33,12 @@ GR_PYTHON_INSTALL(
     __init__.py
     kronecker_filter.py 
     cdma_parameters.py
-    timing_estimator_hier.py 
-    amp_var_est_hier.py
     freq_timing_estimator_hier.py
+    freq_timing_estimator_hier2.py
     timing_parameters.py
-    myselector.py
+    #myselector.py
     kronecker_filter2.py
-    freq_timing_estimator_hier2.py DESTINATION ${GR_PYTHON_DIR}/cdma
+    DESTINATION ${GR_PYTHON_DIR}/cdma
 )
 
 ########################################################################

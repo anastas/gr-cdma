@@ -20,10 +20,8 @@ install(FILES
     cdma_kronecker_filter.xml
     cdma_chopper.xml
     cdma_vector_insert2.xml
-    cdma_timing_estimator_hier.xml
     cdma_freq_timing_estimator_hier.xml
-    cdma_myselector.xml
-    cdma_amp_var_est_hier.xml
+    #cdma_myselector.xml
     cdma_flag_gen.xml
     cdma_kronecker_filter2.xml
     cdma_freq_timing_estimator_hier2.xml DESTINATION share/gnuradio/grc/blocks

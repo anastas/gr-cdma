@@ -51,6 +51,8 @@ class kronecker_filter2(gr.hier_block2):
           self.connect(self._filter[i],(self._ss2s, i))
 
         self.connect(self._ss2s,self)
+
+
     def get_sequence1(self):
 	return self.sequence1
 
