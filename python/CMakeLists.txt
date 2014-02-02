@@ -33,8 +33,8 @@ GR_PYTHON_INSTALL(
     __init__.py
     kronecker_filter.py 
     cdma_parameters.py
-    freq_timing_estimator_hier.py
-    freq_timing_estimator_hier2.py
+    freq_timing_estimator.py
+    freq_timing_estimator2.py
     timing_parameters.py
     #myselector.py
     kronecker_filter2.py
