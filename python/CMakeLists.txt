@@ -31,13 +31,12 @@ endif()
 GR_PYTHON_INSTALL(
     FILES
     __init__.py
-    kronecker_filter.py 
     cdma_parameters.py
     freq_timing_estimator.py
     freq_timing_estimator2.py
     timing_parameters.py
     #myselector.py
-    kronecker_filter2.py
+    kronecker_filter.py
     DESTINATION ${GR_PYTHON_DIR}/cdma
 )
 

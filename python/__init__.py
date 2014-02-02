@@ -45,13 +45,13 @@ if _RTLD_GLOBAL != 0:
 from cdma_swig import *
 
 # import any pure python here
-from kronecker_filter import kronecker_filter
+
 #from myselector #import myselector
 
-
+from kronecker_filter import kronecker_filter
 from freq_timing_estimator import freq_timing_estimator
 from freq_timing_estimator2 import freq_timing_estimator2
-from kronecker_filter2 import kronecker_filter2
+
 
 
 #

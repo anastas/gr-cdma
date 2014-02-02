@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # 
-# Copyright 2013 <+YOU OR YOUR COMPANY+>.
+# Copyright 2014 <+YOU OR YOUR COMPANY+>.
 # 
 # This is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -27,18 +27,18 @@ class kronecker_filter(gr.hier_block2):
     """
     docstring for block kronecker_filter
     """
-    def __init__(self, sequence1, sequence2):
+    def __init__(self, sequence1, sequence2,samp_rate, center_freq):
         gr.hier_block2.__init__(self,
             "kronecker_filter",
-            gr.io_signature(1, 1, gr.sizeof_gr_complex),  # Input signature
-            gr.io_signature(1, 1, gr.sizeof_gr_complex)) # Output signature
+            gr.io_signature(1,1, gr.sizeof_gr_complex),  # Input signature
+            gr.io_signature(1,1, gr.sizeof_gr_complex)) # Output signature
 
-        n=len(sequence2)
+        self.n = n = len(sequence2)
 
         # Build  filterbank
         self._s2ss = blocks.stream_to_streams(gr.sizeof_gr_complex,n)
         self._ss2s = blocks.streams_to_stream(gr.sizeof_gr_complex,n)
-        self._filter2=filter.interp_fir_filter_ccc(1,sequence2)
+        self._filter2=filter.freq_xlating_fir_filter_ccc(1,sequence2,center_freq,samp_rate)
         self._filter=[0]*n
         for i in range(n):
           self._filter[i]=filter.interp_fir_filter_ccc(1,sequence1)
@@ -51,3 +51,19 @@ class kronecker_filter(gr.hier_block2):
           self.connect(self._filter[i],(self._ss2s, i))
 
         self.connect(self._ss2s,self)
+
+
+    def get_sequence1(self):
+	return self.sequence1
+
+    def set_sequence1(self, sequence1):
+	self.sequence1 = sequence1
+	for i in range(self.n):
+          self._filter[i].set_taps((self.sequence1))
+
+    def get_sequence2(self):
+	return self.sequence2
+
+    def set_sequence2(self, sequence2):
+	self.sequence2 = sequence2
+	self._filter2.set_taps(self.sequence2)

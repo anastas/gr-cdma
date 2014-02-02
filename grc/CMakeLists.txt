@@ -17,12 +17,11 @@
 # the Free Software Foundation, Inc., 51 Franklin Street,
 # Boston, MA 02110-1301, USA.
 install(FILES
-    cdma_kronecker_filter.xml
     cdma_chopper.xml
     cdma_vector_insert2.xml
     cdma_freq_timing_estimator.xml
     #cdma_myselector.xml
     cdma_flag_gen.xml
-    cdma_kronecker_filter2.xml
+    cdma_kronecker_filter.xml
     cdma_freq_timing_estimator2.xml DESTINATION share/gnuradio/grc/blocks
 )

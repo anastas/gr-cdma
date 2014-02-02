@@ -4,21 +4,41 @@
   <key>cdma_kronecker_filter</key>
   <category>cdma</category>
   <import>import cdma</import>
-  <make>cdma.kronecker_filter($sequence1, $sequence2)</make>
+  <make>cdma.kronecker_filter($sequence1, $sequence2, $samp_rate, $center_freq)</make>
+
+  <callback>set_sequence1($sequence1)</callback>
+  <callback>set_sequence2($sequence2)</callback>
+
   <!-- Make one 'param' node for every Parameter you want settable from the GUI.
        Sub-nodes:
        * name
        * key (makes the value accessible as $keyname, e.g. in the make node)
        * type -->
+
+
+
   <param>
     <name>sequence1</name>
     <key>sequence1</key>
     <type>complex_vector</type>
   </param>
+
   <param>
     <name>sequence2</name>
     <key>sequence2</key>
     <type>complex_vector</type>
+  </param>
+
+  <param>
+    <name>samp_rate</name>
+    <key>samp_rate</key>
+    <type>complex</type>
+  </param>
+
+  <param>
+    <name>center_freq</name>
+    <key>center_freq</key>
+    <type>complex</type>
   </param>
 
   <!-- Make one 'sink' node per input. Sub-nodes:

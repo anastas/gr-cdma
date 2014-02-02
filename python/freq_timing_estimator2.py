@@ -56,7 +56,7 @@ class freq_timing_estimator2(gr.hier_block2):
         self._filter=[0]*self.n
         self._c2mag2=[0]*self.n
         for i in range(self.n):
-          self._filter[i]= cdma.kronecker_filter2(seq1,seq2,samp_rate,self.freqs[i])
+          self._filter[i]= cdma.kronecker_filter(seq1,seq2,samp_rate,self.freqs[i])
           #self._filter[i]= filter.freq_xlating_fir_filter_ccc(1, (numpy.conjugate(self.ts[::-1])), self.freqs[i], self.samp_rate)
           self._c2mag2[i] = blocks.complex_to_mag_squared(1)
 
