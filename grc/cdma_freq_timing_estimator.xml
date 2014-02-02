@@ -66,8 +66,4 @@
     <type>float</type>
     <vlen>1</vlen>
   </source>
-  <doc>Achilleas Anastasopoulos
-
-/home/anastasl/.grc_gnuradio/freq_timing_estimator.py</doc>
-  <grc_source>/home/anastasl/Dropbox/gnuradio_source/gr-cdma/apps/freq_timing_estimator_source.grc</grc_source>
 </block>

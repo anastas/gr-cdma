@@ -1,29 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Sun Feb  2 09:36:16 2014</timestamp>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>pulse_L</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>int(len(pulse)/Q)</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(542, 54)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
+  <timestamp>Sun Feb  2 14:09:35 2014</timestamp>
   <block>
     <key>variable</key>
     <param>
@@ -64,6 +41,29 @@
     <param>
       <key>_coordinate</key>
       <value>(583, 85)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>pulse_L</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>int(len(pulse)/Q)</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(542, 54)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1192,7 +1192,7 @@
     </param>
     <param>
       <key>author</key>
-      <value>Achilleas Anastasopoulos</value>
+      <value>Achilleas Anastasopoulos, Zhe Feng</value>
     </param>
     <param>
       <key>description</key>
