@@ -1,11 +1,70 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Sun Feb  2 14:09:16 2014</timestamp>
+  <timestamp>Mon Feb 10 19:32:47 2014</timestamp>
+  <block>
+    <key>options</key>
+    <param>
+      <key>id</key>
+      <value>cdma_rx_hier</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>title</key>
+      <value>cdma_rx_hier</value>
+    </param>
+    <param>
+      <key>author</key>
+      <value>Achilleas Anastasopoulos, Zhe Feng</value>
+    </param>
+    <param>
+      <key>description</key>
+      <value></value>
+    </param>
+    <param>
+      <key>window_size</key>
+      <value>4000,4000</value>
+    </param>
+    <param>
+      <key>generate_options</key>
+      <value>hb</value>
+    </param>
+    <param>
+      <key>category</key>
+      <value>cdma</value>
+    </param>
+    <param>
+      <key>run_options</key>
+      <value>prompt</value>
+    </param>
+    <param>
+      <key>run</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>max_nouts</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>realtime_scheduling</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(10, 9)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
   <block>
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>freqs</value>
+      <value>training_percent</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -13,11 +72,11 @@
     </param>
     <param>
       <key>value</key>
-      <value>cdma_parameters.freqs</value>
+      <value>cdma_parameters.training_percent</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(365, 15)</value>
+      <value>(396, 79)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -51,7 +110,7 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>training_percent</value>
+      <value>freqs</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -59,11 +118,11 @@
     </param>
     <param>
       <key>value</key>
-      <value>cdma_parameters.training_percent</value>
+      <value>cdma_parameters.freqs</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(396, 79)</value>
+      <value>(365, 15)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -198,6 +257,10 @@
     </param>
     <param>
       <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
       <value>0</value>
     </param>
     <param>
@@ -464,6 +527,10 @@
       <value>0</value>
     </param>
     <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
       <key>_coordinate</key>
       <value>(327, 628)</value>
     </param>
@@ -492,6 +559,10 @@
     </param>
     <param>
       <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
       <value>0</value>
     </param>
     <param>
@@ -534,6 +605,10 @@
       <value>0</value>
     </param>
     <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
       <key>_coordinate</key>
       <value>(618, 1498)</value>
     </param>
@@ -562,6 +637,10 @@
     </param>
     <param>
       <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
       <value>0</value>
     </param>
     <param>
@@ -631,6 +710,10 @@
       <value>0</value>
     </param>
     <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
       <key>_coordinate</key>
       <value>(324, 1125)</value>
     </param>
@@ -671,6 +754,10 @@
     </param>
     <param>
       <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
       <value>0</value>
     </param>
     <param>
@@ -914,6 +1001,10 @@
       <value>0</value>
     </param>
     <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
       <key>_coordinate</key>
       <value>(251, 735)</value>
     </param>
@@ -1138,6 +1229,10 @@
       <value>0</value>
     </param>
     <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
       <key>_coordinate</key>
       <value>(373, 1599)</value>
     </param>
@@ -1236,29 +1331,6 @@
     </param>
   </block>
   <block>
-    <key>virtual_sink</key>
-    <param>
-      <key>id</key>
-      <value>RX_training_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>stream_id</key>
-      <value>sync_flag</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(958, 356)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
     <key>pad_sink</key>
     <param>
       <key>id</key>
@@ -1340,6 +1412,10 @@
     </param>
     <param>
       <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
       <value>0</value>
     </param>
     <param>
@@ -1430,127 +1506,6 @@
     </param>
   </block>
   <block>
-    <key>cdma_flag_gen</key>
-    <param>
-      <key>id</key>
-      <value>cdma_flag_gen_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>onoff</key>
-      <value>onoff</value>
-    </param>
-    <param>
-      <key>period</key>
-      <value>cdma_parameters.chips_per_symbol*cdma_parameters.symbols_per_frame</value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(731, 349)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>cdma_freq_timing_estimator2</key>
-    <param>
-      <key>id</key>
-      <value>cdma_freq_timing_estimator2_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>seq1</key>
-      <value>(0+0j,) if onoff==0 else cdma_parameters.training[::-1]</value>
-    </param>
-    <param>
-      <key>seq2</key>
-      <value>(0+0j,) if onoff==0 else cdma_parameters.pulse_training[::-1]</value>
-    </param>
-    <param>
-      <key>factor</key>
-      <value>10**(acq_threshold_dB/10)*peak_o_var</value>
-    </param>
-    <param>
-      <key>alpha</key>
-      <value>0.01</value>
-    </param>
-    <param>
-      <key>samp_rate</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>freqs</key>
-      <value>freqs</value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(290, 449)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>parameter</key>
-    <param>
-      <key>id</key>
-      <value>onoff</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value></value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value></value>
-    </param>
-    <param>
-      <key>short_id</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(595, 19)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
     <key>parameter</key>
     <param>
       <key>id</key>
@@ -1586,58 +1541,151 @@
     </param>
   </block>
   <block>
-    <key>options</key>
+    <key>virtual_sink</key>
     <param>
       <key>id</key>
-      <value>cdma_rx_hier</value>
+      <value>RX_training_0</value>
     </param>
     <param>
       <key>_enabled</key>
       <value>True</value>
     </param>
     <param>
-      <key>title</key>
-      <value>cdma_rx_hier</value>
+      <key>stream_id</key>
+      <value>sync_flag</value>
     </param>
     <param>
-      <key>author</key>
-      <value>Achilleas Anastasopoulos, Zhe Feng</value>
+      <key>_coordinate</key>
+      <value>(958, 356)</value>
     </param>
     <param>
-      <key>description</key>
-      <value></value>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>parameter</key>
+    <param>
+      <key>id</key>
+      <value>acq</value>
     </param>
     <param>
-      <key>window_size</key>
-      <value>4000,4000</value>
-    </param>
-    <param>
-      <key>generate_options</key>
-      <value>hb</value>
-    </param>
-    <param>
-      <key>category</key>
-      <value>cdma</value>
-    </param>
-    <param>
-      <key>run_options</key>
-      <value>prompt</value>
-    </param>
-    <param>
-      <key>run</key>
+      <key>_enabled</key>
       <value>True</value>
     </param>
     <param>
-      <key>max_nouts</key>
-      <value>0</value>
+      <key>label</key>
+      <value></value>
     </param>
     <param>
-      <key>realtime_scheduling</key>
+      <key>value</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value></value>
+    </param>
+    <param>
+      <key>short_id</key>
       <value></value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(10, 9)</value>
+      <value>(595, 19)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>cdma_flag_gen</key>
+    <param>
+      <key>id</key>
+      <value>cdma_flag_gen_1</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>acq</key>
+      <value>acq</value>
+    </param>
+    <param>
+      <key>period</key>
+      <value>cdma_parameters.chips_per_symbol*cdma_parameters.symbols_per_frame</value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(741, 349)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>cdma_freq_timing_estimator2</key>
+    <param>
+      <key>id</key>
+      <value>cdma_freq_timing_estimator2_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>seq1</key>
+      <value>(0+0j,) if acq==0 else cdma_parameters.training[::-1]</value>
+    </param>
+    <param>
+      <key>seq2</key>
+      <value>(0+0j,) if acq==0 else cdma_parameters.pulse_training[::-1]</value>
+    </param>
+    <param>
+      <key>factor</key>
+      <value>10**(acq_threshold_dB/10)*peak_o_var</value>
+    </param>
+    <param>
+      <key>alpha</key>
+      <value>0.01</value>
+    </param>
+    <param>
+      <key>samp_rate</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>freqs</key>
+      <value>freqs</value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(290, 449)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1657,20 +1705,8 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>cdma_flag_gen_0</source_block_id>
-    <sink_block_id>RX_training_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
     <source_block_id>pad_source_0</source_block_id>
     <sink_block_id>RX_training_0_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>cdma_freq_timing_estimator2_0</source_block_id>
-    <sink_block_id>cdma_flag_gen_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
@@ -1858,6 +1894,18 @@
     <source_block_id>digital_packet_headerparser_b_0</source_block_id>
     <sink_block_id>zzz_pad_sink_0_1_0_1_0</sink_block_id>
     <source_key>header_data</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>cdma_freq_timing_estimator2_0</source_block_id>
+    <sink_block_id>cdma_flag_gen_1</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>cdma_flag_gen_1</source_block_id>
+    <sink_block_id>RX_training_0</sink_block_id>
+    <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
 </flow_graph>

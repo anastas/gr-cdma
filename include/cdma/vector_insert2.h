@@ -29,8 +29,13 @@ namespace gr {
   namespace cdma {
 
     /*!
-     * \brief <+description of block+>
+     * \brief Insert a specified (complex) vector periodically in the (complex) input stream
      * \ingroup cdma
+     * 
+     * \details 
+     * For example, with data=(x,y), periodicity=3, and offset=1, the input and output streams will look like \n
+     * input:  abcdefghijk... \n
+     * output: axybcdxyefgxyhijxyk...
      *
      */
     class CDMA_API vector_insert2 : virtual public gr::block
@@ -45,6 +50,10 @@ namespace gr {
        * constructor is in a private implementation
        * class. cdma::vector_insert2::make is the public interface for
        * creating new instances.
+       *
+       * \param data the vector to be inserted
+       * \param periodicity the period of the input stream.
+       * \param offset the offset within the input stream that the vector will be inserted. Takes values in {0,...,\p periodicity}
        */
       static sptr make(const std::vector< gr_complex > data, int periodicity, int offset);
     };

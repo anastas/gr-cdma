@@ -11,21 +11,20 @@
        * key (makes the value accessible as $keyname, e.g. in the make node)
        * type -->
   <param>
-    <name>vector</name>
+    <name>data</name>
     <key>data</key>
     <type>complex_vector</type>
   </param>
   <param>
-    <name>input period</name>
+    <name>periodicity</name>
     <key>periodicity</key>
     <type>int</type>
   </param>
   <param>
-    <name>input offset</name>
+    <name>offset</name>
     <key>offset</key>
     <type>int</type>
   </param>
-
 
   <!-- Make one 'sink' node per input. Sub-nodes:
        * name (an identifier for the GUI)
@@ -46,4 +45,18 @@
     <name>out</name>
     <type>complex</type>
   </source>
+  <doc>
+Insert a specified (complex) vector periodically in the (complex) input stream.
+
+For example, with data=(x,y), periodicity=3, and offset=1, the input and output streams will look like 
+input:  abcdefghijk... 
+output: axybcdxyefgxyhijxyk...
+
+Args:
+data: the vector to be inserted.
+input period: the period of the input stream.  
+input offset: the offset within the input stream that the vector will be inserted. Takes values in {0,...,periodicity}.
+
+
+  </doc>
 </block>

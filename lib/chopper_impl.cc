@@ -30,22 +30,22 @@ namespace gr {
   namespace cdma {
 
     chopper::sptr
-    chopper::make(int lengtho, int lengthi, size_t itemsize)
+    chopper::make(int length_out, int length_in, size_t vector_length)
     {
       return gnuradio::get_initial_sptr
-        (new chopper_impl(lengtho, lengthi,itemsize));
+        (new chopper_impl(length_out, length_in,vector_length));
     }
 
     /*
      * The private constructor
      */
-    chopper_impl::chopper_impl(int lengtho, int lengthi, size_t itemsize)
+    chopper_impl::chopper_impl(int length_out, int length_in, size_t vector_length)
       : gr::block("chopper",
-                      gr::io_signature::make2(2, 2, itemsize*sizeof(char),sizeof (char)),
-                      gr::io_signature::make(1, 1, itemsize*sizeof(char))),
-      d_itemsize(itemsize),
-      d_lengtho(lengtho),
-      d_lengthi(lengthi),
+                      gr::io_signature::make2(2, 2, vector_length*sizeof(char),sizeof (char)),
+                      gr::io_signature::make(1, 1, vector_length*sizeof(char))),
+      d_itemsize(vector_length),
+      d_lengtho(length_out),
+      d_lengthi(length_in),
       d_found(false)
     {
       assert(d_lengtho>=d_lengthi);

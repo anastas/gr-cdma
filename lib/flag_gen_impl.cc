@@ -30,21 +30,21 @@ namespace gr {
   namespace cdma {
 
     flag_gen::sptr
-    flag_gen::make(int period, int onoff)
+    flag_gen::make(int period, int acq)
     {
       return gnuradio::get_initial_sptr
-        (new flag_gen_impl(period, onoff));
+        (new flag_gen_impl(period, acq));
     }
 
     /*
      * The private constructor
      */
-    flag_gen_impl::flag_gen_impl(int period, int onoff)
+    flag_gen_impl::flag_gen_impl(int period, int acq)
       : gr::sync_block("flag_gen",
               gr::io_signature::make(1,1, sizeof(char)),
               gr::io_signature::make(1,1, sizeof(char))),
       d_period(period),
-      d_onoff(onoff),
+      d_acq(acq),
       d_counter(period)
     {}
 
@@ -55,9 +55,9 @@ namespace gr {
     {
     }
 
-    void flag_gen_impl::set_onoff(int onoff)
+    void flag_gen_impl::set_acq(int acq)
     {
-      d_onoff=onoff;
+      d_acq=acq;
     }
 
 
@@ -71,16 +71,16 @@ namespace gr {
 
         // Do <+signal processing+>
         for(int i=0;i<noutput_items;i++) {
-          //printf("onoff=%d,     counter=%d\n",d_onoff,d_counter);
+          //printf("acq=%d,     counter=%d\n",d_acq,d_counter);
          d_counter--;
 
-          if(d_onoff==1) { // Acquisition
+          if(d_acq==1) { // Acquisition
             out[i]=in[i];
             if(in[i]==1) { // reset counter
               d_counter=d_period;
             }
           }
-          else if (d_onoff==0) { // tracking
+          else if (d_acq==0) { // tracking
             if(d_counter==0) {
               out[i]=1;
             }
@@ -89,7 +89,7 @@ namespace gr {
             }
           }
           else {
-            printf("Should not be here: onoff parameter != 0 or 1\n");
+            printf("Should not be here: acq parameter != 0 or 1\n");
           } 
 
           if (d_counter==0) 

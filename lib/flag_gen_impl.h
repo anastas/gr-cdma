@@ -30,15 +30,15 @@ namespace gr {
     {
      private:
        int d_period;
-       int d_onoff;
+       int d_acq;
        int d_counter;
 
      public:
-      flag_gen_impl(int period, int onoff);
+      flag_gen_impl(int period, int acq);
       ~flag_gen_impl();
       int get_period() const { return d_period; }
-      int get_onoff() const { return d_onoff; }
-      void set_onoff(int onoff);
+      int get_acq() const { return d_acq; }
+      void set_acq(int acq);
 
 
       // Where all the action really happens

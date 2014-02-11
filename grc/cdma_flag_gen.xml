@@ -4,27 +4,24 @@
   <key>cdma_flag_gen</key>
   <category>cdma</category>
   <import>import cdma</import>
-  <make>cdma.flag_gen($period, $onoff)</make>
-
-  <callback>set_onoff($onoff)</callback>
+  <make>cdma.flag_gen($period, $acq)</make>
+  <callback>set_acq($acq)</callback>
   <!-- Make one 'param' node for every Parameter you want settable from the GUI.
        Sub-nodes:
        * name
        * key (makes the value accessible as $keyname, e.g. in the make node)
        * type -->
   <param>
-    <name>On Off</name>
-    <key>onoff</key>
+    <name>Acq</name>
+    <key>acq</key>
     <value>1</value>
     <type>int</type>
   </param>
-
   <param>
     <name>Period</name>
     <key>period</key>
     <type>int</type>
   </param>
-
   <!-- Make one 'sink' node per input. Sub-nodes:
        * name (an identifier for the GUI)
        * type
@@ -44,4 +41,40 @@
     <name>out</name>
     <type>byte</type>
   </source>
+  <doc>
+    /*!
+     * \brief This block either passes through the input stream (assumed to be zeros or ones) when its internal state is acq=1, or it outputs a stream of zeros with periodic ones (with given period) when its internal state is acq=0.
+     * \ingroup cdma
+     *
+     * \details
+     * The purpose of this block is to be used right after the timing/frequency acquisition block.
+     * The timing/frequency acquisition block outputs a stream of 0s and 1s, with 1s indicating the 
+     * begining of a cdma frame.\n
+     * When the system is in acquisition mode (acq=1), the flag_gen block just passes through its 
+     * input stream, which comes from the timing/frequency acquisition block.\n
+     * When the system is in tracking mode (acq=0), the timing/frequency acquisition block is 
+     * not supposed to produce any meaningful output flags. 
+     * In this case, the flag_gen block produces periodical flags (with given period equal 
+     * to the frame length) starting from the last flag produced by the timing/frequency 
+     * acquisition block, in order to provide timing information for the remaining of the system.\n
+     *
+     * For example, when period is 4 the input and output streams will look like:\n
+     * acq:------>111111000000000...\n
+     * input:---->010100000000000...\n
+     * output:-->010100010001000...\n
+     * where the first 1 in the input and output is for example due to a false acquisition.
+     */
+      /*!
+       * \brief Return a shared_ptr to a new instance of cdma::flag_gen.
+       *
+       * To avoid accidental use of raw pointers, cdma::flag_gen's
+       * constructor is in a private implementation
+       * class. cdma::flag_gen::make is the public interface for
+       * creating new instances.
+       *
+       * \param acq the mode selector. Takes values {0, 1}. 
+       * \param period the period of output flags when acq=0.  
+       */
+  </doc>
+
 </block>

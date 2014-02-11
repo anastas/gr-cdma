@@ -36,7 +36,7 @@ namespace gr {
 
 
      public:
-      chopper_impl(int lengtho, int lengthi, size_t itemsize);
+      chopper_impl(int length_out, int length_in, size_t vector_length);
       ~chopper_impl();
 
       // Where all the action really happens

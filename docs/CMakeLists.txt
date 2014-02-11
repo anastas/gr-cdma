@@ -27,6 +27,12 @@ find_package(Doxygen)
 ########################################################################
 if(ENABLE_DOXYGEN)
 
+# Achilles' addition
+install(
+    FILES README.cdma
+    DESTINATION ${GR_PKG_DOC_DIR}
+)
+
 ########################################################################
 # Add subdirectories
 ########################################################################
