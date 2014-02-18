@@ -87,45 +87,42 @@
     <vlen>$vector_length</vlen>
   </source>
   <doc>
-    /*!
-     * \brief Chop the input data stream according to the flags in the input control stream.
-     * \ingroup cdma
-     *
-     * \details
-     * When flag is detected  in the control stream, the chopper start to chop. 
-     * The chopper outputs a copy of length_out items from the input stream to the output stream per chop.\n
-     * The chopper consumes length_in items from the input and control streams.\n
-     * Typically the flags are periodic and length_out>=length_in. Therefore, there exist three cases.\n
-     * Case 1: period \leq length_in \leq length_out \n
-     * For example, with length_in=4, length_out=5, period=3, the input and output streams will look like \n
-     * input:----->abcdefghijklmn...\n
-     * flags:----->10010010010010... (period=3)\n
-     * outputs:-->abcdeghijkmn...\n
-     * \n
-     * Case 2: length_in \leq period \leq length_out \n
-     * For example, with length_in=4, length_out=6, period=5, the input and output streams will look like \n
-     * input:----->abcdefghijklmn...\n
-     * flags:----->100001000010000... (period=5)\n
-     * outputs:-->abcdeffghijkklmnop...\n
-     * \n
-     * Case 3: length_in \leq length_out \leq period \n
-     * For example, with length_in=4, length_out=6, period=7, the input and output streams will look like \n
-     * input:----->abcdefghijklmnopqrst...\n
-     * flags:----->100000010000001000000...(periold=7) \n
-     * outputs:-->abcdefhijklmonqrst...\n
-     *
-     */
-      /*!
-       * \brief Return a shared_ptr to a new instance of cdma::chopper.
-       *
-       * To avoid accidental use of raw pointers, cdma::chopper's
-       * constructor is in a private implementation
-       * class. cdma::chopper::make is the public interface for
-       * creating new instances.
-       *
-       * \param vector_length size of input item in data stream
-       * \param length_in number of items chopper consumes per chop.
-       * \param length_out number of items chopper outputs per chop. Typically length out>=length in.
-       */
+ 
+Chop the input data stream according to the flags in the input control stream.
+
+When flag is detected  in the control stream, the chopper start to chop. 
+The chopper outputs a copy of length_out items from the input stream to the output stream per chop.
+The chopper consumes length_in items from the input and control streams.
+Typically the flags are periodic and length_out>=length_in. Therefore, there exist three cases.
+Case 1: period &lt;= length_in &lt;= length_out 
+For example, with length_in=4, length_out=5, period=3, the input and output streams will look like 
+input:----->abcdefghijklmn...
+flags:----->10010010010010... (period=3)
+outputs:-->abcdeghijkmn...
+     
+Case 2: length_in &lt;= period &lt;= length_out 
+For example, with length_in=4, length_out=6, period=5, the input and output streams will look like 
+input:----->abcdefghijklmn...
+flags:----->100001000010000... (period=5)
+outputs:-->abcdeffghijkklmnop...
+     
+Case 3: length_in &lt;= length_out &lt;= period 
+For example, with length_in=4, length_out=6, period=7, the input and output streams will look like 
+input:----->abcdefghijklmnopqrst...
+flags:----->100000010000001000000...(periold=7) 
+outputs:-->abcdefhijklmonqrst...     
+      
+Return a shared_ptr to a new instance of cdma::chopper.
+       
+To avoid accidental use of raw pointers, cdma::chopper's
+constructor is in a private implementation
+class. cdma::chopper::make is the public interface for
+creating new instances.
+      
+Args:
+vector_length: size of input item in data stream
+length_in: number of items chopper consumes per chop.
+length_out: number of items chopper outputs per chop. Typically length out>=length in.
+       
   </doc>
 </block>
