@@ -30,9 +30,23 @@ import cdma
 
 class freq_timing_estimator2(gr.hier_block2):
     """
-    docstring for block freq_timing_estimator2
+frequency timing estimator2 class, it's less computationally complex than frequency timing estimator because it used kronecker filter to reduce complexity.
     """
     def __init__(self, seq1, seq2, factor, alpha, samp_rate, freqs):
+        """
+        Description:
+
+        This block is functionally equivalent to the frequency_timing_estimator block, except from the fact that each filter is matched to a sequence that can be written as the kronecker product of seq1 and seq2.
+
+        Args:
+	     seq1: sequence1 of kronecker filter, which is the given training sequence. 
+	     seq2: sequence2 of kronecker filter, which is the pulse for each training symbol.
+             factor: the rise and fall factors in peak detector, which is the factor determining when a peak has started and ended.  In the peak detector, an average of the signal is calculated. When the value of the signal goes over factor*average, we start looking for a peak. When the value of the signal goes below factor*average, we stop looking for a peak. factor takes values in (0,1). 
+             alpha: the smoothing factor of a moving average filter used in the peak detector takeng values in (0,1).
+             samp_rate: the sample rate of the system, which is used in the kronecker_filter.
+             freqs: the vector of center frequencies for each matched filter. Note that for a training sequence of length Nt, each matched filter can recover a sequence with normalized frequency offset ~ 1/(2Nt).
+        """
+
         gr.hier_block2.__init__(self,
             "freq_timing_estimator2",
             gr.io_signature(1, 1, gr.sizeof_gr_complex*1),
@@ -86,46 +100,83 @@ class freq_timing_estimator2(gr.hier_block2):
         self.connect((self.blocks_max, 0), (self, 2))
 
     def get_seq1(self):
+    	"""
+get the sequence1 of kronecker filters
+    	"""
 	return self.seq1
 
     def set_seq1(self, seq1):
+    	"""
+set identical sequence1 to all the kronecker filters 
+    	"""
 	self.seq1=seq1
 	for i in range(self.n):
 	  self._filter[i].set_sequence1((self.seq1))
 
     def get_seq2(self):
+    	"""
+get the sequence2 of kronecker filters
+    	"""
 	return self.seq2
 
     def set_seq2(self,seq2):
+    	"""
+set identical sequence1 to all the kronecker filters 
+    	"""
 	self.seq2=seq2
 	for i in range(self.n):
 	  self._filter[i].set_sequence2((self.seq2))
 
+
     def get_factor(self):
+    	"""
+get the rise and fall factor of peak detector
+    	"""
         return self.factor
 
     def set_factor(self, factor):
+    	"""
+set identical factor to rise factor and fall factor of peak detector
+    	"""
         self.factor = factor
         self.blocks_peak_detector.set_threshold_factor_rise(self.factor)
         self.blocks_peak_detector.set_threshold_factor_fall(self.factor)
 
     def get_alpha(self):
+    	"""
+get the smoothing factor of peak detector
+    	"""
         return self.alpha
 
     def set_alpha(self, alpha):
+    	"""
+set the smoothing factor of peak detector
+    	"""
         self.alpha = alpha
         self.blocks_peak_detector.set_alpha(self.alpha)
 
     def get_samp_rate(self):
+    	"""
+get the sample rate of kronecker filter
+    	"""
         return self.samp_rate
 
     def set_samp_rate(self, samp_rate):
+    	"""
+set the sample rate of kronecker filter
+    	"""
         self.samp_rate = samp_rate
 
     def get_freqs(self):
+    	"""
+get the center frequencies of kronecker filters
+    	"""
         return self.freqs
 
     def set_freqs(self, freqs):
+    	"""
+set freqs to all the center frequencies of kronecker filters
+    	"""
         self.freqs = freqs
         for i in range(self.n):
           self._filter[i].set_center_freq(self.freqs[i])

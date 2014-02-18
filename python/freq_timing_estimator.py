@@ -19,7 +19,6 @@
 # Boston, MA 02110-1301, USA.
 # 
 
-
 from gnuradio import blocks
 from gnuradio import filter
 from gnuradio import gr
@@ -28,8 +27,25 @@ from gnuradio.filter import firdes
 import numpy
 
 class freq_timing_estimator(gr.hier_block2):
-
+    """frequency timing estimator class."""
     def __init__(self, ts, factor, alpha, samp_rate, freqs):
+        """
+	Description:
+        This block is designed to perform frequency and timing acquisition for a known training sequence in the presense of frequency and timing offset and noise. Its input is a complex stream.  It has three outputs: 
+ 1)  a stream of flags (bytes) indicating the begining of the training sequence (to be used from subsequent blocks to "chop" the incoming stream,
+ 2)  a stream with the current acquired frequency offset, and
+ 3)  a stream with the current acquired peak of the matched filter 
+
+	Internally, it consists of a user defined number of parallel matched filters (as many as the size of the freqs vector), each consistng of a frequency Xlating FIR filter with sample rate samp_rate, filter taps matched to the training sequence ts, and center frequency freqs[i]. The filter outputs are magnitude squared and passed through a max block and then through a peak detector. 
+ 
+	Args:
+	     ts: the training sequence. For example, in DSSS system, it's the chip-based spread training sequence. 
+	     factor: the rise and fall factors in peak detector, which is the factor determining when a peak has started and ended.  In the peak detector, an average of the signal is calculated. When the value of the signal goes over factor*average, we start looking for a peak. When the value of the signal goes below factor*average, we stop looking for a peak. factor takes values in (0,1). 
+	     alpha: the smoothing factor of a moving average filter used in the peak detector takeng values in (0,1).
+	     samp_rate: the sample rate of the system, which is used in the freq_xlating_fir_filter.
+	     freqs: the vector of center frequencies for each matched filter. Note that for a training sequence of length Nt, each matched filter can recover a sequence with normalized frequency offset ~ 1/(2Nt).
+        """
+
         gr.hier_block2.__init__(
             self, "freq_timing_estimator",
             gr.io_signature(1, 1, gr.sizeof_gr_complex*1),
@@ -45,7 +61,6 @@ class freq_timing_estimator(gr.hier_block2):
         self.samp_rate = samp_rate
         self.freqs = freqs
         self.n = n = len(freqs)
-
         ##################################################
         # Blocks
         ##################################################
@@ -83,38 +98,69 @@ class freq_timing_estimator(gr.hier_block2):
 
 
     def get_ts(self):
+    	"""
+get the training sequence
+    	"""
         return self.ts
 
+
     def set_ts(self, ts):
+    	"""
+set identical training sequence to all the frequency xlating filters . 
+    	"""
         self.ts = ts
         for i in range(self.n):
           self._filter[i].set_taps((numpy.conjugate(self.ts[::-1])))
 
     def get_factor(self):
+    	"""
+get the rise and fall factor of peak detector
+    	"""
         return self.factor
 
     def set_factor(self, factor):
+    	"""
+set identical factor to rise factor and fall factor of peak detector
+    	"""
         self.factor = factor
         self.blocks_peak_detector.set_threshold_factor_rise(self.factor)
         self.blocks_peak_detector.set_threshold_factor_fall(self.factor)
 
     def get_alpha(self):
+    	"""
+get the smoothing factor of peak detector
+    	"""
         return self.alpha
 
     def set_alpha(self, alpha):
+    	"""
+set the smoothing factor of peak detector
+    	"""
         self.alpha = alpha
         self.blocks_peak_detector.set_alpha(self.alpha)
 
     def get_samp_rate(self):
+    	"""
+get the sample rate of frequency xlating FIR filter
+    	"""
         return self.samp_rate
 
     def set_samp_rate(self, samp_rate):
+    	"""
+set the sample rate of frequency xlating FIR filter
+    	"""
         self.samp_rate = samp_rate
 
     def get_freqs(self):
+    	"""
+get the center frequencies of frequency xlating FIR filters
+    	"""
         return self.freqs
 
     def set_freqs(self, freqs):
+    	"""
+set freqs to all the center frequencies of frequency xlating FIR filters
+    	"""
         self.freqs = freqs
         for i in range(self.n):
           self._filter[i].set_center_freq(self.freqs[i])
