@@ -45,6 +45,7 @@ if _RTLD_GLOBAL != 0:
 from cdma_swig import *
 
 # import any pure python here
+import cdma_parameters
 
 #from myselector #import myselector
 
