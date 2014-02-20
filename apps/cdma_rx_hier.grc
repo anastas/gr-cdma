@@ -618,10 +618,10 @@
     </param>
   </block>
   <block>
-    <key>amp_var_est3_hier</key>
+    <key>amp_var_est_hier</key>
     <param>
       <key>id</key>
-      <value>amp_var_est3_hier_1</value>
+      <value>amp_var_est_hier_1</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -1837,19 +1837,19 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>amp_var_est3_hier_1</source_block_id>
+    <source_block_id>amp_var_est_hier_1</source_block_id>
     <sink_block_id>pad_sink_0_1_1</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
     <source_block_id>RX_0_2_0_1_0</source_block_id>
-    <sink_block_id>amp_var_est3_hier_1</sink_block_id>
+    <sink_block_id>amp_var_est_hier_1</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>amp_var_est3_hier_1</source_block_id>
+    <source_block_id>amp_var_est_hier_1</source_block_id>
     <sink_block_id>blocks_multiply_const_vxx_0</sink_block_id>
     <source_key>1</source_key>
     <sink_key>0</sink_key>
