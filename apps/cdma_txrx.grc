@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Thu Feb 20 14:59:10 2014</timestamp>
+  <timestamp>Fri Feb 21 17:28:45 2014</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -54,6 +54,29 @@
     <param>
       <key>_coordinate</key>
       <value>(-1, 0)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>df</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>cp.df*samp_rate</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(975, 386)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -118,7 +141,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>cdma_parameters.training_percent</value>
+      <value>cp.training_percent</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -141,7 +164,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>cdma_parameters.chips_per_symbol</value>
+      <value>cp.chips_per_symbol</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -164,7 +187,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>cdma_parameters.symbols_per_frame</value>
+      <value>cp.symbols_per_frame</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -187,7 +210,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>cdma_parameters.payload_bytes_per_frame</value>
+      <value>cp.payload_bytes_per_frame</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -248,29 +271,6 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>EsN0dBthreshold</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(338, 138)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
       <value>samp_rate</value>
     </param>
     <param>
@@ -317,6 +317,29 @@
     <key>variable</key>
     <param>
       <key>id</key>
+      <value>TrainingEsN0dB_est</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>10*numpy.log10(Esest_training/(N0est+cp.epsilon)+cp.epsilon)</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(959, 13)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
       <value>symbol_rate</value>
     </param>
     <param>
@@ -325,7 +348,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>30000</value>
+      <value>50000</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -340,7 +363,7 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>TrainingEsN0dB_est</value>
+      <value>EsN0dBthreshold</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -348,34 +371,11 @@
     </param>
     <param>
       <key>value</key>
-      <value>10*numpy.log10(Esest_training/(N0est+cdma_parameters.epsilon)+cdma_parameters.epsilon)</value>
+      <value>8</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(959, 13)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>import</key>
-    <param>
-      <key>id</key>
-      <value>import_0_1</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>import</key>
-      <value>import cdma.cdma_parameters as cdma_parameters</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(-1, 141)</value>
+      <value>(338, 138)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -558,7 +558,7 @@
     </param>
     <param>
       <key>tags</key>
-      <value>tagged_streams.make_lengthtags((payload_bytes_per_frame,), (0,), cdma_parameters.length_tag_name)</value>
+      <value>tagged_streams.make_lengthtags((payload_bytes_per_frame,), (0,), cp.length_tag_name)</value>
     </param>
     <param>
       <key>repeat</key>
@@ -614,60 +614,6 @@
     <param>
       <key>_coordinate</key>
       <value>(320, 320)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>virtual_sink</key>
-    <param>
-      <key>id</key>
-      <value>RX_training_0_3</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>stream_id</key>
-      <value>RX_samples</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(1075, 460)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>blocks_null_sink</key>
-    <param>
-      <key>id</key>
-      <value>blocks_null_sink_0_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>complex</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(1093, 518)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1773,6 +1719,169 @@
     <param>
       <key>_coordinate</key>
       <value>(774, 138)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>import</key>
+    <param>
+      <key>id</key>
+      <value>import_0_1</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>import</key>
+      <value>import cdma.cdma_parameters as cp</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(-1, 141)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable_static_text</key>
+    <param>
+      <key>id</key>
+      <value>fmaxt</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>f_max (Hz)</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>cp.freqs[-1]*samp_rate</value>
+    </param>
+    <param>
+      <key>converver</key>
+      <value>float_converter</value>
+    </param>
+    <param>
+      <key>formatter</key>
+      <value>None</value>
+    </param>
+    <param>
+      <key>grid_pos</key>
+      <value></value>
+    </param>
+    <param>
+      <key>notebook</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(1240, 376)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable_static_text</key>
+    <param>
+      <key>id</key>
+      <value>dft</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>Deltaf (Hz)</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>df</value>
+    </param>
+    <param>
+      <key>converver</key>
+      <value>float_converter</value>
+    </param>
+    <param>
+      <key>formatter</key>
+      <value>None</value>
+    </param>
+    <param>
+      <key>grid_pos</key>
+      <value></value>
+    </param>
+    <param>
+      <key>notebook</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(1082, 378)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_null_sink</key>
+    <param>
+      <key>id</key>
+      <value>blocks_null_sink_0_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>complex</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(1099, 557)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>virtual_sink</key>
+    <param>
+      <key>id</key>
+      <value>RX_training_0_3</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>stream_id</key>
+      <value>RX_samples</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(1069, 493)</value>
     </param>
     <param>
       <key>_rotation</key>

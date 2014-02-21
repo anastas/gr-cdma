@@ -76,7 +76,7 @@
     </param>
     <param>
       <key>const</key>
-      <value>(1-cdma_parameters.training_percent/100.0)**0.5</value>
+      <value>(1-cp.training_percent/100.0)**0.5</value>
     </param>
     <param>
       <key>vlen</key>
@@ -119,11 +119,11 @@
     </param>
     <param>
       <key>interp</key>
-      <value>cdma_parameters.chips_per_symbol</value>
+      <value>cp.chips_per_symbol</value>
     </param>
     <param>
       <key>taps</key>
-      <value>cdma_parameters.pulse_data</value>
+      <value>cp.pulse_data</value>
     </param>
     <param>
       <key>samp_delay</key>
@@ -170,7 +170,7 @@
     </param>
     <param>
       <key>symbol_table</key>
-      <value>cdma_parameters.payload_mod.points()</value>
+      <value>cp.payload_mod.points()</value>
     </param>
     <param>
       <key>dimension</key>
@@ -221,7 +221,7 @@
     </param>
     <param>
       <key>symbol_table</key>
-      <value>cdma_parameters.header_mod.points()</value>
+      <value>cp.header_mod.points()</value>
     </param>
     <param>
       <key>dimension</key>
@@ -264,7 +264,7 @@
     </param>
     <param>
       <key>header_formatter</key>
-      <value>cdma_parameters.header_formatter.formatter()</value>
+      <value>cp.header_formatter.formatter()</value>
     </param>
     <param>
       <key>len_tag_key</key>
@@ -307,7 +307,7 @@
     </param>
     <param>
       <key>vector</key>
-      <value>cdma_parameters.training</value>
+      <value>cp.training</value>
     </param>
     <param>
       <key>tags</key>
@@ -358,7 +358,7 @@
     </param>
     <param>
       <key>lengthtagname</key>
-      <value>cdma_parameters.length_tag_name</value>
+      <value>cp.length_tag_name</value>
     </param>
     <param>
       <key>affinity</key>
@@ -552,7 +552,7 @@
     </param>
     <param>
       <key>lengthtagname</key>
-      <value>cdma_parameters.length_tag_name</value>
+      <value>cp.length_tag_name</value>
     </param>
     <param>
       <key>vlen</key>
@@ -622,11 +622,11 @@
     </param>
     <param>
       <key>l</key>
-      <value>cdma_parameters.payload_mod.bits_per_symbol()</value>
+      <value>cp.payload_mod.bits_per_symbol()</value>
     </param>
     <param>
       <key>len_tag_key</key>
-      <value>cdma_parameters.length_tag_name</value>
+      <value>cp.length_tag_name</value>
     </param>
     <param>
       <key>align_output</key>
@@ -700,7 +700,7 @@
     </param>
     <param>
       <key>const</key>
-      <value>(cdma_parameters.training_percent/100.0)**0.5</value>
+      <value>(cp.training_percent/100.0)**0.5</value>
     </param>
     <param>
       <key>vlen</key>
@@ -743,11 +743,11 @@
     </param>
     <param>
       <key>interp</key>
-      <value>cdma_parameters.chips_per_symbol</value>
+      <value>cp.chips_per_symbol</value>
     </param>
     <param>
       <key>taps</key>
-      <value>cdma_parameters.pulse_training</value>
+      <value>cp.pulse_training</value>
     </param>
     <param>
       <key>samp_delay</key>
@@ -825,7 +825,7 @@
     </param>
     <param>
       <key>import</key>
-      <value>import cdma.cdma_parameters as cdma_parameters</value>
+      <value>import cdma.cdma_parameters as cp</value>
     </param>
     <param>
       <key>_coordinate</key>
