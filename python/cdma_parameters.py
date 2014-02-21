@@ -121,7 +121,7 @@ if training_length > symbols_per_frame:
   print "Error in training length evaluation"
   training_length = symbols_per_frame
 training=training_long[0:training_length];
-training_percent = 10; # percentage of transmitted power for training
+training_percent = 50; # percentage of transmitted power for training
 print "training_length =", training_length
 print "\n"
 
@@ -135,6 +135,11 @@ pulse_data =numpy.array((-1,1,-1,1,-1,-1,-1,-1))+0j
 peak_o_var = training_percent*symbols_per_frame*chips_per_symbol/(100+training_percent) #peak over variance for matched filter output 
 EsN0dBthreshold = 10; 	# the threshold of switching from Acquisition to Tracking mode automatically.
 epsilon = 1e-6; 	#tolerance
-n_filt = 21;		# numbers of filters
-freqs=[(2*k-n_filt+1)*(max(1/(2*symbols_per_frame),0.005))/(2*chips_per_symbol) for k in range(n_filt)];	#Normalized frequency list.
+n_filt = 51;		# numbers of filters
+df1=1.0/(2*symbols_per_frame*chips_per_symbol) # Normalized (to chip rate) frequency interval due to training length
+df2=0.005/chips_per_symbol # Normalized (to chip rate) frequency interval due to PLL
+df=max(df1,df2) # either a different frequency branch or the PLL will correct for it
+freqs=[(2*k-n_filt+1)*df/2 for k in range(n_filt)];	#Normalized frequency list.
 
+print "Normalized frequency interval = max(", df1, " , ", df2, ")=", df
+print "Normalized frequency unsertainty range = [", freqs[0], " , ", freqs[-1], "]"
