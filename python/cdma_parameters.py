@@ -72,7 +72,7 @@ class cdma_parameters:
 print "CDMA PARAMETERS"
 
 length_tag_name = "packet_len"
-#num_tag_name = "packet_num"
+num_tag_name = "packet_num"
 
 
 # header info

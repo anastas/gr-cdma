@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Tue Feb 25 15:56:48 2014</timestamp>
+  <timestamp>Tue Feb 25 18:03:00 2014</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -64,7 +64,7 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>peak_o_var</value>
+      <value>freqs</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -72,11 +72,11 @@
     </param>
     <param>
       <key>value</key>
-      <value>cp.peak_o_var</value>
+      <value>cp.freqs</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(405, 140)</value>
+      <value>(365, 15)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -110,7 +110,7 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>freqs</value>
+      <value>peak_o_var</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -118,11 +118,11 @@
     </param>
     <param>
       <key>value</key>
-      <value>cp.freqs</value>
+      <value>cp.peak_o_var</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(365, 15)</value>
+      <value>(405, 140)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1834,85 +1834,34 @@
     </param>
   </block>
   <block>
-    <key>pad_sink</key>
+    <key>digital_packet_headerparser_b</key>
     <param>
       <key>id</key>
-      <value>pad_sink_0_1_0_0</value>
+      <value>digital_packet_headerparser_b_0</value>
     </param>
     <param>
       <key>_enabled</key>
       <value>True</value>
     </param>
     <param>
-      <key>label</key>
-      <value>decoded_payload</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>byte</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>num_streams</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>optional</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(906, 1706)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>blocks_tag_debug</key>
-    <param>
-      <key>id</key>
-      <value>blocks_tag_debug_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>byte</value>
-    </param>
-    <param>
-      <key>name</key>
-      <value></value>
-    </param>
-    <param>
-      <key>filter</key>
-      <value>""</value>
-    </param>
-    <param>
-      <key>num_inputs</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>display</key>
-      <value>True</value>
+      <key>header_formatter</key>
+      <value>cp.header_formatter.formatter()</value>
     </param>
     <param>
       <key>affinity</key>
       <value></value>
     </param>
     <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
       <key>_coordinate</key>
-      <value>(881, 1834)</value>
+      <value>(627, 1599)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1967,18 +1916,69 @@
     </param>
   </block>
   <block>
-    <key>digital_packet_headerparser_b</key>
+    <key>pad_sink</key>
     <param>
       <key>id</key>
-      <value>digital_packet_headerparser_b_0</value>
+      <value>pad_sink_0_1_0_0</value>
     </param>
     <param>
       <key>_enabled</key>
       <value>True</value>
     </param>
     <param>
-      <key>header_formatter</key>
-      <value>cp.header_formatter.formatter()</value>
+      <key>label</key>
+      <value>decoded_payload</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>byte</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>num_streams</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>optional</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(819, 1808)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_stream_to_tagged_stream</key>
+    <param>
+      <key>id</key>
+      <value>blocks_stream_to_tagged_stream_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>byte</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>packet_len</key>
+      <value>cp.coded_payload_bytes_per_frame</value>
+    </param>
+    <param>
+      <key>len_tag_key</key>
+      <value>cp.length_tag_name</value>
     </param>
     <param>
       <key>affinity</key>
@@ -1994,7 +1994,46 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(627, 1599)</value>
+      <value>(256, 1800)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>digital_crc32_bb</key>
+    <param>
+      <key>id</key>
+      <value>digital_crc32_bb_1</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>check</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>lengthtagname</key>
+      <value>cp.length_tag_name</value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(546, 1801)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2248,14 +2287,20 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>blocks_repack_bits_bb_0</source_block_id>
-    <sink_block_id>pad_sink_0_1_0_0</sink_block_id>
+    <source_block_id>blocks_stream_to_tagged_stream_0</source_block_id>
+    <sink_block_id>digital_crc32_bb_1</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
     <source_block_id>blocks_repack_bits_bb_0</source_block_id>
-    <sink_block_id>blocks_tag_debug_0</sink_block_id>
+    <sink_block_id>blocks_stream_to_tagged_stream_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>digital_crc32_bb_1</source_block_id>
+    <sink_block_id>pad_sink_0_1_0_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
