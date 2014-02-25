@@ -139,8 +139,10 @@ n_filt = 51;		# numbers of filters for the frequency/timing acquisition block
 df1=1.0/(2*symbols_per_frame*chips_per_symbol) # Normalized (to chip rate) frequency interval due to training length
 pll_loop_bw=0.005 # normailzed to symbol rate
 df2=pll_loop_bw/chips_per_symbol # Normalized (to chip rate) frequency interval due to PLL
-df=max(df1,df2) # either a different frequency branch or the PLL will correct for it
+#df=max(df1,df2) # either a different frequency branch or the PLL will correct for it
+df=df1
 freqs=[(2*k-n_filt+1)*df/2 for k in range(n_filt)];	#Normalized frequency list.
 
-print "Normalized frequency interval = max(", df1, " , ", df2, ")=", df
+#print "Normalized frequency interval = max(", df1, " , ", df2, ")=", df
+print "Normalized frequency interval = ", df
 print "Normalized frequency unsertainty range = [", freqs[0], " , ", freqs[-1], "]"
