@@ -160,17 +160,14 @@ The flow graph of cdma_tx_hier is shown in Fig 4.
 
 This is the cdma receiver hier block. How the receiver works is roughly described in the Introduction part. Some details are discussed in the following. 
 
-First, let's look at the complexity reduction of Tracking mode. From the complexity discussion in /python/kronecker_filter.py we know, the complexity of the freq_timing_estimator1 is roughly n_filt*(len(sequence2)+len(sequence1)). In Aquisition mode, sequence1 is the training sequence and the sequence2 is the training spreading pulse while in Training mode, sequence1 and sequence2 are all set to zero. Therefore it results in considerable complexity reduction in Tracking mode. 
+First, let's look at the complexity reduction of Tracking mode. From the complexity discussion in /python/kronecker_filter.py we know, the complexity of the freq_timing_estimator1 is roughly 
+\f$n_filt*(len(sequence2)+len(sequence1))\f$. 
+In Aquisition mode, sequence1 is the training sequence and the sequence2 is the training spreading pulse while in Training mode, sequence1 and sequence2 are all set to zero. Therefore it results in considerable complexity reduction in Tracking mode. 
 The mode selection is controled by the acq parameter. When acq=1, Aquisition mode is selected and vice versa. 
-
-Secondly, let's discuss how the parameter aquisiton threshold (acq_threshold_dB) affects the receiver. The aquisition threshold is used in the threshold factor of frequency_timing estimator1. When the acq_threshold_dB is set too low, the peak detector may detect wrong peaks or miss a peak. When the acq_threshold_dB is too high that factor>1, the peak detector and thus the whole system stops working. 
-
-Thirdly, since the three amplitude and variance estimator estimates \f$ Es\f$ and \f$\sigma_N^2=N_0/2 \f$, an constant multiplier is needed to double the noise variance to spectrum noise density \f$ N_0\f$. 
-
 
 The cdma_rx_hier has six outputs:
 
-- unmudulated_out_training: the unmodulated training output. Originally used to display in the scope sink. 
+- unmodulated_out_training: the unmodulated training output. Originally used to display in the scope sink. 
 - N0_est_training: estimated spectrum noise density \f$ N_0 \f$.
 - Es_est_training: estimated training energy. 
 - decoded_payload: the decoded payload which represents 2 bits per byte (value ranging from 0 to 3). 
