@@ -161,18 +161,28 @@ The flow graph of cdma_tx_hier is shown in Fig 4.
 This is the cdma receiver hier block. How the receiver works is roughly described in the Introduction part. Some details are discussed in the following. 
 
 First, let's look at the complexity reduction of Tracking mode. From the complexity discussion in /python/kronecker_filter.py we know, the complexity of the freq_timing_estimator1 is roughly 
-\f$n_filt*(len(sequence2)+len(sequence1))\f$. 
-In Aquisition mode, sequence1 is the training sequence and the sequence2 is the training spreading pulse while in Training mode, sequence1 and sequence2 are all set to zero. Therefore it results in considerable complexity reduction in Tracking mode. 
+n_filt*(len(sequence2)+len(sequence1)). 
+In Acquisition mode, sequence1 is the training sequence and the sequence2 is the training spreading pulse while in Training mode, sequence1 and sequence2 are all set to zero. Therefore it results in considerable complexity reduction in Tracking mode. 
 The mode selection is controled by the acq parameter. When acq=1, Aquisition mode is selected and vice versa. 
 
-The cdma_rx_hier has six outputs:
+The cdma_rx_hier has five outputs:
 
-- unmodulated_out_training: the unmodulated training output. Originally used to display in the scope sink. 
-- N0_est_training: estimated spectrum noise density \f$ N_0 \f$.
-- Es_est_training: estimated training energy. 
-- decoded_payload: the decoded payload which represents 2 bits per byte (value ranging from 0 to 3). 
-- decoded_header: the decoded header message indicating correctness of a frame. 
-- acq_frequency: the acquisition frequency. 
+- N0_est: estimated  noisei power spectral density level \f$ N_0 \f$.
+- Es_est: estimated symbol energy. 
+- decoded_payload: the decoded payload which represents \f$m\f$ bits per byte. 
+- decoded_header: the decoded header message. 
+- acq_frequency: the acquisition frequency (for display purposes)
+
+
+
+
+
+
+
+
+
+
+
 
 \section app Applications
 
@@ -182,17 +192,22 @@ There are several applications available in this module.
 
 The cdma_txrx is a fully working CDMA system. 
 
-Since the transmitter and receiver are packed in hier blocks, the cdma_txrx system is quite clean. 
+The source payload is a repeated random vector. The cdma_tx_hier block produces the CDMA frames. 
+A Channel Model is used to simulate the AWGN channel with frequency offset and time delays. 
+At the receiver, the cdma_rx_hier takes the received samples as input. 
+There is a slider for dynamic change of acquisition threshold. 
+Two choosers are used to control the mode. One is Manual/Auto chooser and the other is the Tracking/Aquisition chooser when Mannual is selected at the first chooser. 
+Three probes are used to dynamically observe the outputs of the cdma_rx_hier. One probe obeserves the estimated symbol energy (Es_est), and another probe observes the estimated spectrum noise density (N0_est). Then the EsN0_est is computed dynamically from these two observations. Aqusition frequency is observed by the last probe and displayed. 
+Finally there is a slider for selecting the minimum data EsN0 threshold that will trigger acquisition mode.
 
-The source payload is a repeated bytes vector which represents one byte per byte (values ranging from 0 to 255). The cdma_tx_hier block processed the payload in frame, superimposed an orthogonal training signal and transmitted it. A Channel Model is used to simulate the AWGN channel with frequency offset and time delays. 
+Observe that in this pure grc application, when the system enters tracking mode, essentially two things happen:
+First, the taps of all n_filt filters in the freq_timing_estimator1 block are set to (0,). This implies that this block does not produce any meaningful outputs, which is fine since we are in tracking mode. Alternatively, we could lock the graph, disconnect all these blocks and reconnect them back in acquisition mode. However, due to the yet unresolved bug in lock/unlock (see Bug #598) this method seemed like a good compromise (it is possible that calling all these blocks (even with 0 taps) results in significant performance loss).
+Second, the block flag_gen automatically generates flags at the correct period and at the offset set by the last flag generated at acquisition mode. This is not exactlt "tracking", but essentially maintaining the most recent acquisition parameters. This can be a nice "to do" item.
 
-At the receiver, the cdma_rx_hier takes the received samples as input. There is a slider for dynamic change of acquisition threshold. Two choosers are used to control the mode. One is Manual/Auto chooser and the other is the Tracking/Aquisition chooser when Mannual is selected at the first chooser. Three probes are used to dynamically observe the outputs of the cdma_rx_hier. One probe obeserves the estimated training energy (Es_est_training), and another probe observes the estimated spectrum noise density (N0). Then the training SNR is computed dynamically from these two observations. By taking into account of the transmitter energy partition, the overall SNR (EsN0dB_est) is computed and displayed. Aqusition frequency is observed by the last probe and displayed. An message debug block is used to print the decoder header message for packet correctness indication. 
+\subsection Split cdma_tx and cdma_rx
 
-\subsection splitted cdma_tx and cdma_rx
+This splits the previous application into cdma_tx and cdma_rx for operation as separate Tx and Rx (possibly using two different hosts and USRPs). 
 
-Since the cdma_txrx system is working, the cdma_txrx system is splitted into cdma_tx and cdma_rx for future USRP transmission. An dynamic transmission is also available in one computer by using the fifo file.
-
-The fifo file is a special file similar to a pipe. It is created by calling <I> mkfifo </I>. By using the fifo file as the file sink of the transmitter and the file source of the receiver, fifo file links the transmitter and receiver to be a complete communication system.
 
 \subsection freq_timing_acq_test
 
