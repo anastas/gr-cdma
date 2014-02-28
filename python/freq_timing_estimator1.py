@@ -28,7 +28,7 @@ import numpy
 import cdma
 
 
-class freq_timing_estimator2(gr.hier_block2):
+class freq_timing_estimator1(gr.hier_block2):
     """
 frequency timing estimator2 class, it's less computationally complex than frequency timing estimator because it used kronecker filter to reduce complexity.
     """
@@ -48,7 +48,7 @@ frequency timing estimator2 class, it's less computationally complex than freque
         """
 
         gr.hier_block2.__init__(self,
-            "freq_timing_estimator2",
+            "freq_timing_estimator1",
             gr.io_signature(1, 1, gr.sizeof_gr_complex*1),
             gr.io_signaturev(3, 3, [gr.sizeof_char*1, gr.sizeof_float*1, gr.sizeof_float*1]),
         )

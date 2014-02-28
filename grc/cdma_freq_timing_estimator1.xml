@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <block>
-  <name>freq_timing_estimator2</name>
-  <key>cdma_freq_timing_estimator2</key>
+  <name>freq_timing_estimator1</name>
+  <key>cdma_freq_timing_estimator1</key>
   <category>cdma</category>
   <import>import cdma</import>
-  <make>cdma.freq_timing_estimator2($seq1, $seq2, $factor, $alpha, $samp_rate, $freqs)</make>
+  <make>cdma.freq_timing_estimator1($seq1, $seq2, $factor, $alpha, $samp_rate, $freqs)</make>
   <callback>set_seq1($seq1)</callback>
   <callback>set_seq2($seq2)</callback>
   <callback>set_factor($factor)</callback>

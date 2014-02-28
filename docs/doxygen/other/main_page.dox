@@ -1,16 +1,15 @@
 /*! \mainpage
 \section Introduction
 
-This CDMA module is intended to build a fully parameterized CDMA physical layer. Users can set spreading, modulation, framing parameters in cdma_parameter.py (python/cdma_paramters.py). The basic structure of this CDMA system is as follows:
+This CDMA module is intended to build a fully parameterized CDMA physical layer. Users can set spreading, modulation, framing parameters, etc in a global parameter file "python/cdma_paramters.py". The basic structure of this CDMA system is as follows:
 
 Transmission is done in frames of length "symbols_per_frame". Each frame consists of two superimposed orthogonal physical channels: the training channel and the data channel. 
 The training channel consists of a training sequence "training" of length "symbols_per_frame" that is spread using the same spreading code of "chips_per_symbol" chips for each symbol. For simplicity the training sequence is modulated using antipodal modulation (but this can be readily changed by the user).
 The data channel consists of "symbols_per_frame" data symbols that is spread using a spreading code of "chips_per_symbol" chips for each symbol which is orthogonal to the training code. The data symbols are composed of "symbols_per_header" header symbols and "coded_payload_symbols_per_frame" coded payload symbols modulated with (possibly different) modulation schemes. Further, the coded payload symbols are produced by CRC encoding "coded_payload_bytes_per_frame" with a user defined CRC code.
-The user can set the percentage of ppower used for training and data ("training_percent").
+The user can set the percentage of power used for training and data ("training_percent").
 
-At the receiver, the core part is a timing/frequency acquisition engine which consists of a user defined "n_filt" number of correlators matched to training sequence at different frequencies (similarly user defined in the vector "freqs"). The output of the acquisition block is a stream of flags indicating the estimated begining of the frame and a stream of frequencies indicating the estimated frequency offset. 
-The received samples are then frequency corrected, and "chopped" according to the generated flags.  The samples are then input to two matched filters, each matched to the training spreading pulse, and the data spreading pulse respectively, thus resulting in the despread training and data sequences.  The training symbols are used to perform phase estimation using a symbol-space PLL. The phase estimates are used to derotate the data symbols which are then demodulated, using 
-two constellation decoders corresponding to header and payload modulations, respectively.
+At the receiver, the core part is a timing/frequency acquisition engine which consists of a user-defined "n_filt" number of xlating matched-filters matched to training sequence at different frequencies (similarly user defined in the vector "freqs"). The output of the acquisition block is a stream of flags indicating the estimated begining of the frame and a stream of frequencies indicating the estimated frequency offset. 
+The received samples are then frequency corrected, and "chopped" according to the generated flags.  The samples are then input to two matched-filters, each matched to the training spreading pulse, and the data spreading pulse respectively, thus resulting in the despread training and data sequences.  The training symbols are used to perform phase estimation using a symbol-spaced PLL. The phase estimates are used to derotate the data symbols which are then demodulated, using two constellation decoders corresponding to header and payload modulations, respectively.
 Finally, the header symbols are parsed and the data symbols are CRC decoded.
 
 In addition, the despread, phase-corrected training samples are input to an SNR estimator (amp_var_est_hier) which estimates the signal amplitude and noise variance by method of moments. The estimated training energy and noise variance are dynamically detected by two probes to form an SNR estimate. 
@@ -38,12 +37,12 @@ The documentations of some hierarchical blocks are as follows.
 
 \subsection chopper_correlator
 
-The chopper_correlator block is mainly used in the application frequency/timing acquisition test (apps/freq_timing_acq_test.grc). In this application, only the training channel is used, and no data channel is imposed.  This application was used to test the acquisition/training engine.
+The chopper_correlator block is mainly used in the application "apps/freq_timing_acq_test.grc". In this application, only the training channel is used, and no data channel is superimposed.  This application was used to test the acquisition/training engine.
 
-In the chopper_correlator, the input data stream pass a delay block to perfectly align the input data and flag streams for the chopper. Two zero vectors are inserted in the head and tail of the chopped data to protect it from correlator. Then only the useful decimated correlation output is extracted from the idecimated matched filter output. 
+In the chopper_correlator, the input data stream pass a delay block to perfectly align the input data and flag streams for the chopper. Two zero vectors are inserted in the head and tail of the chopped data to protect it from the decimating matched-filter. Then only the useful decimated correlation output is extracted from the decimated matched-filter output. 
 This decimated output is conjugately multiplied by the known training sequence, and the phase offset is extracted from the product by passing it through a PLL. The decimated output is multiplied by the phase offset to get the corrected output (corrected_out). Then the corrected output is multiplied by the known training sequence to get the unmodulated output (unmodulated_out).
 
-The flow graph is shown in Fig1. 
+The flow graph is shown in Fig 1. 
 
 The chopper_correlator has two inputs:
 
@@ -62,7 +61,7 @@ The chopper_correlator has 4 parameters to set.
 - Q: the decimating factor. In DSSS system, it's the spreading factor.
 - pulse: the spreading pulse per symbol. 
 
-\image html chopper_correlator.jpeg "Fig1. Core elements of the chopper_correlator"
+\image html chopper_correlator.jpeg "Fig 1. Core elements of the chopper_correlator"
 
 
 
@@ -75,7 +74,7 @@ The chopper_correlator1 is used in the CDMA receiver where two orthogonal traini
 
 The chopper part is the same as the chopper_correlator, but it has two matched-filters matched to the training pulse and data pulse respectively. So it has two correlation outputs: decimated_training and decimated_data. Like the chopper_correlator, the phase offset is extracted from the decimated training output by multiplying by the known training sequence. This phase offest is used to correct the output of training and data. The corrected training is multiplied by the training sequence to get the unmodulated training output. 
 
-The flow graph of chopper_correlator1 is shown in Fig2. 
+The flow graph of chopper_correlator1 is shown in Fig 2. 
 
 The chopper_correlator1 has two inputs the same as the chopper_correlator:
 
@@ -95,37 +94,43 @@ The chopper_correlator1 has five parameters:
 - pulse: the pulse for the training stream. 
 - pulse_data: the pulse for the data stream. 
 
-\image html chopper_correlator1.jpeg "Fig2. Core elements of the chopper_correlator1"
+\image html chopper_correlator1.jpeg "Fig 2. Core elements of the chopper_correlator1"
 
 
 
 
 
 
-\subsection amp_var_est3_hier
+\subsection amp_var_est_hier
 
-The amp_var_est3_hier is another example of training amplitude and noise variance estimator by means of moments shown in Fig5.
+The amp_var_est_hier is performing amplitude and noise variance estimation of a constant sequence by means of moments shown in Fig 3.
 
-Following similar analysis of amp_var_est1_hier, since the input is:
+Assume the input to be:
+\f$ y=\sqrt E_s \exp(j \phi) +n = (\sqrt E_s \cos(\phi)+n_1)+j(\sqrt E_s \sin(\phi)+n_2) \f$
+with components \f$n_1\f$ and \f$n_2\f$ having zero mean and variance \f$\sigma^2\f$.
 
-\f$ y=\sqrt Es x+n =x+n=(a+n_1)+n_2j \f$
 
-By taking the mean of the real part, we get \f$ E(a+n_1)=Ea \f$. Thus amp =\f$ (Ea)^2=Ea^2=Es \f$. 
+By taking the squared mean of the real part, we get 
+\f$ A=E^2(\sqrt E_s \cos(\phi)+n_1)= E_s \cos^2(\phi) \f$, which is 
+the squared amplitude estimate that this block produces.
 
-We used the fact that Es is typically a constant value.
+The mean squared value of the same quantity is 
+\f$ B = E[ ( \sqrt E_s \cos(\phi)+n_1)^2] = E_s \cos^2(\phi)+\sigma^2 \f$, 
+and the noise variance estimate is formed as 
+\f$ B^2-A = \sigma^2 \f$. 
 
-The minuend is \f$ E(a+n_1)^2 = Ea^2+En_1^2=Es+\sigma_N^2 \f$, so the noise variance is noise_var = \f$ \sigma_N^2 \f$. So this amplitude and variance estimator works as expected. 
+Note that the although the input to this block is the PLL output, ie, a phase corrected signal, any uncorrected phase rotation will affect the estimated SNR and will thus trigger re-aqcquisition.
 
-The chopper_correlator has one input:
+The block has one input:
 
-- in: input noisy data stream. In the CDMA system, it's the output of the unmodulated training output. 
+- in: input noisy data stream. In the CDMA system, it's the output of the unmodulated and phase-corrected training output. 
 
 The chopper_correlator has two inputs:
 
-- amp2: estimated energy.
-- noise_var: estiamted variance. 
+- amp2: estimated signal energy.
+- noise_var: estimated noise variance. 
 
-\image html amp_var_est3_hier.jpeg "Fig5. Core elements of amp_var_est3_hier"
+\image html amp_var_est3_hier.jpeg "Fig 3. Core elements of amp_var_est_hier"
 
 
 
@@ -135,23 +140,30 @@ The chopper_correlator has two inputs:
 
 \subsection cdma_tx_hier
 
-This is the cdma tranmitter hier block. 
+This is the cdma transmitter hier block. 
 
-It has one input and one output. In the CDMA system, the input is payload bytes (0 to 255 per byte) and then is CRC coded. Then headers bits are generated from the coded payload streams and then BPSK modulated. The coded payload bytes are repacked to symbols representing 2 bits and then the symbols are modulated in QPSK. Then the modulated header and payload streams are muxed. The muxed payload stream is multiplied by the amplitude partitioned to data and then spreaded by pulse_data. On the other hand, the training symbols are multiplied by the amplitude partitioned to training and then spreaded by pulse_training orthogonal to pulse_data. Then the two channels are superimposed to form a frame to be transmitted. 
+It has one input and one output. In the CDMA system, the input is payload bytes (0 to 255 per byte) and then is CRC coded. Then headers bits are generated from the coded payload streams and then BPSK modulated. The coded payload bytes are repacked to symbols representing m bits and then the symbols are modulated using a \f$2^m\f$-ary modulation. Then the modulated header and payload streams are muxed. The muxed payload stream is spread by "pulse_data" and scaled appropriately. On the other hand, the training symbols are spread by "pulse_training" (orthogonal to "pulse_data") and scaled accordingly. Then the two channels are superimposed to form a frame to be transmitted. 
 
-The flow graph of cdma_tx_hier is shown in Fig6.
+The flow graph of cdma_tx_hier is shown in Fig 4.
 
-\image html cdma_tx_hier.jpeg "Fig6. Core elements of cdma_tx_hier"
+\image html cdma_tx_hier.jpeg "Fig 4. Core elements of cdma_tx_hier"
+
+
+
+
+
+
+
+
 
 \subsection cdma_rx_hier
 
-This is the cdma receiver hier block. How the receiver works is draftly described in the Introduction part. Some details are discussed in the following. 
+This is the cdma receiver hier block. How the receiver works is roughly described in the Introduction part. Some details are discussed in the following. 
 
-First, let's look at the complexity reduction of Tracking mode. From the complexity discussion in /python/kronecker_filter.py we know, the complexity of the frequency_timing_estimator2 is roughly n_filt*(len(sequence2)+len(sequence1)). In Aquisition mode, sequence1 is training sequence and the sequence2 is the training pulse while in Training mode, sequence1 and sequence2 are all set to zero. Therefore it results in considerable complexity reduction in Tracking mode. 
-
+First, let's look at the complexity reduction of Tracking mode. From the complexity discussion in /python/kronecker_filter.py we know, the complexity of the freq_timing_estimator1 is roughly n_filt*(len(sequence2)+len(sequence1)). In Aquisition mode, sequence1 is the training sequence and the sequence2 is the training spreading pulse while in Training mode, sequence1 and sequence2 are all set to zero. Therefore it results in considerable complexity reduction in Tracking mode. 
 The mode selection is controled by the acq parameter. When acq=1, Aquisition mode is selected and vice versa. 
 
-Secondly, let's discuss how the parameter aquisiton threshold (acq_threshold_dB) affects the receiver. The aquisition threshold is used in the threshold factor of frequency_timing estimator2. When the acq_threshold_dB is set too low, the peak detector may detect wrong peaks or miss a peak. When the acq_threshold_dB is too high that factor>1, the peak detector and thus the whole system stops working. 
+Secondly, let's discuss how the parameter aquisiton threshold (acq_threshold_dB) affects the receiver. The aquisition threshold is used in the threshold factor of frequency_timing estimator1. When the acq_threshold_dB is set too low, the peak detector may detect wrong peaks or miss a peak. When the acq_threshold_dB is too high that factor>1, the peak detector and thus the whole system stops working. 
 
 Thirdly, since the three amplitude and variance estimator estimates \f$ Es\f$ and \f$\sigma_N^2=N_0/2 \f$, an constant multiplier is needed to double the noise variance to spectrum noise density \f$ N_0\f$. 
 
