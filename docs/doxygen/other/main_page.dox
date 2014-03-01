@@ -1,7 +1,7 @@
 /*! \mainpage
 \section Introduction
 
-This CDMA module is intended to build a fully parameterized CDMA physical layer. Users can set spreading, modulation, framing parameters, etc in a global parameter file "python/cdma_paramters.py". The basic structure of this CDMA system is as follows:
+This CDMA module is intended to build a parameterized CDMA physical layer. Users can set spreading, modulation, framing parameters, etc in a global parameter file "python/cdma_paramters.py". The basic structure of this CDMA system is as follows:
 
 Transmission is done in frames of length "symbols_per_frame". Each frame consists of two superimposed orthogonal physical channels: the training channel and the data channel. 
 The training channel consists of a training sequence "training" of length "symbols_per_frame" that is spread using the same spreading code of "chips_per_symbol" chips for each symbol. For simplicity the training sequence is modulated using antipodal modulation (but this can be readily changed by the user).
@@ -28,7 +28,7 @@ This CDMA Module contains three C++ blocks and three python blocks. The document
 
 
 
-\section hier Hierarchical Blocks
+\section hier GRC Hierarchical Blocks
 
 The documentations of some hierarchical blocks are as follows. 
 
