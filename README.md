@@ -20,10 +20,15 @@ For the impatient:
 
 2) Build the package
 > mkdir build_cdma
+
 > cd build_cdma
+
 > cmake -DENABLE_DOXYGEN=ON ../gr-cdma
+
 > make
+
 > sudo make install
+
 
 3) compile hierarchical blocks and play with built in app
 > cd gr-cdma/apps
