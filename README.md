@@ -32,11 +32,18 @@ For the impatient:
 
 3) compile hierarchical blocks and play with built in app
 > cd gr-cdma/apps
+
 > gnuradio-companion &
+
 In the gnuradio-companion environment
+
 -- Load the hier block "amp_var_est.grc", "cdma_tx_hier.grc", "chopper_correlator1.grc", "cdma_rx_hier.grc" and compile them
+
 -- Reload all blocks in grc
+
 -- Load the application "cdma_txrx.grc" and have fun
+
    Experiment with manual acq/tra, auto acq/tra, changing freq and timing offset, SNR, etc
+
 -- If you have 2 USRPs load the cdma_tx.grc and cdma_rx.grc and enjoy real-time
 CDMA transmission.
