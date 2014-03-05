@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Fri Feb 28 12:54:01 2014</timestamp>
+  <timestamp>Wed Mar  5 03:13:51 2014</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -64,282 +64,6 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>n_filt</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(658, 246)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>peak_o_var</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>N*Q/2</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(732, 132)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>pulse</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>filter.firdes.root_raised_cosine(Q,Q,1,0.35,5*Q)</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(216, 189)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>Q</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>15</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(15, 178)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>symbol_rate</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>50000</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(12, 116)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>freqs</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>[(2*k-n_filt+1)*df/2 for k in range(n_filt)]</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(586, 305)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>total1</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>(0+0j,) if onoff==0 else total</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(694, 67)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>df</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>max(symbol_rate/(2*N),symbol_rate*0.005)</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(581, 246)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>ts</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>2*numpy.random.randint(0,2,N)-1+0j</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(216, 68)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>N</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>100</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(215, 8)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>total</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>numpy.convolve(   pulse, numpy.kron(ts,(1,)+(Q-1)*(0,))[:(N-1)*Q+1:]  )</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(695, 4)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
-      <value>Es</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(217, 128)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
       <value>EsN0dBest</value>
     </param>
     <param>
@@ -386,29 +110,6 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>EsN0dBthreshold</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(912, 355)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
       <value>onoff_auto</value>
     </param>
     <param>
@@ -432,7 +133,7 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>N0</value>
+      <value>n_filt</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -440,11 +141,11 @@
     </param>
     <param>
       <key>value</key>
-      <value>10**(-EsN0dB/10) * Es</value>
+      <value>15</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(418, 173)</value>
+      <value>(658, 246)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -455,7 +156,7 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>samp_rate</value>
+      <value>df</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -463,11 +164,80 @@
     </param>
     <param>
       <key>value</key>
-      <value>symbol_rate*Q</value>
+      <value>symbol_rate/(2*N)</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(89, 179)</value>
+      <value>(581, 246)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>Q</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>15</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(184, 262)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>Q</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>4</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(181, 186)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>pulse</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>numpy.array((1, 1, 1, -1, -1, -1, 1, -1, -1, 1, 1, -1, 1, -1, 1))+0j</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(215, 268)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -501,7 +271,7 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>pulse</value>
+      <value>samp_rate</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -509,11 +279,264 @@
     </param>
     <param>
       <key>value</key>
-      <value>numpy.array((1, 1, 1, -1, -1, -1, 1, -1, -1, 1, 1, -1, 1, -1, 1))+0j</value>
+      <value>symbol_rate*Q</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(214, 253)</value>
+      <value>(89, 179)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>N0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>10**(-EsN0dB/10) * Es</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(418, 173)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>EsN0dBthreshold</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>10</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(912, 355)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>Es</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(217, 128)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>total</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>numpy.convolve(   pulse, numpy.kron(ts,(1,)+(Q-1)*(0,))[:(N-1)*Q+1:]  )</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(695, 4)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>N</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>100</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(215, 8)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>ts</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>2*numpy.random.randint(0,2,N)-1+0j</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(216, 68)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>total1</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>(0+0j,) if onoff==0 else total</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(694, 67)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>freqs</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>[(2*k-n_filt+1)*df/2 for k in range(n_filt)]</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(586, 305)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>symbol_rate</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>50000</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(12, 116)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>pulse</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>filter.firdes.root_raised_cosine(Q,Q,1,0.35,5*Q)</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(216, 189)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>peak_o_var</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>N*Q/2</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(732, 132)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1001,57 +1024,6 @@
     </param>
   </block>
   <block>
-    <key>variable_chooser</key>
-    <param>
-      <key>id</key>
-      <value>manual</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value>Manual/Auto</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>choices</key>
-      <value>[0,1]</value>
-    </param>
-    <param>
-      <key>labels</key>
-      <value>['Auto','Manual']</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>radio_buttons</value>
-    </param>
-    <param>
-      <key>style</key>
-      <value>wx.RA_HORIZONTAL</value>
-    </param>
-    <param>
-      <key>grid_pos</key>
-      <value></value>
-    </param>
-    <param>
-      <key>notebook</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(910, 62)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
     <key>variable_static_text</key>
     <param>
       <key>id</key>
@@ -1468,57 +1440,6 @@
     </param>
   </block>
   <block>
-    <key>variable_chooser</key>
-    <param>
-      <key>id</key>
-      <value>onoff_manual</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value>Manual Acq/Tra</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>choices</key>
-      <value>[0,1]</value>
-    </param>
-    <param>
-      <key>labels</key>
-      <value>['Tracking','Acquisition']</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>button</value>
-    </param>
-    <param>
-      <key>style</key>
-      <value>wx.RA_HORIZONTAL</value>
-    </param>
-    <param>
-      <key>grid_pos</key>
-      <value></value>
-    </param>
-    <param>
-      <key>notebook</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(894, 177)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
     <key>variable_static_text</key>
     <param>
       <key>id</key>
@@ -1597,96 +1518,6 @@
     </param>
   </block>
   <block>
-    <key>blocks_multiply_conjugate_cc</key>
-    <param>
-      <key>id</key>
-      <value>blocks_multiply_conjugate_cc_1</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(539, 1100)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable_slider</key>
-    <param>
-      <key>id</key>
-      <value>EsN0dB</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value>EsN0dB</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>min</key>
-      <value>-20</value>
-    </param>
-    <param>
-      <key>max</key>
-      <value>80</value>
-    </param>
-    <param>
-      <key>num_steps</key>
-      <value>100</value>
-    </param>
-    <param>
-      <key>style</key>
-      <value>wx.SL_HORIZONTAL</value>
-    </param>
-    <param>
-      <key>converver</key>
-      <value>float_converter</value>
-    </param>
-    <param>
-      <key>grid_pos</key>
-      <value></value>
-    </param>
-    <param>
-      <key>notebook</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(417, 59)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
     <key>variable_slider</key>
     <param>
       <key>id</key>
@@ -1735,45 +1566,6 @@
     <param>
       <key>_coordinate</key>
       <value>(732, 194)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>cdma_flag_gen</key>
-    <param>
-      <key>id</key>
-      <value>cdma_flag_gen_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>acq</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>period</key>
-      <value>N*Q</value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(527, 779)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1975,6 +1767,80 @@
     </param>
   </block>
   <block>
+    <key>cdma_flag_gen</key>
+    <param>
+      <key>id</key>
+      <value>cdma_flag_gen_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>acq</key>
+      <value>onoff</value>
+    </param>
+    <param>
+      <key>period</key>
+      <value>N*Q</value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(527, 779)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_multiply_conjugate_cc</key>
+    <param>
+      <key>id</key>
+      <value>blocks_multiply_conjugate_cc_1</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(539, 1100)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
     <key>virtual_source</key>
     <param>
       <key>id</key>
@@ -2014,6 +1880,53 @@
     <param>
       <key>_coordinate</key>
       <value>(646, 1238)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>chopper_correlator</key>
+    <param>
+      <key>id</key>
+      <value>chopper_correlator_1</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>N</key>
+      <value>N</value>
+    </param>
+    <param>
+      <key>ts</key>
+      <value>ts</value>
+    </param>
+    <param>
+      <key>Q</key>
+      <value>Q</value>
+    </param>
+    <param>
+      <key>pulse</key>
+      <value>pulse</value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(311, 1289)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2100,46 +2013,54 @@
     </param>
   </block>
   <block>
-    <key>chopper_correlator</key>
+    <key>variable_slider</key>
     <param>
       <key>id</key>
-      <value>chopper_correlator_0</value>
+      <value>EsN0dB</value>
     </param>
     <param>
       <key>_enabled</key>
       <value>True</value>
     </param>
     <param>
-      <key>N</key>
-      <value>N</value>
+      <key>label</key>
+      <value>EsN0dB</value>
     </param>
     <param>
-      <key>ts</key>
-      <value>ts</value>
+      <key>value</key>
+      <value>30</value>
     </param>
     <param>
-      <key>Q</key>
-      <value>Q</value>
+      <key>min</key>
+      <value>-20</value>
     </param>
     <param>
-      <key>pulse</key>
-      <value>pulse</value>
+      <key>max</key>
+      <value>80</value>
     </param>
     <param>
-      <key>affinity</key>
+      <key>num_steps</key>
+      <value>100</value>
+    </param>
+    <param>
+      <key>style</key>
+      <value>wx.SL_HORIZONTAL</value>
+    </param>
+    <param>
+      <key>converver</key>
+      <value>float_converter</value>
+    </param>
+    <param>
+      <key>grid_pos</key>
       <value></value>
     </param>
     <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
+      <key>notebook</key>
+      <value></value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(260, 1265)</value>
+      <value>(417, 59)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2147,22 +2068,101 @@
     </param>
   </block>
   <block>
-    <key>virtual_sink</key>
+    <key>variable_chooser</key>
     <param>
       <key>id</key>
-      <value>RX_training_0_3_0</value>
+      <value>onoff_manual</value>
     </param>
     <param>
       <key>_enabled</key>
       <value>True</value>
     </param>
     <param>
-      <key>stream_id</key>
-      <value>phase corrected training seq</value>
+      <key>label</key>
+      <value>Manual Acq/Tra</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>choices</key>
+      <value>[0,1]</value>
+    </param>
+    <param>
+      <key>labels</key>
+      <value>['Tracking','Acquisition']</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>button</value>
+    </param>
+    <param>
+      <key>style</key>
+      <value>wx.RA_HORIZONTAL</value>
+    </param>
+    <param>
+      <key>grid_pos</key>
+      <value></value>
+    </param>
+    <param>
+      <key>notebook</key>
+      <value></value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(612, 1430)</value>
+      <value>(894, 177)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable_chooser</key>
+    <param>
+      <key>id</key>
+      <value>manual</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>Manual/Auto</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>choices</key>
+      <value>[0,1]</value>
+    </param>
+    <param>
+      <key>labels</key>
+      <value>['Auto','Manual']</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>radio_buttons</value>
+    </param>
+    <param>
+      <key>style</key>
+      <value>wx.RA_HORIZONTAL</value>
+    </param>
+    <param>
+      <key>grid_pos</key>
+      <value></value>
+    </param>
+    <param>
+      <key>notebook</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(910, 62)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2266,18 +2266,6 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>blocks_multiply_conjugate_cc_1</source_block_id>
-    <sink_block_id>chopper_correlator_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>RX_0_2_0</source_block_id>
-    <sink_block_id>chopper_correlator_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>1</sink_key>
-  </connection>
-  <connection>
     <source_block_id>RX_0_2_1</source_block_id>
     <sink_block_id>freq_timing_estimator_0</sink_block_id>
     <source_key>0</source_key>
@@ -2308,20 +2296,26 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>chopper_correlator_0</source_block_id>
+    <source_block_id>blocks_multiply_conjugate_cc_1</source_block_id>
+    <sink_block_id>chopper_correlator_1</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>RX_0_2_0</source_block_id>
+    <sink_block_id>chopper_correlator_1</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>1</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>chopper_correlator_1</source_block_id>
     <sink_block_id>RX_training_0_3_0_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>chopper_correlator_0</source_block_id>
+    <source_block_id>chopper_correlator_1</source_block_id>
     <sink_block_id>wxgui_scopesink2_1</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>chopper_correlator_0</source_block_id>
-    <sink_block_id>RX_training_0_3_0</sink_block_id>
     <source_key>1</source_key>
     <sink_key>0</sink_key>
   </connection>
