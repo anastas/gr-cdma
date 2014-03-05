@@ -21,12 +21,13 @@ For the impatient:
 > cmake -DENABLE_DOXYGEN=ON ../gr-cdma
 > make
 > sudo make install
+> sudo ldconfig
 
 3) compile hierarchical blocks and play with built in app
 > cd gr-cdma/apps
 > gnuradio-companion &
 In the gnuradio-companion environment
--- Load the hier block "amp_var_est.grc", "cdma_tx_hier.grc", "chopper_correlator1.grc", "cdma_rx_hier.grc" and compile them
+-- Load the hier block "amp_var_est_hier.grc", "cdma_tx_hier.grc", "chopper_correlator1.grc", "cdma_rx_hier.grc" and compile them
 -- Reload all blocks in grc
 -- Load the application "cdma_txrx.grc" and have fun
    Experiment with manual acq/tra, auto acq/tra, changing freq and timing offset, SNR, etc 

@@ -29,6 +29,8 @@ For the impatient:
 
 > sudo make install
 
+> sudo ldconfig
+
 
 3) compile hierarchical blocks and play with built in app
 > cd gr-cdma/apps
@@ -37,7 +39,7 @@ For the impatient:
 
 In the gnuradio-companion environment
 
--- Load the hier block "amp_var_est.grc", "cdma_tx_hier.grc", "chopper_correlator1.grc", "cdma_rx_hier.grc" and compile them
+-- Load the hier block "amp_var_est_hier.grc", "cdma_tx_hier.grc", "chopper_correlator1.grc", "cdma_rx_hier.grc" and compile them
 
 -- Reload all blocks in grc
 
