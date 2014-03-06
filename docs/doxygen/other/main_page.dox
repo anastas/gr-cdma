@@ -130,7 +130,7 @@ The chopper_correlator has two inputs:
 - amp2: estimated signal energy.
 - noise_var: estimated noise variance. 
 
-\image html amp_var_est3_hier.jpeg "Fig 3. Core elements of amp_var_est_hier"
+\image html amp_var_est_hier.jpeg "Fig 3. Core elements of amp_var_est_hier"
 
 
 

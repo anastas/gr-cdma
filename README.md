@@ -47,5 +47,5 @@ In the gnuradio-companion environment
 
    Experiment with manual acq/tra, auto acq/tra, changing freq and timing offset, SNR, etc
 
--- If you have 2 USRPs load the cdma_tx.grc and cdma_rx.grc and enjoy real-time
-CDMA transmission.
+-- If you have 2 USRPs load the cdma_tx.grc and cdma_rx.grc and enjoy real-time CDMA transmission. You can also use the cdma_tx.grc and cdma_rx.grc by writting
+and reading to a fifo (first do > makefifo /tmp/cdma.fifo)
