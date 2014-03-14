@@ -30,7 +30,7 @@ import cdma
 
 class freq_timing_estimator1(gr.hier_block2):
     """
-frequency timing estimator2 class, it's less computationally complex than frequency timing estimator because it used kronecker filter to reduce complexity.
+frequency timing estimator1 class, it's less computationally complex than frequency timing estimator because it used kronecker filter to reduce complexity.
     """
     def __init__(self, seq1, seq2, factor, alpha, samp_rate, freqs):
         """

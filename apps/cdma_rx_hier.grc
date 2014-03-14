@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ASCII'?>
 <flow_graph>
-  <timestamp>Thu Mar  6 14:45:18 2014</timestamp>
+  <timestamp>Fri Mar 14 16:40:04 2014</timestamp>
   <block>
     <key>options</key>
     <param>
@@ -64,7 +64,7 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>peak_o_var</value>
+      <value>freqs</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -72,11 +72,11 @@
     </param>
     <param>
       <key>value</key>
-      <value>cp.peak_o_var</value>
+      <value>cp.freqs</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(405, 140)</value>
+      <value>(365, 15)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -110,7 +110,7 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>freqs</value>
+      <value>peak_o_var</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -118,11 +118,11 @@
     </param>
     <param>
       <key>value</key>
-      <value>cp.freqs</value>
+      <value>cp.peak_o_var</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(365, 15)</value>
+      <value>(405, 140)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -910,6 +910,14 @@
       <value>1</value>
     </param>
     <param>
+      <key>num_inputs</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>bus_conns</key>
+      <value>[[0,],]</value>
+    </param>
+    <param>
       <key>affinity</key>
       <value></value>
     </param>
@@ -982,61 +990,6 @@
     <param>
       <key>_coordinate</key>
       <value>(33, 477)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>cdma_freq_timing_estimator1</key>
-    <param>
-      <key>id</key>
-      <value>cdma_freq_timing_estimator1_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>seq1</key>
-      <value>(0+0j,) if acq==0 else cp.training[::-1]</value>
-    </param>
-    <param>
-      <key>seq2</key>
-      <value>(0+0j,) if acq==0 else cp.pulse_training[::-1]</value>
-    </param>
-    <param>
-      <key>factor</key>
-      <value>10**(acq_threshold_dB/10)*peak_o_var</value>
-    </param>
-    <param>
-      <key>alpha</key>
-      <value>0.01</value>
-    </param>
-    <param>
-      <key>samp_rate</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>freqs</key>
-      <value>freqs</value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(288, 442)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1891,6 +1844,61 @@
     <param>
       <key>_coordinate</key>
       <value>(618, 1498)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>cdma_freq_timing_estimator1</key>
+    <param>
+      <key>id</key>
+      <value>cdma_freq_timing_estimator1_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>seq1</key>
+      <value>(0+0j,) if acq==0 else cp.training[::-1]</value>
+    </param>
+    <param>
+      <key>seq2</key>
+      <value>(0+0j,) if acq==0 else cp.pulse_training[::-1]</value>
+    </param>
+    <param>
+      <key>factor</key>
+      <value>10**(acq_threshold_dB/10)*peak_o_var</value>
+    </param>
+    <param>
+      <key>alpha</key>
+      <value>100.0/cp.chips_per_frame</value>
+    </param>
+    <param>
+      <key>samp_rate</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>freqs</key>
+      <value>freqs</value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(289, 442)</value>
     </param>
     <param>
       <key>_rotation</key>
