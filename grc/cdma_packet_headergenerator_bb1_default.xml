@@ -1,0 +1,28 @@
+<block>
+  <name>Packet Header Generator1 (Default)</name>
+  <key>cdma_packet_headergenerator_bb1_default</key>
+  <category>cdma</category>
+  <import>import cdma</import>
+  <make>cdma.packet_headergenerator_bb1($header_len, $len_tag_key)</make>
+	<callback>set_header_formatter($header_formatter)</callback>
+  <param>
+    <name>Header Length</name>
+    <key>header_len</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Length Tag Name</name>
+    <key>len_tag_key</key>
+    <value>"packet_len"</value>
+    <type>string</type>
+  </param>
+  <sink>
+    <name>in</name>
+    <type>byte</type>
+  </sink>
+  <source>
+    <name>out</name>
+    <type>byte</type>
+  </source>
+</block>
+

@@ -27,7 +27,7 @@ from operator import mul
 #from gnuradio.digital.utils import tagged_streams
 
 
-class cdma_parameters:
+class cdma_parameters2:
 
     def __init__(self):
 	"""

@@ -1,4 +1,4 @@
-# Copyright 2011,2012 Free Software Foundation, Inc.
+# Copyright 2011 Free Software Foundation, Inc.
 #
 # This file is part of GNU Radio
 #
@@ -18,15 +18,32 @@
 # Boston, MA 02110-1301, USA.
 
 ########################################################################
-# Install public header files
+# Include python install macros
 ########################################################################
-install(FILES
-    api.h
-    chopper.h
-    vector_insert2.h
-    packet_header.h
-    packet_header2.h
-    packet_headergenerator_bb1.h
-    packet_headerparser_b2.h
-    flag_gen.h DESTINATION include/cdma
+include(GrPython)
+if(NOT PYTHONINTERP_FOUND)
+    return()
+endif()
+
+########################################################################
+# Install python sources
+########################################################################
+GR_PYTHON_INSTALL(
+    FILES
+    __init__.py
+    cdma_parameters.py
+    cdma_parameters2.py
+    freq_timing_estimator.py
+    freq_timing_estimator1.py
+    #myselector.py
+    kronecker_filter.py
+    DESTINATION ${GR_PYTHON_DIR}/cdma
 )
+
+########################################################################
+# Handle the unit tests
+########################################################################
+include(GrTest)
+
+set(GR_TEST_TARGET_DEPS gnuradio-cdma)
+set(GR_TEST_PYTHON_DIRS ${CMAKE_BINARY_DIR}/swig)
