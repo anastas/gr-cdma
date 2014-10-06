@@ -119,24 +119,6 @@ print "\n"
 
 #trellis coding and modulation info
 
-
-class qam16:
-    """16QAM modulation"""
-    def __init__(self):
-        self.points_unnormalized = ( 1-1j, -1-1j,  3-3j, -3-3j, \
-	  		   -3-1j,  3-1j, -1-3j,  1-3j, \
-           		   -3+3j,  3+3j, -1+1j,  1+1j, \
-			    1+3j, -1+3j,  3+1j, -3+1j);
-        self.qam16_points = [x*float(math.sqrt(float(1)/10)) for x in self.points_unnormalized];
-        self.qam16_bits_per_symbol = int(math.log(len(self.qam16_points),2));
-    def points(self):
-        return self.qam16_points
-
-    def bits_per_symbol(self):
-        return self.qam16_bits_per_symbol
-
-
-
 payload_mod = [digital.constellation_qpsk(),digital.constellation_8psk_natural(),digital.constellation_16qam()]
 
 prefix="home/zhe/gr-cdma/python"
