@@ -3,7 +3,7 @@
 # Gnuradio Python Flow Graph
 # Title: cdma_txrx1
 # Author: Achilleas Anastasopoulos, Zhe Feng
-# Generated: Thu Oct  2 17:58:36 2014
+# Generated: Mon Oct  6 10:15:55 2014
 ##################################################
 
 execfile("/home/zhe/.grc_gnuradio/cdma_rx_hier1.py")
@@ -422,17 +422,17 @@ class cdma_txrx1(grc_wxgui.top_block_gui):
 
     def set_training_percent(self, training_percent):
         self.training_percent = training_percent
-        self.set_DataEsN0dB_est(self.EsN0dB_est + 10*numpy.log10( 1.0-self.training_percent/100.0 ) )
-        self.set_TrainingEsN0dB_est(self.EsN0dB_est + 10*numpy.log10( self.training_percent/100.0 ) )
         self.set_training_percent(cp.self.training_percent)
+        self.set_TrainingEsN0dB_est(self.EsN0dB_est + 10*numpy.log10( self.training_percent/100.0 ) )
+        self.set_DataEsN0dB_est(self.EsN0dB_est + 10*numpy.log10( 1.0-self.training_percent/100.0 ) )
 
     def get_EsN0dB_est(self):
         return self.EsN0dB_est
 
     def set_EsN0dB_est(self, EsN0dB_est):
         self.EsN0dB_est = EsN0dB_est
-        self.set_DataEsN0dB_est(self.EsN0dB_est + 10*numpy.log10( 1.0-self.training_percent/100.0 ) )
         self.set_TrainingEsN0dB_est(self.EsN0dB_est + 10*numpy.log10( self.training_percent/100.0 ) )
+        self.set_DataEsN0dB_est(self.EsN0dB_est + 10*numpy.log10( 1.0-self.training_percent/100.0 ) )
 
     def get_symbol_rate(self):
         return self.symbol_rate
@@ -446,8 +446,8 @@ class cdma_txrx1(grc_wxgui.top_block_gui):
 
     def set_chips_per_symbol(self, chips_per_symbol):
         self.chips_per_symbol = chips_per_symbol
-        self.set_chips_per_symbol(cp.self.chips_per_symbol)
         self.set_samp_rate(self.symbol_rate*self.chips_per_symbol)
+        self.set_chips_per_symbol(cp.self.chips_per_symbol)
         self.channels_channel_model_0.set_noise_voltage((self.chips_per_symbol*self.N0/2)**0.5)
 
     def get_DataEsN0dBthreshold(self):

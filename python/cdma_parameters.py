@@ -139,8 +139,8 @@ class qam16:
 
 payload_mod = [digital.constellation_qpsk(),digital.constellation_8psk_natural(),digital.constellation_16qam()]
 
-prefix="/home/zhe/Dropbox/works/tcm/fsm_files"
-fsm=[prefix+"/awgn2o2_1.fsm", prefix+"/awgn2o3_8ungerboecka.fsm",prefix+"/awgn2o4_8_ungerboeckc.fsm"]
+prefix="home/zhe/gr-cdma/python"
+fsm=[prefix+"/fsm_files/awgn2o2_1.fsm", prefix+"/fsm_files/awgn2o3_8ungerboecka.fsm",prefix+"/fsm_files/awgn2o4_8_ungerboeckc.fsm"]
 uncoded_fsm=[trellis.fsm(2,2,[1,0,0,1]),trellis.fsm(3,3,[1,0,0,0,1,0,0,0,1]),trellis.fsm(4,4,[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1])]
 
 bits_per_coded_symbol=[int(math.log(trellis.fsm(fsm[i]).O(),2)) for i in range(len(payload_mod))]
