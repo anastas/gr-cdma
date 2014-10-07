@@ -52,7 +52,7 @@ namespace gr {
 	            const std::string &mod_tag_key,
                     int code_type,
 	            const std::string &code_tag_key
-    ): packet_header(
+    ): gr::digital::packet_header_default(
           header_len,
 	  len_tag_key,
 	  num_tag_key,

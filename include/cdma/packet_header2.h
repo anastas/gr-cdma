@@ -24,7 +24,8 @@
 
 #include <gnuradio/tags.h>
 #include <cdma/api.h>
-#include <cdma/packet_header.h>
+//#include <cdma/packet_header.h>
+#include <gnuradio/digital/packet_header_default.h>
 //#include <boost/enable_shared_from_this.hpp>
 //#include <boost/crc.hpp>
 
@@ -47,7 +48,7 @@ namespace gr {
      * gr::digital::packet_headergenerator_bb uses header generators derived from
      * this class to create packet headers from data streams.
      */
-    class CDMA_API packet_header2 : virtual public packet_header
+    class CDMA_API packet_header2 : virtual public gr::digital::packet_header_default
     {
      public:
       typedef boost::shared_ptr<packet_header2> sptr;

@@ -25,16 +25,14 @@ include(GrPlatform) #define LIB_SUFFIX
 include_directories(${Boost_INCLUDE_DIR})
 link_directories(${Boost_LIBRARY_DIRS})
 list(APPEND cdma_sources
-    packet_header.cc
     packet_header2.cc
-    packet_headergenerator_bb1_impl.cc
     packet_headerparser_b2_impl.cc
     chopper_impl.cc
     vector_insert2_impl.cc
     flag_gen_impl.cc )
 
 add_library(gnuradio-cdma SHARED ${cdma_sources})
-target_link_libraries(gnuradio-cdma ${Boost_LIBRARIES} ${GNURADIO_RUNTIME_LIBRARIES})
+target_link_libraries(gnuradio-cdma ${Boost_LIBRARIES} ${GNURADIO_ALL_LIBRARIES})
 set_target_properties(gnuradio-cdma PROPERTIES DEFINE_SYMBOL "gnuradio_cdma_EXPORTS")
 
 ########################################################################

@@ -1,7 +1,7 @@
 /* -*- c++ -*- */
 
 #define CDMA_API
-
+#define DIGITAL_API
 %include "gnuradio.i"			// the common stuff
 
 //load generated python docstrings
@@ -11,18 +11,13 @@
 #include "cdma/chopper.h"
 #include "cdma/vector_insert2.h"
 #include "cdma/flag_gen.h"
-#include "cdma/packet_header.h"
 #include "cdma/packet_header2.h"
-#include "cdma/packet_headergenerator_bb1.h"
 #include "cdma/packet_headerparser_b2.h"
+#include "gnuradio/digital/packet_header_default.h"
 
 %}
-
-%include "cdma/packet_header.h"
+%include "gnuradio/digital/packet_header_default.h"
 %include "cdma/packet_header2.h"
-
-%include "cdma/packet_headergenerator_bb1.h"
-GR_SWIG_BLOCK_MAGIC2(cdma, packet_headergenerator_bb1);
 
 %include "cdma/packet_headerparser_b2.h"
 GR_SWIG_BLOCK_MAGIC2(cdma, packet_headerparser_b2);

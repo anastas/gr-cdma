@@ -20,13 +20,6 @@
  * Boston, MA 02110-1301, USA.
  */
 
-%template(packet_header_sptr) boost::shared_ptr<gr::cdma::packet_header>;
-%pythoncode %{
-packet_header_sptr.__repr__ = lambda self: "<packet_header>"
-packet_header = packet_header.make;
-%}
-
-
 %template(packet_header2_sptr) boost::shared_ptr<gr::cdma::packet_header2>;
 %pythoncode %{
 packet_header2_sptr.__repr__ = lambda self: "<packet_header2>"

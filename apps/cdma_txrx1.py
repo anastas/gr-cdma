@@ -3,7 +3,7 @@
 # Gnuradio Python Flow Graph
 # Title: cdma_txrx1
 # Author: Achilleas Anastasopoulos, Zhe Feng
-# Generated: Mon Oct  6 10:15:55 2014
+# Generated: Tue Oct  7 08:25:17 2014
 ##################################################
 
 execfile("/home/zhe/.grc_gnuradio/cdma_rx_hier1.py")
@@ -381,21 +381,21 @@ class cdma_txrx1(grc_wxgui.top_block_gui):
         ##################################################
         self.connect((self.blocks_tag_gate_0, 0), (self.blocks_null_sink_0_0, 0))
         self.connect((self.blks2_error_rate_0, 0), (self.wxgui_numbersink2_0, 0))
-        self.connect((self.blocks_multiply_const_vxx_1_0, 0), (self.blocks_probe_freq, 0))
         self.connect((self.blocks_repack_bits_bb_0, 0), (self.blks2_error_rate_0, 0))
         self.connect((self.blocks_multiply_const_vxx_1, 0), (self.blocks_throttle_0, 0))
         self.connect((self.blocks_throttle_0, 0), (self.channels_channel_model_0, 0))
         self.connect((self.channels_channel_model_0, 0), (self.blocks_tag_gate_0, 0))
         self.connect((self.blocks_vector_source_x_0_1_0, 0), (self.cdma_tx_hier1_0, 0))
         self.connect((self.cdma_tx_hier1_0, 0), (self.blocks_multiply_const_vxx_1, 0))
-        self.connect((self.blocks_tag_gate_0, 0), (self.cdma_rx_hier1_0, 0))
-        self.connect((self.cdma_rx_hier1_0, 3), (self.blocks_multiply_const_vxx_1_0, 0))
-        self.connect((self.cdma_rx_hier1_0, 2), (self.blocks_probe_signal_amp, 0))
-        self.connect((self.cdma_rx_hier1_0, 0), (self.blocks_probe_signal_n0, 0))
         self.connect((self.cdma_rx_hier1_0, 1), (self.blocks_keep_m_in_n_0, 0))
         self.connect((self.blocks_keep_m_in_n_0, 0), (self.blocks_repack_bits_bb_0, 0))
         self.connect((self.blocks_vector_source_x_0_1_0, 0), (self.blocks_repack_bits_bb_0_0, 0))
         self.connect((self.blocks_repack_bits_bb_0_0, 0), (self.blks2_error_rate_0, 1))
+        self.connect((self.cdma_rx_hier1_0, 0), (self.blocks_probe_signal_n0, 0))
+        self.connect((self.cdma_rx_hier1_0, 2), (self.blocks_probe_signal_amp, 0))
+        self.connect((self.cdma_rx_hier1_0, 3), (self.blocks_multiply_const_vxx_1_0, 0))
+        self.connect((self.blocks_tag_gate_0, 0), (self.cdma_rx_hier1_0, 0))
+        self.connect((self.blocks_multiply_const_vxx_1_0, 0), (self.blocks_probe_freq, 0))
 
         ##################################################
         # Asynch Message Connections
@@ -422,17 +422,17 @@ class cdma_txrx1(grc_wxgui.top_block_gui):
 
     def set_training_percent(self, training_percent):
         self.training_percent = training_percent
-        self.set_training_percent(cp.self.training_percent)
-        self.set_TrainingEsN0dB_est(self.EsN0dB_est + 10*numpy.log10( self.training_percent/100.0 ) )
         self.set_DataEsN0dB_est(self.EsN0dB_est + 10*numpy.log10( 1.0-self.training_percent/100.0 ) )
+        self.set_TrainingEsN0dB_est(self.EsN0dB_est + 10*numpy.log10( self.training_percent/100.0 ) )
+        self.set_training_percent(cp.self.training_percent)
 
     def get_EsN0dB_est(self):
         return self.EsN0dB_est
 
     def set_EsN0dB_est(self, EsN0dB_est):
         self.EsN0dB_est = EsN0dB_est
-        self.set_TrainingEsN0dB_est(self.EsN0dB_est + 10*numpy.log10( self.training_percent/100.0 ) )
         self.set_DataEsN0dB_est(self.EsN0dB_est + 10*numpy.log10( 1.0-self.training_percent/100.0 ) )
+        self.set_TrainingEsN0dB_est(self.EsN0dB_est + 10*numpy.log10( self.training_percent/100.0 ) )
 
     def get_symbol_rate(self):
         return self.symbol_rate
@@ -446,8 +446,8 @@ class cdma_txrx1(grc_wxgui.top_block_gui):
 
     def set_chips_per_symbol(self, chips_per_symbol):
         self.chips_per_symbol = chips_per_symbol
-        self.set_samp_rate(self.symbol_rate*self.chips_per_symbol)
         self.set_chips_per_symbol(cp.self.chips_per_symbol)
+        self.set_samp_rate(self.symbol_rate*self.chips_per_symbol)
         self.channels_channel_model_0.set_noise_voltage((self.chips_per_symbol*self.N0/2)**0.5)
 
     def get_DataEsN0dBthreshold(self):
