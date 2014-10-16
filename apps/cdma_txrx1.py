@@ -3,7 +3,7 @@
 # Gnuradio Python Flow Graph
 # Title: cdma_txrx1
 # Author: Achilleas Anastasopoulos, Zhe Feng
-# Generated: Tue Oct  7 08:25:17 2014
+# Generated: Wed Oct 15 21:35:41 2014
 ##################################################
 
 execfile("/home/zhe/.grc_gnuradio/cdma_rx_hier1.py")

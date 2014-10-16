@@ -1164,49 +1164,6 @@
     </param>
   </block>
   <block>
-    <key>cdma_packet_headergenerator_bb1</key>
-    <param>
-      <key>id</key>
-      <value>cdma_packet_headergenerator_bb1_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>header_formatter</key>
-      <value>head.formatter()</value>
-    </param>
-    <param>
-      <key>len_tag_key</key>
-      <value>"packet_len"</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(728, 235)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
     <key>import</key>
     <param>
       <key>id</key>
@@ -1227,49 +1184,6 @@
     <param>
       <key>_coordinate</key>
       <value>(632, 3)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>digital_packet_headergenerator_bb</key>
-    <param>
-      <key>id</key>
-      <value>digital_packet_headergenerator_bb_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>header_formatter</key>
-      <value>head.formatter()</value>
-    </param>
-    <param>
-      <key>len_tag_key</key>
-      <value>"packet_len"</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(728, 299)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1324,6 +1238,49 @@
     <param>
       <key>_coordinate</key>
       <value>(192, 67)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>digital_packet_headergenerator_bb</key>
+    <param>
+      <key>id</key>
+      <value>digital_packet_headergenerator_bb_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>header_formatter</key>
+      <value>head.formatter()</value>
+    </param>
+    <param>
+      <key>len_tag_key</key>
+      <value>"packet_len"</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(656, 251)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1453,18 +1410,6 @@
   <connection>
     <source_block_id>blocks_repack_bits_bb_1_0</source_block_id>
     <sink_block_id>digital_packet_headergenerator_bb_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>cdma_packet_headergenerator_bb1_0</source_block_id>
-    <sink_block_id>header_bits_1_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>blocks_repack_bits_bb_1_0</source_block_id>
-    <sink_block_id>cdma_packet_headergenerator_bb1_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
