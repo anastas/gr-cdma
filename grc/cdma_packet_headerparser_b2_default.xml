@@ -1,0 +1,27 @@
+<block>
+  <name>Packet Header Parser2 (Default)</name>
+  <key>digital_packet_headerparser_b2_default</key>
+  <category>cdma</category>
+  <import>import cdma</import>
+  <make>cdma.packet_headerparser_b2($header_len, $len_tag_key)</make>
+  <param>
+    <name>Header Length</name>
+    <key>header_len</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Length Tag Name</name>
+    <key>len_tag_key</key>
+    <value>"packet_len"</value>
+    <type>string</type>
+  </param>
+  <sink>
+    <name>in</name>
+    <type>byte</type>
+  </sink>
+  <source>
+    <name>header_data</name>
+    <type>message</type>
+  </source>
+</block>
+

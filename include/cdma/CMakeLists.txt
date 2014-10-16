@@ -24,5 +24,7 @@ install(FILES
     api.h
     chopper.h
     vector_insert2.h
+    packet_header2.h
+    packet_headerparser_b2.h
     flag_gen.h DESTINATION include/cdma
 )

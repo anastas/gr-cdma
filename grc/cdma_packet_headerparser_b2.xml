@@ -1,0 +1,20 @@
+<block>
+  <name>Packet Header Parser2</name>
+  <key>cdma_packet_headerparser_b2</key>
+  <category>cdma</category>
+  <import>import cdma</import>
+  <make>cdma.packet_headerparser_b2($header_formatter)</make>
+  <param>
+    <name>Formatter Object</name>
+    <key>header_formatter</key>
+    <type>raw</type>
+  </param>
+  <sink>
+    <name>in</name>
+    <type>byte</type>
+  </sink>
+  <source>
+    <name>header_data</name>
+    <type>message</type>
+  </source>
+</block>

@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!--
+###################################################
+##Variable function probe
+###################################################
+ -->
+<block>
+	<name>Message Probe</name>
+	<key>variable_message_probe</key>
+	<import>import time</import>
+	<import>import threading</import>
+	<import>import cdma</import>
+	<import>import pmt</import>
+	<var_make>self.$(id) = $(id) = $value</var_make>
+	<make>#slurp
+def _$(id)_msg_probe():
+	while True:
+		num_msg = self.$(msg_block_id()).num_messages()
+		print "the number of message received is", num_msg
+		if num_msg > 0:
+			val0 = self.$(msg_block_id()).get_message(num_msg-1)
+			if not(pmt.is_bool(val0)):
+				val1 = pmt.to_python(val0)
+				print "the message is", val1
+				val2 = val1.get('$(code_type_tag())')
+				print "the est_tcm type is", val2
+				try: self.set_$(id)(val2)
+				except AttributeError, e: pass
+				time.sleep(1.0/($poll_rate))
+_$(id)_thread = threading.Thread(target=_$(id)_msg_probe)
+_$(id)_thread.daemon = True
+_$(id)_thread.start()</make>
+	<callback>self.set_$(id)($value)</callback>
+	<param>
+		<name>Value</name>
+		<key>value</key>
+		<value>0</value>
+		<type>raw</type>
+	</param>
+	<param>
+		<name>Message Debug</name>
+		<key>msg_block_id</key>
+		<value>my_block_0</value>
+		<type>string</type>
+	</param>
+	<param>
+		<name>Code type tag</name>
+		<key>code_type_tag</key>
+		<value></value>
+		<type>string</type>
+	</param>
+	<param>
+		<name>Poll Rate (Hz)</name>
+		<key>poll_rate</key>
+		<value>10</value>
+		<type>real</type>
+	</param>
+	<doc>
+Message Debugger
+	</doc>
+</block>
