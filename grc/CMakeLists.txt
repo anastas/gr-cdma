@@ -23,7 +23,6 @@ install(FILES
     cdma_message_probe.xml
     cdma_packet_headerparser_b2.xml
     cdma_packet_headerparser_b2_default.xml
-    #cdma_myselector.xml
     cdma_flag_gen.xml
     cdma_kronecker_filter.xml
     cdma_freq_timing_estimator1.xml DESTINATION share/gnuradio/grc/blocks

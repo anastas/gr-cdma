@@ -39,13 +39,23 @@ For the impatient:
 
 In the gnuradio-companion environment
 
--- Load the hier block "amp_var_est_hier.grc", "cdma_tx_hier.grc", "chopper_correlator1.grc", "cdma_rx_hier.grc" and compile them
+-- Load the hier blocks 
+"amp_var_est_hier.grc", 
+"cdma_tx_hier.grc", 
+"chopper_correlator1.grc", 
+"cdma_rx_hier.grc", 
+"cdma_tx_hier1.grc", 
+"cdma_rx_hier1.grc" 
+and compile them
 
 -- Reload all blocks in grc
 
--- Load the application "cdma_txrx.grc" and have fun
+-- Load the application "cdma_txrx.grc" or "cdma_txrx1.grc" and have fun
 
-   Experiment with manual acq/tra, auto acq/tra, changing freq and timing offset, SNR, etc
+   Experiment with manual acq/tra, auto acq/tra, changing freq and timing offset, SNR, modulation/coding type, etc
 
 -- If you have 2 USRPs load the cdma_tx.grc and cdma_rx.grc and enjoy real-time CDMA transmission. You can also use the cdma_tx.grc and cdma_rx.grc by writting
 and reading to a fifo (first do > makefifo /tmp/cdma.fifo)
+
+This module has been tested with gnuradio 3.6.7 but the "cdma_txrx1.grc" application requires some additional functionality that is currently under review (October 2014) and will soon be incorporated in the master branch.
+

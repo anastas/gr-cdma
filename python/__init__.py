@@ -33,7 +33,7 @@ except ImportError:
 # import any pure python here
 import cdma_parameters
 
-#from myselector #import myselector
+
 from kronecker_filter import kronecker_filter
 from freq_timing_estimator import freq_timing_estimator
 from freq_timing_estimator1 import freq_timing_estimator1
