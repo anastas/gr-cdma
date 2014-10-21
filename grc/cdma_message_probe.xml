@@ -16,8 +16,8 @@
 def _$(id)_msg_probe():
 	while True:
 		num_msg = self.$(msg_block_id()).num_messages()
-		print "the number of message received is", num_msg
 		if num_msg > 0:
+			print "the number of message received is", num_msg
 			val0 = self.$(msg_block_id()).get_message(num_msg-1)
 			if not(pmt.is_bool(val0)):
 				val1 = pmt.to_python(val0)

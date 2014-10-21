@@ -3,7 +3,7 @@
 # Gnuradio Python Flow Graph
 # Title: cdma_txrx1
 # Author: Achilleas Anastasopoulos, Zhe Feng
-# Generated: Wed Oct 15 21:35:41 2014
+# Generated: Mon Oct 20 00:11:18 2014
 ##################################################
 
 execfile("/home/zhe/.grc_gnuradio/cdma_rx_hier1.py")
@@ -41,15 +41,14 @@ class cdma_txrx1(grc_wxgui.top_block_gui):
         self.Esest = Esest = 1e-2
         self.training_percent = training_percent = cp.training_percent
         self.EsN0dB_est = EsN0dB_est = 10*numpy.log10(  (Esest+cp.epsilon) / (N0est+cp.epsilon)  )
-        self.symbol_rate = symbol_rate = 8000
-        self.chips_per_symbol = chips_per_symbol = cp.chips_per_symbol
+        self.symbol_rate = symbol_rate = 6000
         self.DataEsN0dBthreshold = DataEsN0dBthreshold = 10
         self.DataEsN0dB_est = DataEsN0dB_est = EsN0dB_est + 10*numpy.log10( 1.0-training_percent/100.0 ) 
-        self.samp_rate = samp_rate = symbol_rate*chips_per_symbol
+        self.samp_rate = samp_rate = symbol_rate*2/8
         self.onoff_manual = onoff_manual = 1
         self.onoff_auto = onoff_auto = 0 if DataEsN0dB_est>DataEsN0dBthreshold else 1
         self.manual = manual = 0
-        self.tcm_type_selector = tcm_type_selector = 1
+        self.tcm_type_selector = tcm_type_selector = 2
         self.onoff = onoff = onoff_auto if manual==0 else onoff_manual
         self.freq_acq_est = freq_acq_est = 0
         self.df = df = cp.df*samp_rate
@@ -66,6 +65,7 @@ class cdma_txrx1(grc_wxgui.top_block_gui):
         self.dft = dft = df
         self.df_Hz = df_Hz = 0
         self.delay = delay = 0
+        self.chips_per_symbol = chips_per_symbol = cp.chips_per_symbol
         self.acq_threshold_dB = acq_threshold_dB = -10
         self.TrainingEsN0dB = TrainingEsN0dB = TrainingEsN0dB_est
         self.N0 = N0 = 10**(-EsN0dB/10) * Es
@@ -88,8 +88,8 @@ class cdma_txrx1(grc_wxgui.top_block_gui):
         def _est_tcm_type_msg_probe():
         	while True:
         		num_msg = self.msg_debug.num_messages()
-        		print "the number of message received is", num_msg
         		if num_msg > 0:
+        			print "the number of message received is", num_msg
         			val0 = self.msg_debug.get_message(num_msg-1)
         			if not(pmt.is_bool(val0)):
         				val1 = pmt.to_python(val0)
@@ -98,7 +98,7 @@ class cdma_txrx1(grc_wxgui.top_block_gui):
         				print "the est_tcm type is", val2
         				try: self.set_est_tcm_type(val2)
         				except AttributeError, e: pass
-        				time.sleep(1.0/(10))
+        				time.sleep(1.0/(20))
         _est_tcm_type_thread = threading.Thread(target=_est_tcm_type_msg_probe)
         _est_tcm_type_thread.daemon = True
         _est_tcm_type_thread.start()
@@ -278,18 +278,18 @@ class cdma_txrx1(grc_wxgui.top_block_gui):
             est_tcm_type=est_tcm_type,
         )
         self.blocks_vector_source_x_0_1_0 = blocks.vector_source_b(map(int,numpy.concatenate([numpy.random.randint(0,256,cp.payload_bytes_per_frame-1),(0,)])), True, 1, tagged_streams.make_lengthtags((payload_bytes_per_frame,), (0,), cp.length_tag_name))
-        self.blocks_throttle_0 = blocks.throttle(gr.sizeof_gr_complex*1, samp_rate,True)
+        self.blocks_throttle_0 = blocks.throttle(gr.sizeof_char*1, samp_rate,True)
         self.blocks_tag_gate_0 = blocks.tag_gate(gr.sizeof_gr_complex * 1, False)
-        self.blocks_repack_bits_bb_0_0 = blocks.repack_bits_bb(8, cp.bits_per_uncoded_symbol, "", False)
-        self.blocks_repack_bits_bb_0 = blocks.repack_bits_bb(8, cp.bits_per_uncoded_symbol, "", False)
+        self.blocks_repack_bits_bb_0_0 = blocks.repack_bits_bb(8, 1, 0, "", False) if False else blocks.repack_bits_bb(8, 1, "", False)
+        self.blocks_repack_bits_bb_0 = blocks.repack_bits_bb(8, 1, 0, "", False) if False else blocks.repack_bits_bb(8, 1, "", False)
         self.blocks_null_sink_0_0 = blocks.null_sink(gr.sizeof_gr_complex*1)
         self.blocks_multiply_const_vxx_1_0 = blocks.multiply_const_vff((samp_rate, ))
         self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vcc((Es**0.5, ))
         self.blocks_keep_m_in_n_0 = blocks.keep_m_in_n(gr.sizeof_char, 50, 54, 0)
         self.blks2_error_rate_0 = grc_blks2.error_rate(
-        	type='SER',
+        	type='BER',
         	win_size=10000,
-        	bits_per_symbol=2,
+        	bits_per_symbol=1,
         )
         self._TrainingEsN0dB_static_text = forms.static_text(
         	parent=self.GetWin(),
@@ -379,15 +379,8 @@ class cdma_txrx1(grc_wxgui.top_block_gui):
         ##################################################
         # Connections
         ##################################################
-        self.connect((self.blocks_tag_gate_0, 0), (self.blocks_null_sink_0_0, 0))
-        self.connect((self.blks2_error_rate_0, 0), (self.wxgui_numbersink2_0, 0))
         self.connect((self.blocks_repack_bits_bb_0, 0), (self.blks2_error_rate_0, 0))
-        self.connect((self.blocks_multiply_const_vxx_1, 0), (self.blocks_throttle_0, 0))
-        self.connect((self.blocks_throttle_0, 0), (self.channels_channel_model_0, 0))
-        self.connect((self.channels_channel_model_0, 0), (self.blocks_tag_gate_0, 0))
-        self.connect((self.blocks_vector_source_x_0_1_0, 0), (self.cdma_tx_hier1_0, 0))
         self.connect((self.cdma_tx_hier1_0, 0), (self.blocks_multiply_const_vxx_1, 0))
-        self.connect((self.cdma_rx_hier1_0, 1), (self.blocks_keep_m_in_n_0, 0))
         self.connect((self.blocks_keep_m_in_n_0, 0), (self.blocks_repack_bits_bb_0, 0))
         self.connect((self.blocks_vector_source_x_0_1_0, 0), (self.blocks_repack_bits_bb_0_0, 0))
         self.connect((self.blocks_repack_bits_bb_0_0, 0), (self.blks2_error_rate_0, 1))
@@ -396,6 +389,13 @@ class cdma_txrx1(grc_wxgui.top_block_gui):
         self.connect((self.cdma_rx_hier1_0, 3), (self.blocks_multiply_const_vxx_1_0, 0))
         self.connect((self.blocks_tag_gate_0, 0), (self.cdma_rx_hier1_0, 0))
         self.connect((self.blocks_multiply_const_vxx_1_0, 0), (self.blocks_probe_freq, 0))
+        self.connect((self.channels_channel_model_0, 0), (self.blocks_tag_gate_0, 0))
+        self.connect((self.blocks_tag_gate_0, 0), (self.blocks_null_sink_0_0, 0))
+        self.connect((self.cdma_rx_hier1_0, 1), (self.blocks_keep_m_in_n_0, 0))
+        self.connect((self.blks2_error_rate_0, 0), (self.wxgui_numbersink2_0, 0))
+        self.connect((self.blocks_multiply_const_vxx_1, 0), (self.channels_channel_model_0, 0))
+        self.connect((self.blocks_vector_source_x_0_1_0, 0), (self.blocks_throttle_0, 0))
+        self.connect((self.blocks_throttle_0, 0), (self.cdma_tx_hier1_0, 0))
 
         ##################################################
         # Asynch Message Connections
@@ -422,9 +422,9 @@ class cdma_txrx1(grc_wxgui.top_block_gui):
 
     def set_training_percent(self, training_percent):
         self.training_percent = training_percent
+        self.set_training_percent(cp.self.training_percent)
         self.set_DataEsN0dB_est(self.EsN0dB_est + 10*numpy.log10( 1.0-self.training_percent/100.0 ) )
         self.set_TrainingEsN0dB_est(self.EsN0dB_est + 10*numpy.log10( self.training_percent/100.0 ) )
-        self.set_training_percent(cp.self.training_percent)
 
     def get_EsN0dB_est(self):
         return self.EsN0dB_est
@@ -439,16 +439,7 @@ class cdma_txrx1(grc_wxgui.top_block_gui):
 
     def set_symbol_rate(self, symbol_rate):
         self.symbol_rate = symbol_rate
-        self.set_samp_rate(self.symbol_rate*self.chips_per_symbol)
-
-    def get_chips_per_symbol(self):
-        return self.chips_per_symbol
-
-    def set_chips_per_symbol(self, chips_per_symbol):
-        self.chips_per_symbol = chips_per_symbol
-        self.set_chips_per_symbol(cp.self.chips_per_symbol)
-        self.set_samp_rate(self.symbol_rate*self.chips_per_symbol)
-        self.channels_channel_model_0.set_noise_voltage((self.chips_per_symbol*self.N0/2)**0.5)
+        self.set_samp_rate(self.symbol_rate*2/8)
 
     def get_DataEsN0dBthreshold(self):
         return self.DataEsN0dBthreshold
@@ -474,9 +465,9 @@ class cdma_txrx1(grc_wxgui.top_block_gui):
         self.samp_rate = samp_rate
         self.set_df(cp.self.df*self.samp_rate)
         self.set_fmaxt(cp.freqs[-1]*self.samp_rate)
-        self.blocks_throttle_0.set_sample_rate(self.samp_rate)
-        self.channels_channel_model_0.set_frequency_offset(self.df_Hz/self.samp_rate)
         self.blocks_multiply_const_vxx_1_0.set_k((self.samp_rate, ))
+        self.channels_channel_model_0.set_frequency_offset(self.df_Hz/self.samp_rate)
+        self.blocks_throttle_0.set_sample_rate(self.samp_rate)
 
     def get_onoff_manual(self):
         return self.onoff_manual
@@ -631,6 +622,14 @@ class cdma_txrx1(grc_wxgui.top_block_gui):
         self._delay_slider.set_value(self.delay)
         self._delay_text_box.set_value(self.delay)
         self.channels_channel_model_0.set_taps(((self.delay)*(0,)+(1,)+(100-1-self.delay)*(0,)))
+
+    def get_chips_per_symbol(self):
+        return self.chips_per_symbol
+
+    def set_chips_per_symbol(self, chips_per_symbol):
+        self.chips_per_symbol = chips_per_symbol
+        self.set_chips_per_symbol(cp.self.chips_per_symbol)
+        self.channels_channel_model_0.set_noise_voltage((self.chips_per_symbol*self.N0/2)**0.5)
 
     def get_acq_threshold_dB(self):
         return self.acq_threshold_dB
