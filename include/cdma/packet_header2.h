@@ -58,14 +58,11 @@ namespace gr {
 		      const std::string &len_tag_key="packet_len",
 		      const std::string &num_tag_key="packet_num",
 		      int bits_per_byte=1,
-                      int mod_type=1,
-		      const std::string &mod_tag_key="mod_type_tag",
-		      int code_type=1,
-		      const std::string &code_tag_key="code_type_tag");
+                      int tcm_type=1,
+		      const std::string &tcm_type_key="tcm_type");
       ~packet_header2();
 
-      void set_mod_type(int mod_type){d_mod_type = mod_type; };
-      void set_code_type(int code_type){d_code_type = code_type; };
+      void set_tcm_type(int tcm_type){d_tcm_type = tcm_type; };
 
       //pmt::pmt_t len_tag_key() { return d_len_tag_key; };
 
@@ -74,8 +71,7 @@ namespace gr {
        *
        * Uses the following header format:
        * Bits 0-11: The packet length (what was stored in the tag with key \p len_tag_key)
-       * Bits 12-13: The modulation type
-       * Bits 14-15: The coding type
+       * Bits 12-15: The trellis coded modulation type
        * Bits 16-27: The header number (counts up everytime this function is called)
        * Bit 28-35: 8-Bit CRC
        * All other bits: Are set to zero
@@ -106,16 +102,12 @@ namespace gr {
 		      const std::string &len_tag_key="packet_len",
 		      const std::string &num_tag_key="packet_num",
 		      int bits_per_byte=1,
-                      int mod_type=1,
-		      const std::string &mod_tag_key="mod_type_tag",
-		      int code_type=1,
-		      const std::string &code_tag_key="code_type_tag");
+                      int tcm_type=1,
+		      const std::string &tcm_tag_key="tcm_type");
 
     protected:
-      pmt::pmt_t d_mod_tag_key;
-      pmt::pmt_t d_code_tag_key;
-      int d_mod_type;
-      int d_code_type;
+      pmt::pmt_t d_tcm_tag_key;
+      int d_tcm_type;
 
     };
 

@@ -35,12 +35,10 @@ namespace gr {
 		    const std::string &len_tag_key,
 		    const std::string &num_tag_key,
 		    int bits_per_byte,
-                    int mod_type,
-	            const std::string &mod_tag_key,
-                    int code_type,
-	            const std::string &code_tag_key)
+                    int tcm_type,
+	            const std::string &tcm_tag_key)
     {
-      return packet_header2::sptr(new packet_header2(header_len, len_tag_key, num_tag_key, bits_per_byte,mod_type, mod_tag_key, code_type, code_tag_key));
+      return packet_header2::sptr(new packet_header2(header_len, len_tag_key, num_tag_key, bits_per_byte,tcm_type, tcm_tag_key));
     }
 
     packet_header2::packet_header2(
@@ -48,19 +46,15 @@ namespace gr {
 		    const std::string &len_tag_key,
 		    const std::string &num_tag_key,
 		    int bits_per_byte,
-                    int mod_type,
-	            const std::string &mod_tag_key,
-                    int code_type,
-	            const std::string &code_tag_key
+                    int tcm_type,
+	            const std::string &tcm_tag_key
     ): gr::digital::packet_header_default(
           header_len,
 	  len_tag_key,
 	  num_tag_key,
 	  bits_per_byte),
-	d_mod_type(mod_type),
-	d_code_type(code_type),
-        d_mod_tag_key(pmt::string_to_symbol(mod_tag_key)),
-        d_code_tag_key(pmt::string_to_symbol(code_tag_key))
+	d_tcm_type(tcm_type),
+        d_tcm_tag_key(pmt::string_to_symbol(tcm_tag_key))
 	{
 
 	}
@@ -79,8 +73,7 @@ namespace gr {
       packet_len &= 0x0FFF;
       d_crc_impl.reset();
       d_crc_impl.process_bytes((void const *) &packet_len, 2);
-      d_crc_impl.process_bytes((void const *) &d_mod_type, 2);
-      d_crc_impl.process_bytes((void const *) &d_code_type, 2);
+      d_crc_impl.process_bytes((void const *) &d_tcm_type, 4);
       d_crc_impl.process_bytes((void const *) &d_header_number, 2);
       unsigned char crc = d_crc_impl();
 
@@ -89,11 +82,8 @@ namespace gr {
       for (int i = 0; i < 12 && k < d_header_len; i += d_bits_per_byte, k++) {
 	out[k] = (unsigned char) ((packet_len >> i) & d_mask);
       }
-      for (int i = 0; i < 2 && k < d_header_len; i += d_bits_per_byte, k++) {
-	out[k] = (unsigned char) ((d_mod_type >> i) & d_mask);
-      }
-      for (int i = 0; i < 2 && k < d_header_len; i += d_bits_per_byte, k++) {
-	out[k] = (unsigned char) ((d_code_type >> i) & d_mask);
+      for (int i = 0; i < 4 && k < d_header_len; i += d_bits_per_byte, k++) {
+	out[k] = (unsigned char) ((d_tcm_type >> i) & d_mask);
       }
       for (int i = 0; i < 12 && k < d_header_len; i += d_bits_per_byte, k++) {
 	out[k] = (unsigned char) ((d_header_number >> i) & d_mask);
@@ -112,8 +102,7 @@ namespace gr {
 	std::vector<tag_t> &tags)
     {
       unsigned header_len = 0;
-      int mod_type = 0;
-      int code_type =0; 
+      int tcm_type = 0;
       unsigned header_num = 0;
       tag_t tag;
 
@@ -127,19 +116,13 @@ namespace gr {
       if (k >= d_header_len) {
 	return true;
       }
-      for (int i = 0; i < 2 && k < d_header_len; i += d_bits_per_byte, k++) {
-	mod_type |= (((int) in[k]) & d_mask) << i;
+      for (int i = 0; i < 4 && k < d_header_len; i += d_bits_per_byte, k++) {
+	tcm_type |= (((int) in[k]) & d_mask) << i;
       }
-      tag.key = d_mod_tag_key;
-      tag.value = pmt::from_long(mod_type);
+      tag.key = d_tcm_tag_key;
+      tag.value = pmt::from_long(tcm_type);
       tags.push_back(tag);
 
-      for (int i = 0; i < 2 && k < d_header_len; i += d_bits_per_byte, k++) {
-	code_type |= (((int) in[k]) & d_mask) << i;
-      }
-      tag.key = d_code_tag_key;
-      tag.value = pmt::from_long(code_type);
-      tags.push_back(tag);
       if (d_num_tag_key == pmt::PMT_NIL) {
 	k += 12;
       } else {
@@ -156,8 +139,7 @@ namespace gr {
 
       d_crc_impl.reset();
       d_crc_impl.process_bytes((void const *) &header_len, 2);
-      d_crc_impl.process_bytes((void const *) &mod_type, 2);
-      d_crc_impl.process_bytes((void const *) &code_type, 2);
+      d_crc_impl.process_bytes((void const *) &tcm_type, 4);
       d_crc_impl.process_bytes((void const *) &header_num, 2);
       unsigned char crc_calcd = d_crc_impl();
       for (int i = 0; i < 8 && k < d_header_len; i += d_bits_per_byte, k++) {
