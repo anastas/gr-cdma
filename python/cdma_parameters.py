@@ -92,12 +92,13 @@ class cdma_parameters:
 	"""
 
 
-print "CDMA PARAMETERS 1"
+print "CDMA PARAMETERS : for adaptive modulation"
+
+prefix="/home/anastas/gr-cdma/"  # put the prefix of your gr-cdma trunk
 
 length_tag_name = "packet_len"
 num_tag_name = "packet_num"
 
-# the parameters for crc as an outer code. 
 # header info
 bits_per_header=12+12+8+4;  #Zhe Changed 12+16+8 to 12+12+8 because only 12 bits not 16 bits are needed. 4 bits indicating modulation and code mode.
 
@@ -112,6 +113,7 @@ if (1.0*bits_per_header)/header_mod.bits_per_symbol() != symbols_per_header:
 #header_formatter = digital.packet_header_default(bits_per_header,  length_tag_name,num_tag_name,header_mod.bits_per_symbol());
 #tcm_indicator_symbols_per_frame=4; #Zhe added, 4 bits are used as tcm mode indicator, it is used as a part of header.
 
+# Achilles' comment: this may change later when filler bits are introduced...
 print "bits_per_header=",bits_per_header
 print "symbols_per_header=",symbols_per_header
 #print "tcm_indicator_symbols_per_frame=",tcm_indicator_symbols_per_frame
@@ -121,29 +123,33 @@ print "\n"
 
 payload_mod = [digital.constellation_qpsk(),digital.constellation_8psk_natural(),digital.constellation_16qam()]
 
-prefix="/home/zhe/gr-cdma/python"
-fsm=[prefix+"/fsm_files/awgn2o2_1.fsm", prefix+"/fsm_files/awgn2o3_8ungerboecka.fsm",prefix+"/fsm_files/awgn2o4_8_ungerboeckc.fsm"]
+pdir=prefix+"/python/fsm_files/"
+fsm=[pdir+"awgn2o2_1.fsm", pdir+"awgn2o3_8ungerboecka.fsm",pdir+"awgn2o4_8_ungerboeckc.fsm"]
 uncoded_fsm=[trellis.fsm(2,2,[1,0,0,1]),trellis.fsm(3,3,[1,0,0,0,1,0,0,0,1]),trellis.fsm(4,4,[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1])]
 
 bits_per_coded_symbol=[int(math.log(trellis.fsm(fsm[i]).O(),2)) for i in range(len(payload_mod))]
 
-coding_rate=[Fraction(int(math.log(trellis.fsm(fsm[i]).I(),2)), int(math.log(trellis.fsm(fsm[i]).O(),2))) for i in range(len(fsm))]
+#coding_rate=[Fraction(int(math.log(trellis.fsm(fsm[i]).I(),2)), int(math.log(trellis.fsm(fsm[i]).O(),2))) for i in range(len(fsm))]
 
 if bits_per_coded_symbol!=[payload_mod[i].bits_per_symbol() for i in range(len(payload_mod))]:
   print "Error in selecting trellis code and modulation pairs."
 
 print "bits_per_coded_symbol =", bits_per_coded_symbol, " for [uncoded QPSK, rate 2/3 cc &8PSK, rate 2/4 cc &16QAM] respectively.\n"
-print "coding rates for trellis codes =", coding_rate, " for [uncoded QPSK, rate 2/3 cc &8PSK, rate 2/4 cc &16QAM] respectively.\n"
+#print "coding rates for trellis codes =", coding_rate, " for [uncoded QPSK, rate 2/3 cc &8PSK, rate 2/4 cc &16QAM] respectively.\n"
 
 
 #payload info
 payload_bytes_per_frame = 50;	# set by user
 symbols_per_frame = 260; # symbols per frame set by user
-bits_per_uncoded_symbol = 2; # bits per uncoded symbols of payload
-crc_bytes=4; 
 
+#Achilles comment: this should be log_2(fsm.I)
+bits_per_uncoded_symbol = 2; # bits per uncoded symbols of payload
+
+# the parameters for crc as an outer code. 
+crc_bytes=4; 
 crc_coded_payload_bytes_per_frame = payload_bytes_per_frame + crc_bytes;  #crc as the outer code, code it first.
 
+# Achilles' comment: there is an assumption here that (50+4)8 will be a multiple of k. You need to stuff BITS in here
 crc_coded_payload_symbols_per_frame = crc_coded_payload_bytes_per_frame*8/bits_per_uncoded_symbol; #crc coded payload symbols.
 
 trellis_coded_payload_symbols_per_frame = crc_coded_payload_symbols_per_frame; #coded payload symbols equal the uncoded payload symbols.
@@ -153,6 +159,7 @@ additional_symbols_per_frame = symbols_per_frame - trellis_coded_payload_symbols
 if additional_symbols_per_frame < 0:
   print "Error in setting symbols per frame. To form a frame with set payload_bytes_per_frame, you should set a larger number of symbols per frame"
 
+# Achilles' comment: assumption that this is a multiple of 8 !!!
 additional_bytes_per_frame = [additional_symbols_per_frame * header_mod.bits_per_symbol()/8 for i in range(len(payload_mod))]; 
 
 trellis_coded_payload_bytes_per_frame = [trellis_coded_payload_symbols_per_frame*payload_mod[i].bits_per_symbol()/8 for i in range(len(payload_mod))]

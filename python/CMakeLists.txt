@@ -34,7 +34,6 @@ GR_PYTHON_INSTALL(
     cdma_parameters.py
     freq_timing_estimator.py
     freq_timing_estimator1.py
-    #myselector.py
     kronecker_filter.py
     DESTINATION ${GR_PYTHON_DIR}/cdma
 )

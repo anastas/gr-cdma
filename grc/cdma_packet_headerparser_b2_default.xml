@@ -1,6 +1,6 @@
 <block>
   <name>Packet Header Parser2 (Default)</name>
-  <key>digital_packet_headerparser_b2_default</key>
+  <key>cdma_packet_headerparser_b2_default</key>
   <category>cdma</category>
   <import>import cdma</import>
   <make>cdma.packet_headerparser_b2($header_len, $len_tag_key)</make>

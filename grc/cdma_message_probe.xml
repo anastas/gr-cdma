@@ -14,10 +14,11 @@
 	<var_make>self.$(id) = $(id) = $value</var_make>
 	<make>#slurp
 def _$(id)_msg_probe():
+        prev_num_msg=0;
 	while True:
 		num_msg = self.$(msg_block_id()).num_messages()
-		if num_msg > 0:
-			print "the number of message received is", num_msg
+		#print "the number of message received is", num_msg
+		if num_msg > prev_num_msg:
 			val0 = self.$(msg_block_id()).get_message(num_msg-1)
 			if not(pmt.is_bool(val0)):
 				val1 = pmt.to_python(val0)
@@ -27,6 +28,7 @@ def _$(id)_msg_probe():
 				try: self.set_$(id)(val2)
 				except AttributeError, e: pass
 				time.sleep(1.0/($poll_rate))
+                        prev_num_msg=num_msg
 _$(id)_thread = threading.Thread(target=_$(id)_msg_probe)
 _$(id)_thread.daemon = True
 _$(id)_thread.start()</make>

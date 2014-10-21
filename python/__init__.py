@@ -23,16 +23,16 @@ This is the GNU Radio CDMA module. Place your Python package
 description here (python/__init__.py).
 '''
 
-
-
-
 # import swig generated symbols into the cdma namespace
-from cdma_swig import *
+try:
+        # this might fail if the module is python-only
+        from cdma_swig import *
+except ImportError:
+        pass
 
 # import any pure python here
 import cdma_parameters
 
-#from myselector #import myselector
 
 from kronecker_filter import kronecker_filter
 from freq_timing_estimator import freq_timing_estimator
