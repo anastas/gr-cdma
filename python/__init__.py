@@ -36,6 +36,5 @@ import cdma_parameters
 
 from kronecker_filter import kronecker_filter
 from freq_timing_estimator import freq_timing_estimator
-from freq_timing_estimator1 import freq_timing_estimator1
 
 

@@ -96,33 +96,6 @@
     <key>variable</key>
     <param>
       <key>id</key>
-      <value>training_percent</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>cp.training_percent</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(396, 79)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>id</key>
       <value>freqs</value>
     </param>
     <param>
@@ -167,6 +140,33 @@
     <param>
       <key>_coordinate</key>
       <value>(728, 21)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>id</key>
+      <value>training_percent</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>cp.training_percent</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(396, 79)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -537,45 +537,6 @@
     </param>
   </block>
   <block>
-    <key>pad_sink</key>
-    <param>
-      <key>id</key>
-      <value>pad_sink_1</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value>ack_frequency</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>float</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>num_streams</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>optional</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(933, 445)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
     <key>virtual_sink</key>
     <param>
       <key>id</key>
@@ -871,49 +832,6 @@
     </param>
   </block>
   <block>
-    <key>cdma_flag_gen</key>
-    <param>
-      <key>id</key>
-      <value>cdma_flag_gen_1</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>acq</key>
-      <value>acq</value>
-    </param>
-    <param>
-      <key>period</key>
-      <value>cp.chips_per_symbol*cp.symbols_per_frame</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(741, 368)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
     <key>virtual_source</key>
     <param>
       <key>id</key>
@@ -960,10 +878,10 @@
     </param>
   </block>
   <block>
-    <key>chopper_correlator1</key>
+    <key>chopper_correlator</key>
     <param>
       <key>id</key>
-      <value>chopper_correlator1_0</value>
+      <value>chopper_correlator_0</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -1288,10 +1206,10 @@
     </param>
   </block>
   <block>
-    <key>cdma_freq_timing_estimator1</key>
+    <key>cdma_freq_timing_estimator</key>
     <param>
       <key>id</key>
-      <value>cdma_freq_timing_estimator1_0</value>
+      <value>cdma_freq_timing_estimator_0</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -1725,6 +1643,178 @@
     </param>
   </block>
   <block>
+    <key>pad_sink</key>
+    <param>
+      <key>id</key>
+      <value>pad_sink_0_1_0_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>decoded_payload</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>byte</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>num_streams</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>optional</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(768, 2036)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>pad_sink</key>
+    <param>
+      <key>id</key>
+      <value>pad_sink_1</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>ack_frequency</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>float</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>num_streams</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>optional</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(933, 445)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>cdma_flag_gen</key>
+    <param>
+      <key>id</key>
+      <value>cdma_flag_gen_1</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>acq</key>
+      <value>acq</value>
+    </param>
+    <param>
+      <key>period</key>
+      <value>cp.chips_per_symbol*cp.symbols_per_frame</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(741, 368)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_keep_m_in_n</key>
+    <param>
+      <key>id</key>
+      <value>blocks_keep_m_in_n_0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>byte</value>
+    </param>
+    <param>
+      <key>m</key>
+      <value>50</value>
+    </param>
+    <param>
+      <key>n</key>
+      <value>54</value>
+    </param>
+    <param>
+      <key>offset</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(504, 1942)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
     <key>digital_crc32_bb</key>
     <param>
       <key>id</key>
@@ -1767,48 +1857,9 @@
       <value>0</value>
     </param>
   </block>
-  <block>
-    <key>pad_sink</key>
-    <param>
-      <key>id</key>
-      <value>pad_sink_0_1_0_0</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value>decoded_payload</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>byte</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>num_streams</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>optional</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(768, 2036)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-  </block>
   <connection>
     <source_block_id>RX_0_2_1</source_block_id>
-    <sink_block_id>cdma_freq_timing_estimator1_0</sink_block_id>
+    <sink_block_id>cdma_freq_timing_estimator_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
@@ -1819,32 +1870,32 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>cdma_freq_timing_estimator1_0</source_block_id>
+    <source_block_id>cdma_freq_timing_estimator_0</source_block_id>
     <sink_block_id>acq_frequency</sink_block_id>
     <source_key>1</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>cdma_freq_timing_estimator1_0</source_block_id>
+    <source_block_id>cdma_freq_timing_estimator_0</source_block_id>
     <sink_block_id>pad_sink_1</sink_block_id>
     <source_key>1</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>cdma_freq_timing_estimator1_0</source_block_id>
+    <source_block_id>cdma_freq_timing_estimator_0</source_block_id>
     <sink_block_id>blocks_null_sink_0_1</sink_block_id>
     <source_key>2</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
     <source_block_id>RX_0_2_0_1</source_block_id>
-    <sink_block_id>chopper_correlator1_0</sink_block_id>
+    <sink_block_id>chopper_correlator_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>1</sink_key>
   </connection>
   <connection>
     <source_block_id>virtual_source_0_1</source_block_id>
-    <sink_block_id>chopper_correlator1_0</sink_block_id>
+    <sink_block_id>chopper_correlator_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
@@ -1921,7 +1972,7 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>cdma_freq_timing_estimator1_0</source_block_id>
+    <source_block_id>cdma_freq_timing_estimator_0</source_block_id>
     <sink_block_id>cdma_flag_gen_1</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
@@ -1951,19 +2002,19 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>chopper_correlator1_0</source_block_id>
+    <source_block_id>chopper_correlator_0</source_block_id>
     <sink_block_id>RX_training_0_3_0_0_1</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>chopper_correlator1_0</source_block_id>
+    <source_block_id>chopper_correlator_0</source_block_id>
     <sink_block_id>pad_sink_0_1</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>chopper_correlator1_0</source_block_id>
+    <source_block_id>chopper_correlator_0</source_block_id>
     <sink_block_id>RX_training_0_3_0_0_1_0</sink_block_id>
     <source_key>1</source_key>
     <sink_key>0</sink_key>
@@ -2001,6 +2052,18 @@
   <connection>
     <source_block_id>blocks_keep_m_in_n_0_1</source_block_id>
     <sink_block_id>RX_training_0_2</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_stream_to_tagged_stream_0</source_block_id>
+    <sink_block_id>blocks_keep_m_in_n_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_keep_m_in_n_0</source_block_id>
+    <sink_block_id>pad_sink_0_1_0_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>

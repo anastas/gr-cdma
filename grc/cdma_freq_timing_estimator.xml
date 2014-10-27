@@ -1,33 +1,45 @@
-<?xml version='1.0' encoding='ASCII'?>
+<?xml version="1.0"?>
 <block>
   <name>freq_timing_estimator</name>
-  <key>freq_timing_estimator</key>
+  <key>cdma_freq_timing_estimator</key>
   <category>cdma</category>
   <import>import cdma</import>
-  <make>cdma.freq_timing_estimator(
-    ts=$ts,
-    factor=$factor,
-    alpha=$alpha,
-    samp_rate=$samp_rate,
-    freqs=$freqs,
-)</make>
-  <callback>set_ts($ts)</callback>
+  <make>cdma.freq_timing_estimator($seq1, $seq2, $factor, $alpha, $samp_rate, $freqs)</make>
+  <callback>set_seq1($seq1)</callback>
+  <callback>set_seq2($seq2)</callback>
   <callback>set_factor($factor)</callback>
   <callback>set_alpha($alpha)</callback>
   <callback>set_samp_rate($samp_rate)</callback>
   <callback>set_freqs($freqs)</callback>
+
+  <!-- Make one 'param' node for every Parameter you want settable from the GUI.
+       Sub-nodes:
+       * name
+       * key (makes the value accessible as $keyname, e.g. in the make node)
+       * type -->
+
+
   <param>
-    <name>ts</name>
-    <key>ts</key>
+    <name>seq1</name>
+    <key>seq1</key>
     <value>(0+0j,)</value>
     <type>raw</type>
   </param>
+
+  <param>
+    <name>seq2</name>
+    <key>seq2</key>
+    <value>(0+0j,)</value>
+    <type>raw</type>
+  </param>
+
   <param>
     <name>factor</name>
     <key>factor</key>
     <value>0</value>
     <type>raw</type>
   </param>
+
   <param>
     <name>alpha</name>
     <key>alpha</key>
@@ -46,6 +58,11 @@
     <value>9*(0,)</value>
     <type>raw</type>
   </param>
+  <!-- Make one 'sink' node per input. Sub-nodes:
+       * name (an identifier for the GUI)
+       * type
+       * vlen
+       * optional (set to 1 for optional inputs) -->
   <sink>
     <name>in</name>
     <type>complex</type>

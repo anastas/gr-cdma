@@ -42,7 +42,7 @@ In the gnuradio-companion environment
 -- Load the hier blocks 
 "amp_var_est_hier.grc", 
 "cdma_tx_hier.grc", 
-"chopper_correlator1.grc", 
+"chopper_correlator.grc", 
 "cdma_rx_hier.grc", 
 "cdma_tx_hier1.grc", 
 "cdma_rx_hier1.grc" 

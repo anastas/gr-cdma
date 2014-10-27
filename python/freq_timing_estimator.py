@@ -25,29 +25,30 @@ from gnuradio import gr
 from gnuradio import digital
 from gnuradio.filter import firdes
 import numpy
+import cdma
+
 
 class freq_timing_estimator(gr.hier_block2):
-    """frequency timing estimator class."""
-    def __init__(self, ts, factor, alpha, samp_rate, freqs):
+    """
+frequency timing estimator1 class, it's less computationally complex than frequency timing estimator because it used kronecker filter to reduce complexity.
+    """
+    def __init__(self, seq1, seq2, factor, alpha, samp_rate, freqs):
         """
-	Description:
-        This block is designed to perform frequency and timing acquisition for a known training sequence in the presense of frequency and timing offset and noise. Its input is a complex stream.  It has three outputs: 
- 1)  a stream of flags (bytes) indicating the begining of the training sequence (to be used from subsequent blocks to "chop" the incoming stream,
- 2)  a stream with the current acquired frequency offset, and
- 3)  a stream with the current acquired peak of the matched filter 
+        Description:
 
-	Internally, it consists of a user defined number of parallel matched filters (as many as the size of the freqs vector), each consistng of a frequency Xlating FIR filter with sample rate samp_rate, filter taps matched to the training sequence ts, and center frequency freqs[i]. The filter outputs are magnitude squared and passed through a max block and then through a peak detector. 
- 
-	Args:
-	     ts: the training sequence. For example, in DSSS system, it's the chip-based spread training sequence. 
-	     factor: the rise and fall factors in peak detector, which is the factor determining when a peak has started and ended.  In the peak detector, an average of the signal is calculated. When the value of the signal goes over factor*average, we start looking for a peak. When the value of the signal goes below factor*average, we stop looking for a peak. factor takes values in (0,1). 
-	     alpha: the smoothing factor of a moving average filter used in the peak detector takeng values in (0,1).
-	     samp_rate: the sample rate of the system, which is used in the freq_xlating_fir_filter.
-	     freqs: the vector of center frequencies for each matched filter. Note that for a training sequence of length Nt, each matched filter can recover a sequence with normalized frequency offset ~ 1/(2Nt).
+        This block is functionally equivalent to the frequency_timing_estimator block, except from the fact that each filter is matched to a sequence that can be written as the kronecker product of seq1 and seq2.
+
+        Args:
+	     seq1: sequence1 of kronecker filter, which is the given training sequence. 
+	     seq2: sequence2 of kronecker filter, which is the pulse for each training symbol.
+             factor: the rise and fall factors in peak detector, which is the factor determining when a peak has started and ended.  In the peak detector, an average of the signal is calculated. When the value of the signal goes over factor*average, we start looking for a peak. When the value of the signal goes below factor*average, we stop looking for a peak. factor takes values in (0,1). 
+             alpha: the smoothing factor of a moving average filter used in the peak detector takeng values in (0,1).
+             samp_rate: the sample rate of the system, which is used in the kronecker_filter.
+             freqs: the vector of center frequencies for each matched filter. Note that for a training sequence of length Nt, each matched filter can recover a sequence with normalized frequency offset ~ 1/(2Nt).
         """
 
-        gr.hier_block2.__init__(
-            self, "freq_timing_estimator",
+        gr.hier_block2.__init__(self,
+            "freq_timing_estimator",
             gr.io_signature(1, 1, gr.sizeof_gr_complex*1),
             gr.io_signaturev(3, 3, [gr.sizeof_char*1, gr.sizeof_float*1, gr.sizeof_float*1]),
         )
@@ -55,19 +56,22 @@ class freq_timing_estimator(gr.hier_block2):
         ##################################################
         # Parameters
         ##################################################
-        self.ts = ts
+        self.seq1 = seq1
+        self.seq2 = seq2
         self.factor = factor
         self.alpha = alpha
         self.samp_rate = samp_rate
         self.freqs = freqs
         self.n = n = len(freqs)
+
         ##################################################
         # Blocks
         ##################################################
         self._filter=[0]*self.n
         self._c2mag2=[0]*self.n
         for i in range(self.n):
-          self._filter[i]= filter.freq_xlating_fir_filter_ccc(1, (numpy.conjugate(self.ts[::-1])), self.freqs[i], self.samp_rate)
+          self._filter[i]= cdma.kronecker_filter(seq1,seq2,samp_rate,self.freqs[i])
+          #self._filter[i]= filter.freq_xlating_fir_filter_ccc(1, (numpy.conjugate(self.ts[::-1])), self.freqs[i], self.samp_rate)
           self._c2mag2[i] = blocks.complex_to_mag_squared(1)
 
         self.blocks_max = blocks.max_ff(1)
@@ -95,22 +99,34 @@ class freq_timing_estimator(gr.hier_block2):
         self.connect((self.blocks_sample_and_hold, 0), (self, 1))
         self.connect((self.blocks_max, 0), (self, 2))
 
-
-
-    def get_ts(self):
+    def get_seq1(self):
     	"""
-get the training sequence
+get the sequence1 of kronecker filters
     	"""
-        return self.ts
+	return self.seq1
 
+    def set_seq1(self, seq1):
+    	"""
+set identical sequence1 to all the kronecker filters 
+    	"""
+	self.seq1=seq1
+	for i in range(self.n):
+	  self._filter[i].set_sequence1((self.seq1))
 
-    def set_ts(self, ts):
+    def get_seq2(self):
     	"""
-set identical training sequence to all the frequency xlating filters . 
+get the sequence2 of kronecker filters
     	"""
-        self.ts = ts
-        for i in range(self.n):
-          self._filter[i].set_taps((numpy.conjugate(self.ts[::-1])))
+	return self.seq2
+
+    def set_seq2(self,seq2):
+    	"""
+set identical sequence1 to all the kronecker filters 
+    	"""
+	self.seq2=seq2
+	for i in range(self.n):
+	  self._filter[i].set_sequence2((self.seq2))
+
 
     def get_factor(self):
     	"""
@@ -141,25 +157,25 @@ set the smoothing factor of peak detector
 
     def get_samp_rate(self):
     	"""
-get the sample rate of frequency xlating FIR filter
+get the sample rate of kronecker filter
     	"""
         return self.samp_rate
 
     def set_samp_rate(self, samp_rate):
     	"""
-set the sample rate of frequency xlating FIR filter
+set the sample rate of kronecker filter
     	"""
         self.samp_rate = samp_rate
 
     def get_freqs(self):
     	"""
-get the center frequencies of frequency xlating FIR filters
+get the center frequencies of kronecker filters
     	"""
         return self.freqs
 
     def set_freqs(self, freqs):
     	"""
-set freqs to all the center frequencies of frequency xlating FIR filters
+set freqs to all the center frequencies of kronecker filters
     	"""
         self.freqs = freqs
         for i in range(self.n):
