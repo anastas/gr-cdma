@@ -121,7 +121,7 @@ print "\n"
 
 #trellis coding and modulation info
 
-payload_mod = [digital.constellation_qpsk(),digital.constellation_8psk_natural(),digital.constellation_16qam()]
+payload_mod = [digital.constellation_qpsk(),digital.constellation_8psk(),digital.constellation_16qam()]
 
 pdir=prefix+"/python/fsm_files/"
 fsm=[pdir+"awgn2o2_1.fsm", pdir+"awgn2o3_8ungerboecka.fsm",pdir+"awgn2o4_8_ungerboeckc.fsm"]
