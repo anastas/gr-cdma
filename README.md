@@ -18,6 +18,11 @@ For the impatient:
 1) Download gr-cdma from github
 > git clone https://github.com/anastas/gr-cdma.git
 
+2) Edit the file gr-cdma/python/cdma_parameters.py (line 97)
+and set the prefix variable with your gr-cdma trunk directory.
+
+prefix="YOUR_PREFIX_HERE/gr-cdma"  # put the prefix of your gr-cdma trunk
+
 2) Build the package
 > mkdir build_cdma
 
@@ -40,12 +45,19 @@ For the impatient:
 In the gnuradio-companion environment
 
 -- Load the hier blocks  (compile one at a time and reload each time)
+
 "amp_var_est_hier.grc", 
+
 "cdma_tx_hier.grc", 
+
 "chopper_correlator.grc", 
+
 "cdma_rx_hier.grc", 
+
 "cdma_tx_hier1.grc", 
+
 "cdma_rx_hier1.grc" 
+
 and compile them
 
 -- Reload all blocks in grc
@@ -55,7 +67,7 @@ and compile them
 Experiment with manual acq/tra, auto acq/tra, changing freq and timing offset, SNR, modulation/coding type, etc
 
 -- If you have 2 USRPs load the cdma_tx.grc and cdma_rx.grc and enjoy real-time CDMA transmission. You can also use the cdma_tx.grc and cdma_rx.grc by writting
-and reading to a fifo (first do > makefifo /tmp/cdma.fifo)
+and reading to a fifo (first do > mkfifo /tmp/cdma.fifo)
 
 This module has been tested with gnuradio 3.6.7 but the "cdma_txrx1.grc" application requires some additional functionality that is currently under review (October 2014) and will soon be incorporated in the master branch.
 
