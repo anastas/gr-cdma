@@ -100,9 +100,9 @@ if (1.0*bits_per_header)/header_mod.bits_per_symbol() != symbols_per_header:
   print "Error in evaluating symbols per header; adjusting bits per header"
   bits_per_header=(symbols_per_header+1)*header_mod.bits_per_symbol()
   symbols_per_header = bits_per_header/header_mod.bits_per_symbol()
-#header_formatter = cdma.packet_header(bits_per_header,length_tag_name,num_tag_name,header_mod.bits_per_symbol());
-
 #header_formatter = digital.packet_header_default(bits_per_header,  length_tag_name,num_tag_name,header_mod.bits_per_symbol());
+#header_formatter3 = cdma.packet_header(bits_per_header,length_tag_name,num_tag_name,header_mod.bits_per_symbol(),0,"tcm_type");
+
 #tcm_indicator_symbols_per_frame=4; #Zhe added, 4 bits are used as tcm mode indicator, it is used as a part of header.
 
 # Achilles' comment: this may change later when filler bits are introduced...

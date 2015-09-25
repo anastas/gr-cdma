@@ -86,7 +86,7 @@ class cdma_parameters:
 
 print "CDMA PARAMETERS : for adaptive modulation"
 
-prefix="/home/anastas/gr-cdma"  # put the prefix of your gr-cdma trunk
+prefix="/home/anastas/gr-cdma/"  # put the prefix of your gr-cdma trunk
 
 length_tag_name = "packet_len"
 num_tag_name = "packet_num"
@@ -100,9 +100,8 @@ if (1.0*bits_per_header)/header_mod.bits_per_symbol() != symbols_per_header:
   print "Error in evaluating symbols per header; adjusting bits per header"
   bits_per_header=(symbols_per_header+1)*header_mod.bits_per_symbol()
   symbols_per_header = bits_per_header/header_mod.bits_per_symbol()
-#header_formatter = cdma.packet_header(bits_per_header,length_tag_name,num_tag_name,header_mod.bits_per_symbol());
-
-#header_formatter = digital.packet_header_default(bits_per_header,  length_tag_name,num_tag_name,header_mod.bits_per_symbol());
+header_formatter = digital.packet_header_default(bits_per_header,  length_tag_name,num_tag_name,header_mod.bits_per_symbol());
+#header_formatter3 = cdma.packet_header2(bits_per_header,length_tag_name,num_tag_name,header_mod.bits_per_symbol(),0,"tcm_type");
 #tcm_indicator_symbols_per_frame=4; #Zhe added, 4 bits are used as tcm mode indicator, it is used as a part of header.
 
 # Achilles' comment: this may change later when filler bits are introduced...
@@ -113,11 +112,11 @@ print "\n"
 
 #trellis coding and modulation info
 
-payload_mod = [digital.constellation_qpsk(),digital.constellation_8psk()]
+payload_mod = [digital.constellation_qpsk(),]
 
 pdir=prefix+"/python/fsm_files/"
-fsm=[pdir+"awgn2o2_1.fsm", pdir+"awgn2o3_8ungerboecka.fsm"]
-uncoded_fsm=[trellis.fsm(2,2,[1,0,0,1]),trellis.fsm(3,3,[1,0,0,0,1,0,0,0,1])]
+fsm=[pdir+"awgn2o2_1.fsm",]
+uncoded_fsm=[trellis.fsm(2,2,[1,0,0,1]),]
 
 bits_per_coded_symbol=[int(math.log(trellis.fsm(fsm[i]).O(),2)) for i in range(len(payload_mod))]
 
@@ -126,8 +125,8 @@ bits_per_coded_symbol=[int(math.log(trellis.fsm(fsm[i]).O(),2)) for i in range(l
 if bits_per_coded_symbol!=[payload_mod[i].bits_per_symbol() for i in range(len(payload_mod))]:
   print "Error in selecting trellis code and modulation pairs."
 
-print "bits_per_coded_symbol =", bits_per_coded_symbol, " for [uncoded QPSK, rate 2/3 cc &8PSK] respectively.\n"
-#print "coding rates for trellis codes =", coding_rate, " for [uncoded QPSK, rate 2/3 cc &8PSK] respectively.\n"
+print "bits_per_coded_symbol =", bits_per_coded_symbol, " for [uncoded QPSK,] respectively.\n"
+#print "coding rates for trellis codes =", coding_rate, " for [uncoded QPSK,] respectively.\n"
 
 
 #payload info
@@ -160,12 +159,12 @@ redudant_bytes_percents = [(1.0*additional_bytes_per_frame[i])/(trellis_coded_pa
 print "payload_bytes_per_frame=", payload_bytes_per_frame
 print "symbols_per_frame=", symbols_per_frame
 
-print "trellis_coded_payload_symbols_per_frame=",trellis_coded_payload_symbols_per_frame, " for [uncoded QPSK, rate 2/3 cc &8PSK] respectively.\n"
-print "trellis_coded_payload_bytes_per_frame=", trellis_coded_payload_bytes_per_frame, " for [uncoded QPSK, rate 2/3 cc &8PSK] respectively.\n"
+print "trellis_coded_payload_symbols_per_frame=",trellis_coded_payload_symbols_per_frame, " for [uncoded QPSK,] respectively.\n"
+print "trellis_coded_payload_bytes_per_frame=", trellis_coded_payload_bytes_per_frame, " for [uncoded QPSK,] respectively.\n"
 
-print "additional_symbols_per_frame=",additional_symbols_per_frame, " for [uncoded QPSK, rate 2/3 cc &8PSK] respectively.\n"
-print "additional_bytes_per_frame=", additional_bytes_per_frame, " for [uncoded QPSK, rate 2/3 cc &8PSK] respectively.\n"
-print "you have wasted",redudant_bytes_percents,"percent of bytes per payload for [uncoded QPSK, rate 2/3 cc &8PSK] with this symbols_per_frame setting.\n"
+print "additional_symbols_per_frame=",additional_symbols_per_frame, " for [uncoded QPSK,] respectively.\n"
+print "additional_bytes_per_frame=", additional_bytes_per_frame, " for [uncoded QPSK,] respectively.\n"
+print "you have wasted",redudant_bytes_percents,"percent of bytes per payload for [uncoded QPSK,] with this symbols_per_frame setting.\n"
 print "\n"
 
 

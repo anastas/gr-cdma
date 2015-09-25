@@ -74,33 +74,6 @@
     </param>
   </block>
   <block>
-    <key>variable</key>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(592, 13)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>head</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>digital.packet_header_default(cp.bits_per_header,cp.length_tag_name,cp.num_tag_name, cp.header_mod.bits_per_symbol())</value>
-    </param>
-  </block>
-  <block>
     <key>blocks_add_xx</key>
     <param>
       <key>alias</key>
@@ -391,7 +364,7 @@
     </param>
     <param>
       <key>len_tag_key</key>
-      <value>"packet_len"</value>
+      <value>cp.length_tag_name</value>
     </param>
     <param>
       <key>maxoutbuf</key>
@@ -839,7 +812,7 @@
     </param>
     <param>
       <key>header_formatter</key>
-      <value>head.formatter()</value>
+      <value>cp.header_formatter.formatter()</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -855,7 +828,7 @@
     </param>
     <param>
       <key>len_tag_key</key>
-      <value>"packet_len"</value>
+      <value>cp.length_tag_name</value>
     </param>
     <param>
       <key>maxoutbuf</key>

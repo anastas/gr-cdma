@@ -1322,7 +1322,7 @@
     </param>
     <param>
       <key>len_tag_key</key>
-      <value>"packet_len"</value>
+      <value>cp.length_tag_name</value>
     </param>
     <param>
       <key>maxoutbuf</key>
