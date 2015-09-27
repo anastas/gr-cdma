@@ -108,6 +108,33 @@
     </param>
     <param>
       <key>_enabled</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(632, 29)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>head</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>cdma.packet_header2(cp.bits_per_header,cp.length_tag_name,cp.num_tag_name, cp.header_mod.bits_per_symbol(),est_tcm_type, "tcm_type")</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
       <value>True</value>
     </param>
     <param>
@@ -1287,6 +1314,49 @@
     </param>
   </block>
   <block>
+    <key>cdma_packet_headerparser_b2</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>header_formatter</key>
+      <value>head.formatter()</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(664, 1580)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>cdma_packet_headerparser_b2_0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
     <key>cdma_packet_headerparser_b2_default</key>
     <param>
       <key>alias</key>
@@ -1302,7 +1372,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -2145,6 +2215,12 @@
   </connection>
   <connection>
     <source_block_id>blocks_tag_gate_0</source_block_id>
+    <sink_block_id>cdma_packet_headerparser_b2_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_tag_gate_0</source_block_id>
     <sink_block_id>cdma_packet_headerparser_b2_default_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
@@ -2189,6 +2265,12 @@
     <source_block_id>cdma_freq_timing_estimator_0</source_block_id>
     <sink_block_id>pad_sink_1</sink_block_id>
     <source_key>1</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>cdma_packet_headerparser_b2_0</source_block_id>
+    <sink_block_id>zzz_pad_sink_0_1_0_1_0</sink_block_id>
+    <source_key>header_data</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>

@@ -84,16 +84,16 @@ class cdma_parameters:
 	"""
 
 
-print "CDMA PARAMETERS : for adaptive modulation"
+print "CDMA PARAMETERS : for adaptive coded modulation"
 
 prefix="/home/anastas/gr-cdma/"  # put the prefix of your gr-cdma trunk
 
-length_tag_name = "packet_len"
-num_tag_name = "packet_num"
+length_tag_name = "cdma_packet_len"
+num_tag_name = "cdma_packet_num"
 
+#==========================================
 # header info
-bits_per_header=12+12+8+4;  #Zhe Changed 12+16+8 to 12+12+8 because only 12 bits not 16 bits are needed. 4 bits indicating modulation and code mode.
-
+bits_per_header=12+12+8+4;  #4 bits indicating modulation and code mode.
 header_mod = digital.constellation_bpsk();
 symbols_per_header = bits_per_header/header_mod.bits_per_symbol()
 if (1.0*bits_per_header)/header_mod.bits_per_symbol() != symbols_per_header:
@@ -101,32 +101,32 @@ if (1.0*bits_per_header)/header_mod.bits_per_symbol() != symbols_per_header:
   bits_per_header=(symbols_per_header+1)*header_mod.bits_per_symbol()
   symbols_per_header = bits_per_header/header_mod.bits_per_symbol()
 header_formatter = digital.packet_header_default(bits_per_header,  length_tag_name,num_tag_name,header_mod.bits_per_symbol());
-#header_formatter3 = cdma.packet_header2(bits_per_header,length_tag_name,num_tag_name,header_mod.bits_per_symbol(),0,"tcm_type");
+#header_formatter = cdma.packet_header2(bits_per_header,length_tag_name,num_tag_name,header_mod.bits_per_symbol(),0,"tcm_type");
 #tcm_indicator_symbols_per_frame=4; #Zhe added, 4 bits are used as tcm mode indicator, it is used as a part of header.
-
 # Achilles' comment: this may change later when filler bits are introduced...
 print "bits_per_header=",bits_per_header
 print "symbols_per_header=",symbols_per_header
 #print "tcm_indicator_symbols_per_frame=",tcm_indicator_symbols_per_frame
 print "\n"
 
+#==========================================
 #trellis coding and modulation info
-
-payload_mod = [digital.constellation_qpsk(),]
+modulation_names=["uncoded QPSK", "rate 2/3 cc &8PSK", "rate 2/4 cc &16QAM"]
+payload_mod = [digital.constellation_qpsk(),digital.constellation_8psk(),digital.constellation_16qam()]
 
 pdir=prefix+"/python/fsm_files/"
-fsm=[pdir+"awgn2o2_1.fsm",]
-uncoded_fsm=[trellis.fsm(2,2,[1,0,0,1]),]
+fsm=[pdir+"awgn2o2_1.fsm", pdir+"awgn2o3_8ungerboecka.fsm",pdir+"awgn2o4_8_ungerboeckc.fsm"]
+uncoded_fsm=[trellis.fsm(2,2,[1,0,0,1]),trellis.fsm(3,3,[1,0,0,0,1,0,0,0,1]),trellis.fsm(4,4,[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1])]
 
 bits_per_coded_symbol=[int(math.log(trellis.fsm(fsm[i]).O(),2)) for i in range(len(payload_mod))]
 
-#coding_rate=[Fraction(int(math.log(trellis.fsm(fsm[i]).I(),2)), int(math.log(trellis.fsm(fsm[i]).O(),2))) for i in range(len(fsm))]
+coding_rate=[Fraction(int(math.log(trellis.fsm(fsm[i]).I(),2)), int(math.log(trellis.fsm(fsm[i]).O(),2))) for i in range(len(fsm))]
 
 if bits_per_coded_symbol!=[payload_mod[i].bits_per_symbol() for i in range(len(payload_mod))]:
   print "Error in selecting trellis code and modulation pairs."
 
-print "bits_per_coded_symbol =", bits_per_coded_symbol, " for [uncoded QPSK,] respectively.\n"
-#print "coding rates for trellis codes =", coding_rate, " for [uncoded QPSK,] respectively.\n"
+print "bits_per_coded_symbol =", bits_per_coded_symbol, " for ", modulation_names, " respectively.\n"
+#print "coding rates for trellis codes =", coding_rate, " for ", modulation_names, " respectively.\n"
 
 
 #payload info
@@ -159,15 +159,17 @@ redudant_bytes_percents = [(1.0*additional_bytes_per_frame[i])/(trellis_coded_pa
 print "payload_bytes_per_frame=", payload_bytes_per_frame
 print "symbols_per_frame=", symbols_per_frame
 
-print "trellis_coded_payload_symbols_per_frame=",trellis_coded_payload_symbols_per_frame, " for [uncoded QPSK,] respectively.\n"
-print "trellis_coded_payload_bytes_per_frame=", trellis_coded_payload_bytes_per_frame, " for [uncoded QPSK,] respectively.\n"
+print "trellis_coded_payload_symbols_per_frame=",trellis_coded_payload_symbols_per_frame
+print "trellis_coded_payload_bytes_per_frame=", trellis_coded_payload_bytes_per_frame, " for ", modulation_names, " respectively.\n"
 
-print "additional_symbols_per_frame=",additional_symbols_per_frame, " for [uncoded QPSK,] respectively.\n"
-print "additional_bytes_per_frame=", additional_bytes_per_frame, " for [uncoded QPSK,] respectively.\n"
-print "you have wasted",redudant_bytes_percents,"percent of bytes per payload for [uncoded QPSK,] with this symbols_per_frame setting.\n"
+print "additional_symbols_per_frame=",additional_symbols_per_frame, " for ", modulation_names, " respectively.\n"
+print "additional_bytes_per_frame=", additional_bytes_per_frame, " for ", modulation_names, " respectively.\n"
+print "you have wasted ",redudant_bytes_percents," percent of bytes per payload for ", modulation_names, " respectively, with this symbols_per_frame setting.\n"
 print "\n"
 
 
+
+#==========================================
 # training info
 numpy.random.seed(666)
 training_long = (2*numpy.random.randint(0,2,symbols_per_frame)-1+0j)
@@ -176,11 +178,12 @@ training_length = symbols_per_frame; # number of non-zero training symbols
 if training_length > symbols_per_frame:
   print "Error in training length evaluation"
   training_length = symbols_per_frame
-training=training_long[0:training_length];
+training=training_long[0:training_length]; # we have to add 0s
 training_percent = 50; # percentage of transmitted power for training
 print "training_length =", training_length
 print "\n"
 
+#==========================================
 # cdma parameters
 chips_per_symbol=8;	
 chips_per_frame = chips_per_symbol*symbols_per_frame
@@ -190,16 +193,17 @@ pulse_data =numpy.array((-1,1,-1,1,-1,-1,-1,-1))+0j
 # scaling factor at the receiver
 rx_scaling_factor=[1,1,(float(training_percent)/100)**0.5*chips_per_symbol]
 
+#==========================================
 #timing parameters
 peak_o_var = training_percent*symbols_per_frame*chips_per_symbol/(100+training_percent) #peak over variance for matched filter output 
 EsN0dBthreshold = 10; 	# the threshold of switching from Acquisition to Tracking mode automatically.
 epsilon = 1e-6; 	#tolerance
-n_filt = 21;		# numbers of filters for the frequency/timing acquisition block
+n_filt = 11;		# numbers of filters for the frequency/timing acquisition block
 df1=1.0/(2*symbols_per_frame*chips_per_symbol) # Normalized (to chip rate) frequency interval due to training length
 pll_loop_bw=0.005 # normailzed to symbol rate
 df2=pll_loop_bw/chips_per_symbol # Normalized (to chip rate) frequency interval due to PLL
-#df=max(df1,df2) # either a different frequency branch or the PLL will correct for it
-df=df1
+df=max(df1,df2/2) # either a different frequency branch or the PLL will correct for it
+#df=df1
 freqs=[(2*k-n_filt+1)*df/2 for k in range(n_filt)];	#Normalized frequency list.
 
 #print "Normalized frequency interval = max(", df1, " , ", df2, ")=", df
