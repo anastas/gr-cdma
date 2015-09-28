@@ -39,14 +39,14 @@ prefix="YOUR_PREFIX_HERE/gr-cdma"  # put the prefix of your gr-cdma trunk
 > sudo ldconfig
 
 
-3) compile hierarchical blocks and play with built in app
+3) compile hierarchical blocks and play with built in apps
 > cd gr-cdma/apps
 
 > gnuradio-companion &
 
 In the gnuradio-companion environment
 
--- Load the hier blocks  (compile one at a time and reload each time)
+-- For each of the blocks listed below, open them into gnuradio-companion and compile each one (using the button in GRC that looks like a sphere and a pyramid with an arrow between them) and then reload each time (using the button that looks like a circular arrow)
 
 "amp_var_est_hier.grc", 
 
@@ -60,8 +60,6 @@ In the gnuradio-companion environment
 
 "cdma_rx_hier1.grc" 
 
-and compile them
-
 -- Reload all blocks in grc
 
 -- Load the application "cdma_txrx.grc" or "cdma_txrx1.grc" and have fun
@@ -71,5 +69,4 @@ Experiment with manual acq/tra, auto acq/tra, changing freq and timing offset, S
 -- If you have 2 USRPs load the cdma_tx.grc and cdma_rx.grc and enjoy real-time CDMA transmission. You can also use the cdma_tx.grc and cdma_rx.grc by writting
 and reading to a fifo (first do > mkfifo /tmp/cdma.fifo)
 
-This module has been tested with gnuradio 3.6.7 but the "cdma_txrx1.grc" application requires some additional functionality that is currently under review (October 2014) and will soon be incorporated in the master branch.
-
+This module has been tested with gnuradio 3.7.8 
