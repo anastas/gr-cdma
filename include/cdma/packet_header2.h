@@ -63,6 +63,7 @@ namespace gr {
       ~packet_header2();
 
       void set_tcm_type(int tcm_type){d_tcm_type = tcm_type; };
+      pmt::pmt_t num_tag_key() { return d_num_tag_key; };
 
       //pmt::pmt_t len_tag_key() { return d_len_tag_key; };
 

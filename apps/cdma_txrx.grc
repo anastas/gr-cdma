@@ -1190,7 +1190,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>10e3</value>
+      <value>100e3</value>
     </param>
   </block>
   <block>

@@ -108,7 +108,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>1</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -1333,7 +1333,7 @@
     </param>
     <param>
       <key>header_formatter</key>
-      <value>head.formatter()</value>
+      <value>cdma.packet_header2(cp.bits_per_header,cp.length_tag_name,cp.num_tag_name, cp.header_mod.bits_per_symbol(),0, "tcm_type").formatter()</value>
     </param>
     <param>
       <key>_coordinate</key>

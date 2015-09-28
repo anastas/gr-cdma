@@ -22,9 +22,9 @@ def _$(id)_msg_probe():
 			val0 = self.$(msg_block_id()).get_message(num_msg-1)
 			if not(pmt.is_bool(val0)):
 				val1 = pmt.to_python(val0)
-				print "the message is", val1
+				#print "the message is", val1
 				val2 = val1.get('$(code_type_tag())')
-				print "the est_tcm type is", val2
+				#print "the est_tcm type is", val2
 				try: self.set_$(id)(val2)
 				except AttributeError, e: pass
 				time.sleep(1.0/($poll_rate))

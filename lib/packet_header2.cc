@@ -23,6 +23,7 @@
 #include "config.h"
 #endif
 
+#include <stdio.h>
 #include <string.h>
 #include <cdma/packet_header2.h>
 
@@ -73,7 +74,7 @@ namespace gr {
       packet_len &= 0x0FFF;
       d_crc_impl.reset();
       d_crc_impl.process_bytes((void const *) &packet_len, 2);
-      d_crc_impl.process_bytes((void const *) &d_tcm_type, 4);
+      d_crc_impl.process_bytes((void const *) &d_tcm_type, 1);
       d_crc_impl.process_bytes((void const *) &d_header_number, 2);
       unsigned char crc = d_crc_impl();
 
@@ -129,6 +130,7 @@ namespace gr {
 	for (int i = 0; i < 12 && k < d_header_len; i += d_bits_per_byte, k++) {
 	  header_num |= (((int) in[k]) & d_mask) << i;
 	}
+        //printf("HEADER NUMBER = %d\n",header_num);
 	tag.key = d_num_tag_key;
 	tag.value = pmt::from_long(header_num);
 	tags.push_back(tag);
@@ -139,7 +141,7 @@ namespace gr {
 
       d_crc_impl.reset();
       d_crc_impl.process_bytes((void const *) &header_len, 2);
-      d_crc_impl.process_bytes((void const *) &tcm_type, 4);
+      d_crc_impl.process_bytes((void const *) &tcm_type, 1);
       d_crc_impl.process_bytes((void const *) &header_num, 2);
       unsigned char crc_calcd = d_crc_impl();
       for (int i = 0; i < 8 && k < d_header_len; i += d_bits_per_byte, k++) {

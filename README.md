@@ -18,7 +18,7 @@ For the impatient:
 1) Download gr-cdma from github
 > git clone https://github.com/anastas/gr-cdma.git
 
-2) Edit the file gr-cdma/python/cdma_parameters.py (line 97)
+2) Edit the file gr-cdma/python/cdma_parameters.py
 and set the prefix variable with your gr-cdma trunk directory.
 
 prefix="YOUR_PREFIX_HERE/gr-cdma"  # put the prefix of your gr-cdma trunk
