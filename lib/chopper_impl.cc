@@ -99,10 +99,14 @@ namespace gr {
         }
 
         // if you get here a flag was found before work was called
+       
+        // with this modification we do not need set_output_multiple 
+        if(noutput_items<d_lengtho)
+          return 0;
 
         memcpy(out,in_data,d_itemsize*d_lengtho);
         //printf("Copying No  and consuming Ni\n");
-        consume_each(d_lengthi);
+        consume_each(d_lengthi); // I know they are there because of forecast
         d_found=false;
         return d_lengtho;
 

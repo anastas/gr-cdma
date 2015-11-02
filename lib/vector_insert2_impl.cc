@@ -47,8 +47,10 @@ namespace gr {
       d_periodicity(periodicity)
     {
       assert(offset >=0);
-      assert(offset <= periodicity);
-      vector_insert2_impl::set_output_multiple( periodicity + data.size() );
+      assert(offset <= periodicity); // equality so that you can choose to put it at the very end (even for the first packet)
+      // get rid of the set_output_multiple so that buffer allocation is more flexible. Careful this way the scheduler will never complete its task if # of input symbols is  less than "periodicity"
+      //vector_insert2_impl::set_output_multiple( periodicity + data.size() );
+      vector_insert2_impl::set_relative_rate((periodicity+data.size())/((double)periodicity));
     }
 
     /*
@@ -57,6 +59,7 @@ namespace gr {
     vector_insert2_impl::~vector_insert2_impl()
     {
     }
+
 
     void
     vector_insert2_impl::forecast (int noutput_items, gr_vector_int &ninput_items_required)
@@ -74,7 +77,7 @@ namespace gr {
         gr_complex *out = (gr_complex *) output_items[0];
 
         int p_out=d_periodicity + d_data.size();
-        assert(noutput_items%p_out==0);
+        //assert(noutput_items%p_out==0);
 
 
         // Do <+signal processing+>
@@ -89,10 +92,12 @@ namespace gr {
 
         // Tell runtime system how many input items we consumed on
         // each input stream.
-        consume_each ((noutput_items/p_out)*d_periodicity);
+        //consume_each ((noutput_items/p_out)*d_periodicity);
+        consume_each (k*d_periodicity); // this will work even without the set_output_multiple
 
         // Tell runtime system how many output items we produced.
-        return noutput_items;
+        //return noutput_items;
+        return k*p_out; // this will work even without the set_output_multiple
     }
 
   } /* namespace cdma */

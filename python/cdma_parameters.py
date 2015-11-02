@@ -104,10 +104,10 @@ header_formatter = digital.packet_header_default(bits_per_header,  length_tag_na
 #header_formatter = cdma.packet_header2(bits_per_header,length_tag_name,num_tag_name,header_mod.bits_per_symbol(),0,"tcm_type");
 #tcm_indicator_symbols_per_frame=4; #Zhe added, 4 bits are used as tcm mode indicator, it is used as a part of header.
 # Achilles' comment: this may change later when filler bits are introduced...
-print "bits_per_header=",bits_per_header
-print "symbols_per_header=",symbols_per_header
+#print "bits_per_header=",bits_per_header
+#print "symbols_per_header=",symbols_per_header
 #print "tcm_indicator_symbols_per_frame=",tcm_indicator_symbols_per_frame
-print "\n"
+#print "\n"
 
 #==========================================
 #trellis coding and modulation info
@@ -125,7 +125,7 @@ coding_rate=[Fraction(int(math.log(trellis.fsm(fsm[i]).I(),2)), int(math.log(tre
 if bits_per_coded_symbol!=[payload_mod[i].bits_per_symbol() for i in range(len(payload_mod))]:
   print "Error in selecting trellis code and modulation pairs."
 
-print "bits_per_coded_symbol =", bits_per_coded_symbol, " for ", modulation_names, " respectively.\n"
+#print "bits_per_coded_symbol =", bits_per_coded_symbol, " for ", modulation_names, " respectively.\n"
 #print "coding rates for trellis codes =", coding_rate, " for ", modulation_names, " respectively.\n"
 
 
@@ -156,16 +156,16 @@ additional_bytes_per_frame = [additional_symbols_per_frame * header_mod.bits_per
 trellis_coded_payload_bytes_per_frame = [trellis_coded_payload_symbols_per_frame*payload_mod[i].bits_per_symbol()/8 for i in range(len(payload_mod))]
 
 redudant_bytes_percents = [(1.0*additional_bytes_per_frame[i])/(trellis_coded_payload_bytes_per_frame[i]+additional_bytes_per_frame[i]) for i in range(len(additional_bytes_per_frame))];
-print "payload_bytes_per_frame=", payload_bytes_per_frame
-print "symbols_per_frame=", symbols_per_frame
+#print "payload_bytes_per_frame=", payload_bytes_per_frame
+#print "symbols_per_frame=", symbols_per_frame
 
-print "trellis_coded_payload_symbols_per_frame=",trellis_coded_payload_symbols_per_frame
-print "trellis_coded_payload_bytes_per_frame=", trellis_coded_payload_bytes_per_frame, " for ", modulation_names, " respectively.\n"
+#print "trellis_coded_payload_symbols_per_frame=",trellis_coded_payload_symbols_per_frame
+#print "trellis_coded_payload_bytes_per_frame=", trellis_coded_payload_bytes_per_frame, " for ", modulation_names, " respectively.\n"
 
-print "additional_symbols_per_frame=",additional_symbols_per_frame, " for ", modulation_names, " respectively.\n"
-print "additional_bytes_per_frame=", additional_bytes_per_frame, " for ", modulation_names, " respectively.\n"
-print "you have wasted ",redudant_bytes_percents," percent of bytes per payload for ", modulation_names, " respectively, with this symbols_per_frame setting.\n"
-print "\n"
+#print "additional_symbols_per_frame=",additional_symbols_per_frame, " for ", modulation_names, " respectively.\n"
+#print "additional_bytes_per_frame=", additional_bytes_per_frame, " for ", modulation_names, " respectively.\n"
+#print "you have wasted ",redudant_bytes_percents," percent of bytes per payload for ", modulation_names, " respectively, with this symbols_per_frame setting.\n"
+#print "\n"
 
 
 
@@ -180,8 +180,8 @@ if training_length > symbols_per_frame:
   training_length = symbols_per_frame
 training=training_long[0:training_length]; # we have to add 0s
 training_percent = 50; # percentage of transmitted power for training
-print "training_length =", training_length
-print "\n"
+#print "training_length =", training_length
+#print "\n"
 
 #==========================================
 # cdma parameters
@@ -207,5 +207,5 @@ df=max(df1,df2/2) # either a different frequency branch or the PLL will correct 
 freqs=[(2*k-n_filt+1)*df/2 for k in range(n_filt)];	#Normalized frequency list.
 
 #print "Normalized frequency interval = max(", df1, " , ", df2, ")=", df
-print "Normalized frequency interval = ", df
-print "Normalized frequency unsertainty range = [", freqs[0], " , ", freqs[-1], "]"
+#print "Normalized frequency interval = ", df
+#print "Normalized frequency unsertainty range = [", freqs[0], " , ", freqs[-1], "]"
