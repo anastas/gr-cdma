@@ -4,12 +4,11 @@
   <key>cdma_freq_timing_estimator</key>
   <category>cdma</category>
   <import>import cdma</import>
-  <make>cdma.freq_timing_estimator($seq1, $seq2, $factor, $alpha, $samp_rate, $freqs)</make>
+  <make>cdma.freq_timing_estimator($seq1, $seq2, $factor, $alpha, $freqs)</make>
   <callback>set_seq1($seq1)</callback>
   <callback>set_seq2($seq2)</callback>
   <callback>set_factor($factor)</callback>
   <callback>set_alpha($alpha)</callback>
-  <callback>set_samp_rate($samp_rate)</callback>
   <callback>set_freqs($freqs)</callback>
 
   <!-- Make one 'param' node for every Parameter you want settable from the GUI.
@@ -44,12 +43,6 @@
     <name>alpha</name>
     <key>alpha</key>
     <value>0.01</value>
-    <type>raw</type>
-  </param>
-  <param>
-    <name>samp_rate</name>
-    <key>samp_rate</key>
-    <value>0</value>
     <type>raw</type>
   </param>
   <param>
