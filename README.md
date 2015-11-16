@@ -56,13 +56,21 @@ In the gnuradio-companion environment
 
 "cdma_rx_hier.grc", 
 
+-- Reload all blocks in grc
+
+-- Load the application "cdma_txrx.grc" and have fun
+
+Experiment with manual acq/tra, auto acq/tra, changing freq and timing offset, SNR, etc
+
+-- Once you understand this you can also build the adaptive modulation/coding version of this app
+
+-- For each of the blocks listed below, open them into gnuradio-companion and compile each one (using the button in GRC that looks like a sphere and a pyramid with an arrow between them) and then reload each time (using the button that looks like a circular arrow)
+
 "cdma_tx_hier1.grc", 
 
 "cdma_rx_hier1.grc" 
 
--- Reload all blocks in grc
-
--- Load the application "cdma_txrx.grc" or "cdma_txrx1.grc" and have fun
+-- Load the application "cdma_txrx1.grc" and have fun
 
 Experiment with manual acq/tra, auto acq/tra, changing freq and timing offset, SNR, modulation/coding type, etc
 
