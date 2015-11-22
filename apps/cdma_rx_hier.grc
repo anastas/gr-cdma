@@ -2214,7 +2214,7 @@
     <source_block_id>digital_packet_headerparser_b_0</source_block_id>
     <sink_block_id>zzz_pad_sink_0_1_0_1_0</sink_block_id>
     <source_key>header_data</source_key>
-    <sink_key>in</sink_key>
+    <sink_key>0</sink_key>
   </connection>
   <connection>
     <source_block_id>pad_source_0</source_block_id>
