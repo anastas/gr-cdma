@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<?grc format='1' created='3.7.9'?>
+<?grc format='1' created='3.7.9rc1'?>
 <flow_graph>
   <timestamp>Fri Mar 14 16:40:04 2014</timestamp>
   <block>
@@ -39,6 +39,10 @@
     <param>
       <key>generate_options</key>
       <value>hb</value>
+    </param>
+    <param>
+      <key>hier_block_src_path</key>
+      <value>.:</value>
     </param>
     <param>
       <key>id</key>
@@ -1231,10 +1235,6 @@
       <value>freqs</value>
     </param>
     <param>
-      <key>samp_rate</key>
-      <value>1</value>
-    </param>
-    <param>
       <key>seq1</key>
       <value>(0+0j,) if acq==0 else cp.training[::-1]</value>
     </param>
@@ -2214,7 +2214,7 @@
     <source_block_id>digital_packet_headerparser_b_0</source_block_id>
     <sink_block_id>zzz_pad_sink_0_1_0_1_0</sink_block_id>
     <source_key>header_data</source_key>
-    <sink_key>0</sink_key>
+    <sink_key>in</sink_key>
   </connection>
   <connection>
     <source_block_id>pad_source_0</source_block_id>
