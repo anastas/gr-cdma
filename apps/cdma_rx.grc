@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<?grc format='1' created='3.7.9'?>
+<?grc format='1' created='3.7.10'?>
 <flow_graph>
   <timestamp>Fri Feb 28 18:19:42 2014</timestamp>
   <block>
@@ -39,6 +39,10 @@
     <param>
       <key>generate_options</key>
       <value>wx_gui</value>
+    </param>
+    <param>
+      <key>hier_block_src_path</key>
+      <value>.:</value>
     </param>
     <param>
       <key>id</key>
@@ -89,7 +93,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1006, 19)</value>
+      <value>(840, 21)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -128,7 +132,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1031, 89)</value>
+      <value>(1032, 215)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -171,7 +175,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(359, 169)</value>
+      <value>(352, 154)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -222,7 +226,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1177, 18)</value>
+      <value>(976, 21)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -347,7 +351,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(859, 90)</value>
+      <value>(1048, 119)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -382,7 +386,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(838, 19)</value>
+      <value>(672, 21)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -417,7 +421,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(806, 190)</value>
+      <value>(376, 298)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -491,11 +495,11 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(863, 421)</value>
+      <value>(1104, 21)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -534,7 +538,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(970, 413)</value>
+      <value>(872, 383)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -581,7 +585,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1128, 411)</value>
+      <value>(872, 287)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -671,7 +675,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(974, 337)</value>
+      <value>(864, 206)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -714,7 +718,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(642, 128)</value>
+      <value>(704, 154)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -722,7 +726,7 @@
     </param>
     <param>
       <key>grid_pos</key>
-      <value></value>
+      <value>4,0,1,1</value>
     </param>
     <param>
       <key>id</key>
@@ -747,6 +751,53 @@
     <param>
       <key>type</key>
       <value>radio_buttons</value>
+    </param>
+  </block>
+  <block>
+    <key>variable_static_text</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>converver</key>
+      <value>int_converter</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>cp.n_filt</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>formatter</key>
+      <value>None</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(856, 111)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>grid_pos</key>
+      <value></value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>n_filt</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>n_filt</value>
+    </param>
+    <param>
+      <key>notebook</key>
+      <value></value>
     </param>
   </block>
   <block>
@@ -823,7 +874,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(643, 6)</value>
+      <value>(536, 297)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -831,7 +882,7 @@
     </param>
     <param>
       <key>grid_pos</key>
-      <value></value>
+      <value>3,0,1,1</value>
     </param>
     <param>
       <key>id</key>
@@ -963,7 +1014,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(963, 228)</value>
+      <value>(536, 176)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -971,7 +1022,7 @@
     </param>
     <param>
       <key>grid_pos</key>
-      <value></value>
+      <value>2,0,1,1</value>
     </param>
     <param>
       <key>id</key>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<?grc format='1' created='3.7.8'?>
+<?grc format='1' created='3.7.10'?>
 <flow_graph>
   <timestamp>Thu Mar  6 15:02:15 2014</timestamp>
   <block>
@@ -7,10 +7,6 @@
     <param>
       <key>author</key>
       <value>Achilleas Anastasopoulos, Zhe Feng</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
     </param>
     <param>
       <key>window_size</key>
@@ -45,6 +41,10 @@
       <value>wx_gui</value>
     </param>
     <param>
+      <key>hier_block_src_path</key>
+      <value>.:</value>
+    </param>
+    <param>
       <key>id</key>
       <value>cdma_tx</value>
     </param>
@@ -53,8 +53,16 @@
       <value>0</value>
     </param>
     <param>
+      <key>qt_qss_theme</key>
+      <value></value>
+    </param>
+    <param>
       <key>realtime_scheduling</key>
       <value></value>
+    </param>
+    <param>
+      <key>run_command</key>
+      <value>{python} -u {filename}</value>
     </param>
     <param>
       <key>run_options</key>
@@ -316,7 +324,7 @@
     </param>
     <param>
       <key>min</key>
-      <value>cp.freqs[0]*samp_rate</value>
+      <value>cp.freqs[0]*samp_rate-1.0e-6</value>
     </param>
     <param>
       <key>notebook</key>
@@ -816,7 +824,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(496, 328)</value>
+      <value>(496, 321)</value>
     </param>
     <param>
       <key>_rotation</key>
