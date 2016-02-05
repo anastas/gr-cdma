@@ -1,0 +1,25 @@
+<block>
+  <name>amp_var_est</name>
+  <key>cdma_amp_var_est</key>
+  <category>cdma</category>
+  <import>import cdma</import>
+  <make>cdma.amp_var_est($alpha)</make>
+	<callback>set_alpha($alpha)</callback>
+  <param>
+    <name>alpha</name>
+    <key>alpha</key>
+    <type>float</type>
+  </param>
+  <sink>
+    <name>in</name>
+    <type>complex</type>
+  </sink>
+  <source>
+    <name>amp2</name>
+    <type>float</type>
+  </source>
+  <source>
+    <name>noise var</name>
+    <type>float</type>
+  </source>
+</block>

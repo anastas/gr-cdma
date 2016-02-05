@@ -41,6 +41,10 @@
       <value>wx_gui</value>
     </param>
     <param>
+      <key>hier_block_src_path</key>
+      <value>.:</value>
+    </param>
+    <param>
       <key>id</key>
       <value>cdma_txrx</value>
     </param>
