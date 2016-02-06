@@ -26,5 +26,6 @@ install(FILES
     vector_insert2.h
     packet_header2.h
     packet_headerparser_b2.h
-    flag_gen.h DESTINATION include/cdma
+    flag_gen.h
+    amp_var_est.h DESTINATION include/cdma
 )
