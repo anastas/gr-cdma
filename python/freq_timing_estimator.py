@@ -61,6 +61,7 @@ frequency timing estimator class does frequency/timing acquisition from scratch.
         self.alpha = alpha
         self.freqs = freqs
         self.n = n = len(freqs)
+        self.on = 1
 
         ##################################################
         # Blocks
@@ -68,12 +69,13 @@ frequency timing estimator class does frequency/timing acquisition from scratch.
         self._filter=[0]*self.n
         self._c2mag2=[0]*self.n
         for i in range(self.n):
-          self._filter[i]= cdma.kronecker_filter(seq1,seq2,1,self.freqs[i])
+          #self._filter[i]= cdma.kronecker_filter(seq1,seq2,1,self.freqs[i])
           #self._filter[i]= filter.freq_xlating_fir_filter_ccc(1, numpy.kron(seq1,seq2), self.freqs[i], 1)
+          self._filter[i]= filter.freq_xlating_fft_filter_ccc(1, numpy.kron(seq1,seq2), self.freqs[i], 1)
           self._c2mag2[i] = blocks.complex_to_mag_squared(1)
 
         self.blocks_max = blocks.max_ff(1)
-        self.blocks_peak_detector = blocks.peak_detector_fb(self.factor, self.factor, 0, self.alpha)
+        self.blocks_peak_detector = cdma.switched_peak_detector_fb(self.factor, self.factor, 0, self.alpha, self.on)
 
         self.blocks_argmax = blocks.argmax_fs(1)
         self.blocks_null_sink = blocks.null_sink(gr.sizeof_short*1)
@@ -109,8 +111,14 @@ set identical sequence1 to all the kronecker filters
     	"""
 	self.seq1=seq1
 	for i in range(self.n):
-	  self._filter[i].set_sequence1((self.seq1))
-	  #self._filter[i].set_taps(numpy.kron(self.seq1,self.seq2))
+	  #self._filter[i].set_sequence1((self.seq1))
+	  self._filter[i].set_taps(numpy.kron(self.seq1,self.seq2))
+        if len(seq1)==1:
+          self.on = 0
+        else:
+          self.on = 1
+        self.blocks_peak_detector.set_on(self.on)
+
 
     def get_seq2(self):
     	"""
@@ -124,8 +132,8 @@ set identical sequence1 to all the kronecker filters
     	"""
 	self.seq2=seq2
 	for i in range(self.n):
-	  self._filter[i].set_sequence2((self.seq2))
-	  #self._filter[i].set_taps(numpy.kron(self.seq1,self.seq2))
+	  #self._filter[i].set_sequence2((self.seq2))
+	  self._filter[i].set_taps(numpy.kron(self.seq1,self.seq2))
 
 
     def get_factor(self):
@@ -168,5 +176,3 @@ set freqs to all the center frequencies of kronecker filters
         self.freqs = freqs
         for i in range(self.n):
           self._filter[i].set_center_freq(self.freqs[i])
-
-

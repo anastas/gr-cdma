@@ -29,7 +29,8 @@ list(APPEND cdma_sources
     packet_headerparser_b2_impl.cc
     chopper_impl.cc
     vector_insert2_impl.cc
-    flag_gen_impl.cc )
+    flag_gen_impl.cc
+    switched_peak_detector_fb_impl.cc )
 
 add_library(gnuradio-cdma SHARED ${cdma_sources})
 target_link_libraries(gnuradio-cdma ${Boost_LIBRARIES} ${GNURADIO_ALL_LIBRARIES})
