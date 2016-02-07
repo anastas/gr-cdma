@@ -76,15 +76,15 @@ namespace gr {
       // Do <+signal processing+>
 
 			for(int k=0;k<no;k++) {
-        float x=in[k].real(); // check this
+        float x=in[k].real();
 			  float tmp=x*x;
 			  pre0 = d_alpha*tmp + (1-d_alpha)*pre0;
 
         pre1=d_alpha*x + (1-d_alpha)*pre1;
 			  tmp = pre1*pre1;
 
-			  out0[k] = pre0 - tmp;
-			  out1[k] = tmp;
+				out0[k] = tmp;
+			  out1[k] = pre0 - tmp;
 			}
 
       // Tell runtime system how many output items we produced.
