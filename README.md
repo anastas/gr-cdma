@@ -48,8 +48,6 @@ In the gnuradio-companion environment
 
 -- For each of the blocks listed below, open them into gnuradio-companion and compile each one (using the button in GRC that looks like a sphere and a pyramid with an arrow between them) and then reload each time (using the button that looks like a circular arrow)
 
-"amp_var_est_hier.grc", 
-
 "cdma_tx_hier.grc", 
 
 "chopper_correlator.grc", 

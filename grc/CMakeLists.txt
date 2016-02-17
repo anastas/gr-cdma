@@ -25,5 +25,6 @@ install(FILES
     cdma_flag_gen.xml
     cdma_kronecker_filter.xml
     cdma_freq_timing_estimator.xml
+    cdma_amp_var_est.xml
     cdma_switched_peak_detector_fb.xml DESTINATION share/gnuradio/grc/blocks
 )

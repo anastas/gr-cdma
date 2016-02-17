@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<?grc format='1' created='3.7.9'?>
+<?grc format='1' created='3.7.10'?>
 <flow_graph>
   <timestamp>Thu Mar  6 14:35:45 2014</timestamp>
   <block>
@@ -39,6 +39,10 @@
     <param>
       <key>generate_options</key>
       <value>hb</value>
+    </param>
+    <param>
+      <key>hier_block_src_path</key>
+      <value>.:</value>
     </param>
     <param>
       <key>id</key>
@@ -89,7 +93,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(580, 14)</value>
+      <value>(688, 69)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -116,7 +120,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(502, 15)</value>
+      <value>(616, 69)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -143,7 +147,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(658, 13)</value>
+      <value>(760, 69)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -225,7 +229,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>100</value>
+      <value>10</value>
     </param>
   </block>
   <block>
@@ -268,7 +272,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>15</value>
+      <value>8</value>
     </param>
   </block>
   <block>
@@ -458,7 +462,7 @@
     </param>
     <param>
       <key>delay</key>
-      <value>(N-1)*Q+pulse_l-1</value>
+      <value>(N-1)*Q</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -498,6 +502,61 @@
     </param>
   </block>
   <block>
+    <key>blocks_delay</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>delay</key>
+      <value>(N-1)*Q+pulse_l-1</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(288, 92)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>blocks_delay_0_0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>num_ports</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>complex</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+  </block>
+  <block>
     <key>blocks_keep_m_in_n</key>
     <param>
       <key>alias</key>
@@ -513,7 +572,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -568,7 +627,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -933,7 +992,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -984,11 +1043,11 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(376, 270)</value>
+      <value>(384, 278)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1663,7 +1722,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(405, 14)</value>
+      <value>(384, 13)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1687,7 +1746,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>15*(0,)</value>
+      <value>8*(0,)</value>
     </param>
   </block>
   <block>
@@ -1706,7 +1765,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(820, 13)</value>
+      <value>(1032, 13)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1730,7 +1789,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>15*(0,)</value>
+      <value>8*(0,)</value>
     </param>
   </block>
   <block>
@@ -1749,7 +1808,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(736, 7)</value>
+      <value>(928, 6)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1837,6 +1896,12 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
+    <source_block_id>blocks_delay_0_0</source_block_id>
+    <sink_block_id>cdma_chopper_1</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
     <source_block_id>blocks_keep_m_in_n_0</source_block_id>
     <sink_block_id>decimated_training</sink_block_id>
     <source_key>0</source_key>
@@ -1903,6 +1968,18 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
+    <source_block_id>cdma_chopper_1</source_block_id>
+    <sink_block_id>fir_filter_xxx_0_0_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>cdma_chopper_1</source_block_id>
+    <sink_block_id>fir_filter_xxx_0_0_0_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
     <source_block_id>cdma_vector_insert2_0</source_block_id>
     <sink_block_id>cdma_vector_insert2_0_0</sink_block_id>
     <source_key>0</source_key>
@@ -1927,14 +2004,44 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
+    <source_block_id>fir_filter_xxx_0_0_0</source_block_id>
+    <sink_block_id>decimated_training</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>fir_filter_xxx_0_0_0</source_block_id>
+    <sink_block_id>pad_sink_0_0_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
     <source_block_id>fir_filter_xxx_0_0_0_0</source_block_id>
     <sink_block_id>blocks_keep_m_in_n_0_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
+    <source_block_id>fir_filter_xxx_0_0_0_0</source_block_id>
+    <sink_block_id>decimated_data</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>fir_filter_xxx_0_0_0_0</source_block_id>
+    <sink_block_id>pad_sink_0_0_0_1</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
     <source_block_id>pad_source_0</source_block_id>
     <sink_block_id>blocks_delay_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>pad_source_0</source_block_id>
+    <sink_block_id>blocks_delay_0_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
