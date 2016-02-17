@@ -72,7 +72,8 @@ Experiment with manual acq/tra, auto acq/tra, changing freq and timing offset, S
 
 Experiment with manual acq/tra, auto acq/tra, changing freq and timing offset, SNR, modulation/coding type, etc
 
--- If you have 2 USRPs load the cdma_tx.grc and cdma_rx.grc and enjoy real-time CDMA transmission. You can also use the cdma_tx.grc and cdma_rx.grc by writting
+-- If you have 2 USRPs load the cdma_tx.grc and cdma_rx.grc and enjoy real-time CDMA transmission. Careful: if you are using USRPs then you need to design your PHY layer parameters carefully for the environment or operation (e.g., number of filters in the frequency acquisition block, etc)
+You can also use the cdma_tx.grc and cdma_rx.grc by writting
 and reading to a fifo (first do > mkfifo /tmp/cdma.fifo)
 
-This module has been tested with gnuradio 3.7.8 
+This module has been tested with gnuradio 3.7.10

@@ -22,4 +22,13 @@
     <name>noise var</name>
     <type>float</type>
   </source>
+  <doc>
+     Assumes as input a constant complex signal with complex noise s[i]=(A+j B) + (wr[i]+j wi[i]).  Estimates the signal power on the real part A^2 and real noise variance sigma^2.
+
+     First converts the input stream from complex type to real type, so r[i]=A + wr[i].  Then splits the stream into two branches: 
+      1) Passes the first branch through a single-pole IIR filter (averaging), squares the result, and obtains an estimate of the signal power A^2.
+      2) Squares the second branch, passes the result through a single-pole IIR filter, subtracts the estimated signal power and obtains an estimate of the noise power sigma^2.
+     
+     For the IIR filter, the parameter alpha controls the averaging length according to the equation y[i] = (1-alpha)*y[i-1] + alpha*x[i].
+  </doc>
 </block>
