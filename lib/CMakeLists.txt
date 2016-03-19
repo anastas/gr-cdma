@@ -31,7 +31,8 @@ list(APPEND cdma_sources
     vector_insert2_impl.cc
     flag_gen_impl.cc
     amp_var_est_impl.cc
-    switched_peak_detector_fb_impl.cc )
+    switched_peak_detector_fb_impl.cc
+    pac_err_cal_impl.cc )
 
 add_library(gnuradio-cdma SHARED ${cdma_sources})
 target_link_libraries(gnuradio-cdma ${Boost_LIBRARIES} ${GNURADIO_ALL_LIBRARIES})
