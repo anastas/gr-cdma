@@ -1,0 +1,44 @@
+<block>
+  <name>Packet Error Calculator</name>
+  <key>cdma_pac_err_cal</key>
+  <category>cdma</category>
+  <import>import cdma</import>
+  <make>cdma.pac_err_cal($winsize, $cycsize)</make>
+  <callback>set_winsize($winsize)</callback>
+  <callback>set_cycsize($cycsize)</callback>
+
+  <param>
+    <name>winsize</name>
+    <key>winsize</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>cycsize</name>
+    <key>cycsize</key>
+    <type>int</type>
+  </param>
+
+  <sink>
+    <name>print</name>
+    <type>message</type>
+    <optional>1</optional>
+  </sink>
+  <sink>
+    <name>errCal</name>
+    <type>message</type>
+    <optional>1</optional>
+  </sink>
+
+  <doc>
+    This is a message debug block with no output ports and two message-type input ports, corresponding to two event-driven functions (ie. being called when message arrives at the port).
+
+    1) First function: 
+    Goal: Print out the message arriving at this port. 
+    Method: Use pmt::print().
+    2) Second function: 
+    Goal: Calculate the packet error rate for a certain observation window.
+    Method: Use pmt::dict_ref() to extract the packet index number. In a certain window for every such index number, count and cumulate the number of packet errors and the number of packets sent. At the end of each window, take the ratio of these two values.
+
+    Note the two parameters are only for the second function: winsize stands for the length of the observation window, to be set manually; cycsize stands for the maximum index number + 1, which is determined by the header size. (eg. cycsize = 4096 if the head has 12 bits). 
+  </doc>
+</block>
