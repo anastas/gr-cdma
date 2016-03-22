@@ -86,14 +86,14 @@ namespace gr {
       for (int i = 0; i < 4 && k < d_header_len; i += d_bits_per_byte, k++) {
 	out[k] = (unsigned char) ((d_tcm_type >> i) & d_mask);
       }
-      for (int i = 0; i < 12 && k < d_header_len; i += d_bits_per_byte, k++) {
+      for (int i = 0; i < 16 && k < d_header_len; i += d_bits_per_byte, k++) {
 	out[k] = (unsigned char) ((d_header_number >> i) & d_mask);
       }
       for (int i = 0; i < 8 && k < d_header_len; i += d_bits_per_byte, k++) {
 	out[k] = (unsigned char) ((crc >> i) & d_mask);
       }
       d_header_number++;
-      d_header_number &= 0x0FFF;
+      d_header_number &= 0xFFFF;
 
       return true;
     }
@@ -125,9 +125,9 @@ namespace gr {
       tags.push_back(tag);
 
       if (d_num_tag_key == pmt::PMT_NIL) {
-	k += 12;
+	k += 16;
       } else {
-	for (int i = 0; i < 12 && k < d_header_len; i += d_bits_per_byte, k++) {
+	for (int i = 0; i < 16 && k < d_header_len; i += d_bits_per_byte, k++) {
 	  header_num |= (((int) in[k]) & d_mask) << i;
 	}
         //printf("HEADER NUMBER = %d\n",header_num);

@@ -183,7 +183,7 @@
     </param>
     <param>
       <key>grid_pos</key>
-      <value>7,0,1,1</value>
+      <value>8,0,1,1</value>
     </param>
     <param>
       <key>id</key>
@@ -542,7 +542,7 @@
     </param>
     <param>
       <key>grid_pos</key>
-      <value>6,0,1,1</value>
+      <value>7,0,1,1</value>
     </param>
     <param>
       <key>id</key>
@@ -793,6 +793,112 @@
     </param>
   </block>
   <block>
+    <key>variable_slider</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>converver</key>
+      <value>float_converter</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(664, 402)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>grid_pos</key>
+      <value>3,0,1,1</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>drift</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>drift  (ppm)</value>
+    </param>
+    <param>
+      <key>max</key>
+      <value>2</value>
+    </param>
+    <param>
+      <key>min</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>notebook</key>
+      <value></value>
+    </param>
+    <param>
+      <key>num_steps</key>
+      <value>1000</value>
+    </param>
+    <param>
+      <key>style</key>
+      <value>wx.SL_HORIZONTAL</value>
+    </param>
+  </block>
+  <block>
+    <key>variable_static_text</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>converver</key>
+      <value>float_converter</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>drift*1e-6</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>formatter</key>
+      <value>None</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(840, 455)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>grid_pos</key>
+      <value></value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>drift_v</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>drift_v</value>
+    </param>
+    <param>
+      <key>notebook</key>
+      <value></value>
+    </param>
+  </block>
+  <block>
     <key>variable_static_text</key>
     <param>
       <key>comment</key>
@@ -957,7 +1063,7 @@
     </param>
     <param>
       <key>grid_pos</key>
-      <value>5,0,1,1</value>
+      <value>6,0,1,1</value>
     </param>
     <param>
       <key>id</key>
@@ -1113,7 +1219,7 @@
     </param>
     <param>
       <key>grid_pos</key>
-      <value>4,0,1,1</value>
+      <value>5,0,1,1</value>
     </param>
     <param>
       <key>id</key>
@@ -1307,7 +1413,7 @@
     </param>
     <param>
       <key>grid_pos</key>
-      <value>3,0,1,1</value>
+      <value>4,0,1,1</value>
     </param>
     <param>
       <key>id</key>
@@ -1443,7 +1549,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>0</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -2093,7 +2199,7 @@
     </param>
     <param>
       <key>epsilon</key>
-      <value>1.0</value>
+      <value>1.0+drift*1e-6</value>
     </param>
     <param>
       <key>freq_offset</key>

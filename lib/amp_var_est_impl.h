@@ -18,6 +18,8 @@
  * Boston, MA 02110-1301, USA.
  */
 
+/* Authors: Vignesh Athreya, Yang Xiao, Yu Wang  Winter 2016 */
+
 #ifndef INCLUDED_CDMA_AMP_VAR_EST_IMPL_H
 #define INCLUDED_CDMA_AMP_VAR_EST_IMPL_H
 

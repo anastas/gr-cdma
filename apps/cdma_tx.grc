@@ -444,7 +444,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>100e3</value>
+      <value>50e3</value>
     </param>
   </block>
   <block>
@@ -510,7 +510,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>0</value>
     </param>
     <param>
       <key>file</key>
@@ -706,7 +706,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -1659,7 +1659,7 @@
     </param>
     <param>
       <key>dev_addr</key>
-      <value>addr=192.168.20.3</value>
+      <value>addr=192.168.30.3</value>
     </param>
     <param>
       <key>dev_args</key>
@@ -1667,7 +1667,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>False</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -2071,6 +2071,12 @@
   <connection>
     <source_block_id>blocks_vector_source_x_0_1</source_block_id>
     <sink_block_id>blocks_throttle_0_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_vector_source_x_0_1</source_block_id>
+    <sink_block_id>cdma_tx_hier_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>

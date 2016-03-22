@@ -93,7 +93,7 @@ num_tag_name = "cdma_packet_num"
 
 #==========================================
 # header info
-bits_per_header=12+12+8+4;  #4 bits indicating modulation and code mode.
+bits_per_header=12+16+8+4;  #4 bits indicating modulation and code mode.
 header_mod = digital.constellation_bpsk();
 symbols_per_header = bits_per_header/header_mod.bits_per_symbol()
 if (1.0*bits_per_header)/header_mod.bits_per_symbol() != symbols_per_header:

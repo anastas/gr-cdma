@@ -960,7 +960,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>100e3</value>
+      <value>50e3</value>
     </param>
   </block>
   <block>
@@ -1053,7 +1053,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>0</value>
     </param>
     <param>
       <key>file</key>
@@ -2351,7 +2351,7 @@
     </param>
     <param>
       <key>dev_addr</key>
-      <value>addr=192.168.10.3</value>
+      <value>addr=192.168.30.5</value>
     </param>
     <param>
       <key>dev_args</key>
@@ -2359,11 +2359,11 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>False</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(50, 550)</value>
+      <value>(48, 497)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2379,7 +2379,7 @@
     </param>
     <param>
       <key>clock_source0</key>
-      <value></value>
+      <value>mimo</value>
     </param>
     <param>
       <key>sd_spec0</key>
@@ -2387,7 +2387,7 @@
     </param>
     <param>
       <key>time_source0</key>
-      <value></value>
+      <value>mimo</value>
     </param>
     <param>
       <key>clock_source1</key>

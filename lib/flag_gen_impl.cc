@@ -74,6 +74,8 @@ namespace gr {
           //printf("acq=%d,     counter=%d\n",d_acq,d_counter);
          d_counter--;
 
+
+          // it would be better if this part of the codse is locked so that another thread does not change the ack within the if statement...
           if(d_acq==1) { // Acquisition
             out[i]=in[i];
             if(in[i]==1) { // reset counter

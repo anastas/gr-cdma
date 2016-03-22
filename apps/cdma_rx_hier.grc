@@ -228,7 +228,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(99, 1469)</value>
+      <value>(96, 1460)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -570,49 +570,6 @@
     <param>
       <key>value</key>
       <value>-10</value>
-    </param>
-  </block>
-  <block>
-    <key>amp_var_est_hier</key>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(357, 1457)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>amp_var_est_hier_1</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>alpha</key>
-      <value>0.001</value>
     </param>
   </block>
   <block>
@@ -1157,7 +1114,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(376, 1361)</value>
+      <value>(376, 1457)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2142,12 +2099,6 @@
   </connection>
   <connection>
     <source_block_id>RX_0_2_0_1_0</source_block_id>
-    <sink_block_id>amp_var_est_hier_1</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>RX_0_2_0_1_0</source_block_id>
     <sink_block_id>cdma_amp_var_est_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
@@ -2162,18 +2113,6 @@
     <source_block_id>RX_0_2_1_0</source_block_id>
     <sink_block_id>blocks_vco_c_0</sink_block_id>
     <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>amp_var_est_hier_1</source_block_id>
-    <sink_block_id>blocks_multiply_const_vxx_0_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>amp_var_est_hier_1</source_block_id>
-    <sink_block_id>blocks_multiply_const_vxx_0</sink_block_id>
-    <source_key>1</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
