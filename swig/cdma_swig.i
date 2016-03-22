@@ -16,6 +16,7 @@
 #include "gnuradio/digital/packet_header_default.h"
 #include "cdma/amp_var_est.h"
 #include "cdma/switched_peak_detector_fb.h"
+#include "cdma/pac_err_cal.h"
 
 %}
 %include "gnuradio/digital/packet_header_default.h"
@@ -42,3 +43,5 @@ GR_SWIG_BLOCK_MAGIC2(cdma, switched_peak_detector_fb);
 
 // Properly package up non-block objects
 %include "packet_header.i"
+%include "cdma/pac_err_cal.h"
+GR_SWIG_BLOCK_MAGIC2(cdma, pac_err_cal);

@@ -28,5 +28,6 @@ install(FILES
     packet_headerparser_b2.h
     flag_gen.h
     amp_var_est.h
-    switched_peak_detector_fb.h DESTINATION include/cdma
+    switched_peak_detector_fb.h
+    pac_err_cal.h DESTINATION include/cdma
 )
