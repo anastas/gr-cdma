@@ -35,7 +35,6 @@ namespace gr {
       unsigned long d_winsize;        // size of the block window
       unsigned long d_cycsize;        // size of a complete cycle, say 4096
 
-      unsigned long d_first;          // index of the first received packet in the current window
       unsigned long d_count_pktsent;  // number of packets sent from the tx
       unsigned long d_count_errs;     // number of error packets in the current window
       unsigned long d_curnum;         // number of packets received in the current window

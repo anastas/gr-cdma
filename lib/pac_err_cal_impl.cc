@@ -54,7 +54,6 @@ namespace gr {
       d_count_pktsent = 0;
       d_curnum = 0;
 
-      d_first = 0;
       d_prev = 0;
       d_erate = 0;
 
@@ -106,12 +105,8 @@ namespace gr {
         //increment errs and packets sent
         if (val < d_prev) // a new cycle starts while the window hasn't been filled up
         { 
-          //std::cout << "val: " << val << "\n";
-          //std::cout << "prev: " << d_prev << "\n";
-          //std::cout << "new cycle\n\n";
           d_count_errs = d_count_errs + d_cycsize + val - d_prev - 1;
           d_count_pktsent = d_count_pktsent + d_cycsize + val - d_prev;
-
         }
         else
         {
@@ -124,15 +119,11 @@ namespace gr {
         {
           d_erate = (float) d_count_errs / d_count_pktsent; // key calculation
           
-          //std::cout << "E-RATE: " << d_erate << "\t\t E-#: " << d_count_errs << "\t\t TAIL: " << val << "\t\t HEAD: " << d_first << "\n";          
+          //std::cout << "E-RATE: " << d_erate << "\t\t E-#: " << d_count_errs << "\n";          
           std::cout << "E-RATE: " << d_erate << "\n";
           d_curnum = 0;
           d_count_errs = 0;
           d_count_pktsent = 0;
-        }
-        else if (d_curnum == 1)
-        {
-          d_first = val;
         }
 
         d_prev = val;     
