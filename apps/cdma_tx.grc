@@ -320,11 +320,11 @@
     </param>
     <param>
       <key>max</key>
-      <value>cp.freqs[-1]*samp_rate</value>
+      <value>5*cp.freqs[-1]*samp_rate</value>
     </param>
     <param>
       <key>min</key>
-      <value>cp.freqs[0]*samp_rate-1.0e-6</value>
+      <value>5*cp.freqs[0]*samp_rate-1.0e-6</value>
     </param>
     <param>
       <key>notebook</key>

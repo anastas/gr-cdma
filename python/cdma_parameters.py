@@ -19,7 +19,8 @@
 # Boston, MA 02110-1301, USA.
 import random
 import numpy
-from gnuradio import digital,trellis
+from gnuradio import digital, trellis
+from gnuradio.filter import firdes
 import math
 import cdma
 from fractions import Fraction,gcd
@@ -179,6 +180,7 @@ if training_length > symbols_per_frame:
   print "Error in training length evaluation"
   training_length = symbols_per_frame
 training=training_long[0:training_length]; # we have to add 0s
+training_filter_length=20; # how much of this training will be used at Rx for synchronization
 training_percent = 50; # percentage of transmitted power for training
 #print "training_length =", training_length
 #print "\n"
@@ -192,6 +194,15 @@ pulse_data =numpy.array((-1,1,-1,1,-1,-1,-1,-1))+0j
 
 # scaling factor at the receiver
 rx_scaling_factor=[1,1,(float(training_percent)/100)**0.5*chips_per_symbol]
+
+
+#==========================================
+# signal sampling parameters
+samples_per_chip=2;
+zero_stuff=numpy.array((1,)+(samples_per_chip-1)*(0,))+0j
+pulse_training_t=numpy.kron(pulse_training,zero_stuff);
+#pulse_shape=zero_stuff;
+pulse_shape=numpy.array(firdes.root_raised_cosine(1,samples_per_chip,1,0.35,21))+0j;
 
 #==========================================
 #timing parameters

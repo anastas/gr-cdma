@@ -1327,6 +1327,49 @@
     </param>
   </block>
   <block>
+    <key>cdma_pac_err_cal</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(480, 1054)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>cdma_pac_err_cal_0</value>
+    </param>
+    <param>
+      <key>cycsize</key>
+      <value>4096</value>
+    </param>
+    <param>
+      <key>pkt_num_tag</key>
+      <value>cdma_packet_num</value>
+    </param>
+    <param>
+      <key>winsize</key>
+      <value>1024</value>
+    </param>
+  </block>
+  <block>
     <key>cdma_rx_hier</key>
     <param>
       <key>alias</key>
@@ -2576,6 +2619,12 @@
     <sink_block_id>blocks_message_debug_0</sink_block_id>
     <source_key>decoded_header</source_key>
     <sink_key>print</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>cdma_rx_hier_0_0</source_block_id>
+    <sink_block_id>cdma_pac_err_cal_0</sink_block_id>
+    <source_key>decoded_header</source_key>
+    <sink_key>errCal</sink_key>
   </connection>
   <connection>
     <source_block_id>cdma_rx_hier_0_0</source_block_id>

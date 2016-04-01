@@ -1236,7 +1236,7 @@
     </param>
     <param>
       <key>seq1</key>
-      <value>(0+0j,) if acq==0 else cp.training[::-1]</value>
+      <value>(0+0j,) if acq==0 else cp.training[cp.training_filter_length-1::-1]</value>
     </param>
     <param>
       <key>seq2</key>
@@ -1284,6 +1284,10 @@
     <param>
       <key>N</key>
       <value>cp.symbols_per_frame</value>
+    </param>
+    <param>
+      <key>Nt</key>
+      <value>cp.training_filter_length</value>
     </param>
     <param>
       <key>Q</key>

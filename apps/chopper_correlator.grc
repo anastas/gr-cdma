@@ -248,6 +248,49 @@
     </param>
     <param>
       <key>_coordinate</key>
+      <value>(200, 22)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>Nt</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value></value>
+    </param>
+    <param>
+      <key>short_id</key>
+      <value></value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>intx</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>10</value>
+    </param>
+  </block>
+  <block>
+    <key>parameter</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
       <value>(288, 8)</value>
     </param>
     <param>
@@ -462,7 +505,7 @@
     </param>
     <param>
       <key>delay</key>
-      <value>(N-1)*Q</value>
+      <value>(Nt-1)*Q</value>
     </param>
     <param>
       <key>_enabled</key>
