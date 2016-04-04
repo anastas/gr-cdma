@@ -468,33 +468,6 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(181, 85)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>chips_per_symbol</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>cp.chips_per_symbol</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
       <value>1</value>
     </param>
     <param>
@@ -921,7 +894,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(368, 79)</value>
+      <value>(360, 85)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -933,7 +906,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>symbol_rate*chips_per_symbol</value>
+      <value>symbol_rate*cp.chips_per_symbol*cp.samples_per_chip</value>
     </param>
   </block>
   <block>

@@ -201,8 +201,13 @@ rx_scaling_factor=[1,1,(float(training_percent)/100)**0.5*chips_per_symbol]
 samples_per_chip=2;
 zero_stuff=numpy.array((1,)+(samples_per_chip-1)*(0,))+0j
 pulse_training_t=numpy.kron(pulse_training,zero_stuff);
+pulse_data_t=numpy.kron(pulse_data,zero_stuff);
 #pulse_shape=zero_stuff;
 pulse_shape=numpy.array(firdes.root_raised_cosine(1,samples_per_chip,1,0.35,21))+0j;
+Ep=sum(abs(pulse_shape)**2);
+pulse_shape=pulse_shape/(Ep**0.5)*(samples_per_chip**0.5); # normalization
+
+
 
 #==========================================
 #timing parameters
