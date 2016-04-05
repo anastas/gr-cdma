@@ -116,7 +116,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -471,7 +471,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -1181,7 +1181,7 @@
     </param>
     <param>
       <key>period</key>
-      <value>cp.chips_per_symbol*cp.symbols_per_frame</value>
+      <value>cp.chips_per_symbol*cp.symbols_per_frame*cp.samples_per_chip</value>
     </param>
   </block>
   <block>
@@ -1224,7 +1224,7 @@
     </param>
     <param>
       <key>alpha</key>
-      <value>100.0/cp.chips_per_frame</value>
+      <value>100.0/(cp.chips_per_frame*cp.samples_per_chip)</value>
     </param>
     <param>
       <key>factor</key>
