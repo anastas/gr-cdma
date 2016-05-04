@@ -30,7 +30,7 @@ prefix="YOUR_PREFIX_HERE/gr-cdma"  # put the prefix of your gr-cdma trunk
 
 > cd build_cdma
 
-> cmake -DENABLE_DOXYGEN=ON ../gr-cdma
+> cmake -DENABLE_DOXYGEN=ON ../
 
 > make
 
