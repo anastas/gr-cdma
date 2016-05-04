@@ -41,6 +41,10 @@
       <value>wx_gui</value>
     </param>
     <param>
+      <key>hier_block_src_path</key>
+      <value>.:</value>
+    </param>
+    <param>
       <key>id</key>
       <value>cdma_txrx</value>
     </param>
@@ -179,7 +183,7 @@
     </param>
     <param>
       <key>grid_pos</key>
-      <value>7,0,1,1</value>
+      <value>8,0,1,1</value>
     </param>
     <param>
       <key>id</key>
@@ -347,7 +351,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(856, 1072)</value>
+      <value>(1136, 947)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -417,7 +421,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(920, 1032)</value>
+      <value>(1160, 875)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -434,6 +438,33 @@
     <param>
       <key>value</key>
       <value>1.0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(1536, 259)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>RRCF_taps</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>firdes.root_raised_cosine(2, samples_per_chip, 1.0, alpha_for_RRCF, RRCF_taps_len)</value>
     </param>
   </block>
   <block>
@@ -526,7 +557,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -538,7 +569,7 @@
     </param>
     <param>
       <key>grid_pos</key>
-      <value>6,0,1,1</value>
+      <value>7,0,1,1</value>
     </param>
     <param>
       <key>id</key>
@@ -789,6 +820,112 @@
     </param>
   </block>
   <block>
+    <key>variable_slider</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>converver</key>
+      <value>float_converter</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(656, 411)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>grid_pos</key>
+      <value>3,0,1,1</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>drift</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>drift  (ppm)</value>
+    </param>
+    <param>
+      <key>max</key>
+      <value>2</value>
+    </param>
+    <param>
+      <key>min</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>notebook</key>
+      <value></value>
+    </param>
+    <param>
+      <key>num_steps</key>
+      <value>1000</value>
+    </param>
+    <param>
+      <key>style</key>
+      <value>wx.SL_HORIZONTAL</value>
+    </param>
+  </block>
+  <block>
+    <key>variable_static_text</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>converver</key>
+      <value>float_converter</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>drift*1e-6</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>formatter</key>
+      <value>None</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(840, 455)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>grid_pos</key>
+      <value></value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>drift_v</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>drift_v</value>
+    </param>
+    <param>
+      <key>notebook</key>
+      <value></value>
+    </param>
+  </block>
+  <block>
     <key>variable_static_text</key>
     <param>
       <key>comment</key>
@@ -859,7 +996,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(784, 1112)</value>
+      <value>(1144, 1067)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -953,7 +1090,7 @@
     </param>
     <param>
       <key>grid_pos</key>
-      <value>5,0,1,1</value>
+      <value>6,0,1,1</value>
     </param>
     <param>
       <key>id</key>
@@ -978,6 +1115,53 @@
     <param>
       <key>type</key>
       <value>radio_buttons</value>
+    </param>
+  </block>
+  <block>
+    <key>variable_static_text</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>converver</key>
+      <value>int_converter</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>cp.n_filt</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>formatter</key>
+      <value>None</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(1144, 463)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>grid_pos</key>
+      <value></value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>n_filt</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>n_filt</value>
+    </param>
+    <param>
+      <key>notebook</key>
+      <value></value>
     </param>
   </block>
   <block>
@@ -1062,7 +1246,7 @@
     </param>
     <param>
       <key>grid_pos</key>
-      <value>4,0,1,1</value>
+      <value>5,0,1,1</value>
     </param>
     <param>
       <key>id</key>
@@ -1151,7 +1335,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -1168,6 +1352,65 @@
     <param>
       <key>value</key>
       <value>symbol_rate*chips_per_symbol</value>
+    </param>
+  </block>
+  <block>
+    <key>variable_slider</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>converver</key>
+      <value>int_converter</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>5</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(1688, 3)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>grid_pos</key>
+      <value></value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>samples_per_chip</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>samples_per_chip</value>
+    </param>
+    <param>
+      <key>max</key>
+      <value>5</value>
+    </param>
+    <param>
+      <key>min</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>notebook</key>
+      <value></value>
+    </param>
+    <param>
+      <key>num_steps</key>
+      <value>4</value>
+    </param>
+    <param>
+      <key>style</key>
+      <value>wx.SL_HORIZONTAL</value>
     </param>
   </block>
   <block>
@@ -1256,7 +1499,7 @@
     </param>
     <param>
       <key>grid_pos</key>
-      <value>3,0,1,1</value>
+      <value>4,0,1,1</value>
     </param>
     <param>
       <key>id</key>
@@ -1272,7 +1515,11 @@
     </param>
   </block>
   <block>
-    <key>virtual_source</key>
+    <key>parameter</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
     <param>
       <key>comment</key>
       <value></value>
@@ -1283,7 +1530,46 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(8, 964)</value>
+      <value>(1536, 179)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>RRCF_taps_len</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>length for RRCF taps</value>
+    </param>
+    <param>
+      <key>short_id</key>
+      <value></value>
+    </param>
+    <param>
+      <key>type</key>
+      <value></value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>11</value>
+    </param>
+  </block>
+  <block>
+    <key>virtual_source</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(0, 995)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1310,7 +1596,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1048, 676)</value>
+      <value>(1040, 731)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1323,6 +1609,49 @@
     <param>
       <key>stream_id</key>
       <value>RX_samples</value>
+    </param>
+  </block>
+  <block>
+    <key>parameter</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(1536, 99)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>alpha_for_RRCF</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>alpha for root-raise coise filter</value>
+    </param>
+    <param>
+      <key>short_id</key>
+      <value></value>
+    </param>
+    <param>
+      <key>type</key>
+      <value></value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>0.35</value>
     </param>
   </block>
   <block>
@@ -1392,11 +1721,11 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>0</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(504, 1153)</value>
+      <value>(640, 1153)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1431,7 +1760,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(88, 668)</value>
+      <value>(80, 723)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1478,11 +1807,11 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(544, 1036)</value>
+      <value>(752, 1035)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1529,11 +1858,11 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(704, 912)</value>
+      <value>(840, 913)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1580,7 +1909,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1024, 760)</value>
+      <value>(1072, 817)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1623,7 +1952,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(712, 1041)</value>
+      <value>(968, 1097)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1654,11 +1983,11 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(608, 992)</value>
+      <value>(744, 993)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1689,11 +2018,11 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(608, 864)</value>
+      <value>(744, 865)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1724,11 +2053,11 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(744, 676)</value>
+      <value>(736, 731)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1779,7 +2108,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(264, 525)</value>
+      <value>(264, 595)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1834,7 +2163,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(8, 478)</value>
+      <value>(8, 547)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1948,11 +2277,11 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(256, 904)</value>
+      <value>(400, 921)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1978,6 +2307,22 @@
       <key>acq_threshold_dB</key>
       <value>acq_threshold_dB</value>
     </param>
+    <param>
+      <key>alpha_for_RRCF</key>
+      <value>alpha_for_RRCF</value>
+    </param>
+    <param>
+      <key>RRCF_taps_len</key>
+      <value>RRCF_taps_len</value>
+    </param>
+    <param>
+      <key>samples_per_chip</key>
+      <value>samples_per_chip</value>
+    </param>
+    <param>
+      <key>zero_len</key>
+      <value>230</value>
+    </param>
   </block>
   <block>
     <key>cdma_tx_hier</key>
@@ -1999,7 +2344,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(528, 520)</value>
+      <value>(528, 579)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2016,6 +2361,22 @@
     <param>
       <key>minoutbuf</key>
       <value>0</value>
+    </param>
+    <param>
+      <key>RRCF_gain</key>
+      <value>2</value>
+    </param>
+    <param>
+      <key>alpha_for_RRCF</key>
+      <value>alpha_for_RRCF</value>
+    </param>
+    <param>
+      <key>RRCF_taps_len</key>
+      <value>RRCF_taps_len</value>
+    </param>
+    <param>
+      <key>samples_per_chip</key>
+      <value>samples_per_chip</value>
     </param>
   </block>
   <block>
@@ -2038,11 +2399,11 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>1</value>
     </param>
     <param>
       <key>epsilon</key>
-      <value>1.0</value>
+      <value>1.0+drift*1e-6</value>
     </param>
     <param>
       <key>freq_offset</key>
@@ -2050,7 +2411,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(480, 640)</value>
+      <value>(472, 699)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2124,6 +2485,37 @@
     </param>
     <param>
       <key>_enabled</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(1536, 323)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>import_0_0</value>
+    </param>
+    <param>
+      <key>import</key>
+      <value>from gnuradio.filter import firdes</value>
+    </param>
+  </block>
+  <block>
+    <key>import</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
       <value>True</value>
     </param>
     <param>
@@ -2175,6 +2567,80 @@
     </param>
   </block>
   <block>
+    <key>note</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(1840, 11)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>note_0</value>
+    </param>
+    <param>
+      <key>note</key>
+      <value>We can not let the value for "samples_per_chip" to be controlled by slider, because we have to face the problem of changing the lenght of tags for xlating_FFT_filter during running. The filter will break down for changing buffer.</value>
+    </param>
+  </block>
+  <block>
+    <key>parameter</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(1536, 19)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>samples_per_chip</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>samples per chip</value>
+    </param>
+    <param>
+      <key>short_id</key>
+      <value></value>
+    </param>
+    <param>
+      <key>type</key>
+      <value></value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>2</value>
+    </param>
+  </block>
+  <block>
     <key>virtual_sink</key>
     <param>
       <key>comment</key>
@@ -2186,7 +2652,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(320, 460)</value>
+      <value>(264, 523)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2209,11 +2675,11 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(656, 948)</value>
+      <value>(792, 947)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2253,6 +2719,109 @@
     <param>
       <key>stream_id</key>
       <value>decoded_payload_bytes</value>
+    </param>
+  </block>
+  <block>
+    <key>wxgui_fftsink2</key>
+    <param>
+      <key>avg_alpha</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>average</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>baseband_freq</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>fft_size</key>
+      <value>1024</value>
+    </param>
+    <param>
+      <key>freqvar</key>
+      <value>None</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(912, 531)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>grid_pos</key>
+      <value></value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>wxgui_fftsink2_0</value>
+    </param>
+    <param>
+      <key>notebook</key>
+      <value></value>
+    </param>
+    <param>
+      <key>peak_hold</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>ref_level</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>ref_scale</key>
+      <value>2.0</value>
+    </param>
+    <param>
+      <key>fft_rate</key>
+      <value>15</value>
+    </param>
+    <param>
+      <key>samp_rate</key>
+      <value>samp_rate</value>
+    </param>
+    <param>
+      <key>title</key>
+      <value>FFT Plot</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>complex</value>
+    </param>
+    <param>
+      <key>win_size</key>
+      <value></value>
+    </param>
+    <param>
+      <key>win</key>
+      <value>None</value>
+    </param>
+    <param>
+      <key>y_divs</key>
+      <value>10</value>
+    </param>
+    <param>
+      <key>y_per_div</key>
+      <value>10</value>
     </param>
   </block>
   <block>
@@ -2453,6 +3022,12 @@
   <connection>
     <source_block_id>cdma_tx_hier_0</source_block_id>
     <sink_block_id>blocks_multiply_const_vxx_1</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>cdma_tx_hier_0</source_block_id>
+    <sink_block_id>wxgui_fftsink2_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
