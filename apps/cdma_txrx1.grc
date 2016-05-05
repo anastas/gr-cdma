@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<?grc format='1' created='3.7.9'?>
+<?grc format='1' created='3.7.10'?>
 <flow_graph>
   <timestamp>Wed Oct  1 22:56:00 2014</timestamp>
   <block>
@@ -39,6 +39,10 @@
     <param>
       <key>generate_options</key>
       <value>wx_gui</value>
+    </param>
+    <param>
+      <key>hier_block_src_path</key>
+      <value>.:</value>
     </param>
     <param>
       <key>id</key>
@@ -101,7 +105,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>EsN0dB_est + 10*numpy.log10( 1.0-training_percent/100.0 ) </value>
+      <value>EsN0dB_est + 10*numpy.log10( 1.0-cp.training_percent/100.0 ) </value>
     </param>
   </block>
   <block>
@@ -507,7 +511,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>EsN0dB_est + 10*numpy.log10( training_percent/100.0 ) </value>
+      <value>EsN0dB_est + 10*numpy.log10( cp.training_percent/100.0 ) </value>
     </param>
   </block>
   <block>
@@ -522,7 +526,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>-10</value>
+      <value>-8.5</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -567,33 +571,6 @@
     <param>
       <key>style</key>
       <value>wx.SL_HORIZONTAL</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(172, 78)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>chips_per_symbol</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>cp.chips_per_symbol</value>
     </param>
   </block>
   <block>
@@ -667,7 +644,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(980, 329)</value>
+      <value>(984, 389)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -765,7 +742,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1052, 368)</value>
+      <value>(1072, 375)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -878,7 +855,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1201, 367)</value>
+      <value>(1240, 375)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1163,60 +1140,6 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(176, 213)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>payload</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>map(int,numpy.random.randint(0,256,payload_bytes_per_frame))</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(172, 141)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>payload_bytes_per_frame</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>cp.payload_bytes_per_frame</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
       <value>True</value>
     </param>
     <param>
@@ -1233,7 +1156,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>symbol_rate*chips_per_symbol</value>
+      <value>symbol_rate*cp.chips_per_symbol</value>
     </param>
   </block>
   <block>
@@ -1261,33 +1184,6 @@
     <param>
       <key>value</key>
       <value>100e3</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(522, 217)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>symbols_per_frame</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>cp.symbols_per_frame</value>
     </param>
   </block>
   <block>
@@ -1343,33 +1239,6 @@
     <param>
       <key>type</key>
       <value>radio_buttons</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(171, 8)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>training_percent</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>cp.training_percent</value>
     </param>
   </block>
   <block>
@@ -1471,57 +1340,6 @@
     <param>
       <key>stream_id</key>
       <value>RX_samples</value>
-    </param>
-  </block>
-  <block>
-    <key>blks2_error_rate</key>
-    <param>
-      <key>bits_per_symbol</key>
-      <value>8</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(360, 1520)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>blks2_error_rate_0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>'SER'</value>
-    </param>
-    <param>
-      <key>win_size</key>
-      <value>10000</value>
     </param>
   </block>
   <block>
@@ -2034,7 +1852,7 @@
     </param>
     <param>
       <key>tags</key>
-      <value>tagged_streams.make_lengthtags((payload_bytes_per_frame,), (0,), cp.length_tag_name)</value>
+      <value>tagged_streams.make_lengthtags((cp.payload_bytes_per_frame,), (0,), cp.length_tag_name)</value>
     </param>
     <param>
       <key>vlen</key>
@@ -2042,66 +1860,7 @@
     </param>
     <param>
       <key>vector</key>
-      <value>payload</value>
-    </param>
-  </block>
-  <block>
-    <key>blocks_vector_source_x</key>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(32, 1350)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>blocks_vector_source_x_0_1_0_0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>byte</value>
-    </param>
-    <param>
-      <key>repeat</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>tags</key>
-      <value>tagged_streams.make_lengthtags((payload_bytes_per_frame,), (0,), cp.length_tag_name)</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>vector</key>
-      <value>payload</value>
+      <value>map(int,numpy.random.randint(0,256,cp.payload_bytes_per_frame))</value>
     </param>
   </block>
   <block>
@@ -2250,7 +2009,7 @@
     </param>
     <param>
       <key>noise_voltage</key>
-      <value>(chips_per_symbol*N0/2)**0.5</value>
+      <value>(cp.chips_per_symbol*cp.samples_per_chip*N0/2)**0.5</value>
     </param>
     <param>
       <key>seed</key>
@@ -2355,68 +2114,6 @@
     </param>
   </block>
   <block>
-    <key>import</key>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(-1, 241)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>import_2</value>
-    </param>
-    <param>
-      <key>import</key>
-      <value>import pmt</value>
-    </param>
-  </block>
-  <block>
-    <key>import</key>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(0, 300)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>import_2_0</value>
-    </param>
-    <param>
-      <key>import</key>
-      <value>import math</value>
-    </param>
-  </block>
-  <block>
     <key>blocks_message_debug</key>
     <param>
       <key>alias</key>
@@ -2501,141 +2198,9 @@
       <value>decoded_payload_bytes</value>
     </param>
   </block>
-  <block>
-    <key>virtual_source</key>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(16, 1604)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>virtual_source_1_0</value>
-    </param>
-    <param>
-      <key>stream_id</key>
-      <value>decoded_payload_bytes</value>
-    </param>
-  </block>
-  <block>
-    <key>wxgui_numbersink2</key>
-    <param>
-      <key>avg_alpha</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>average</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>decimal_places</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>factor</key>
-      <value>1.0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(624, 1469)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>grid_pos</key>
-      <value></value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>wxgui_numbersink2_0</value>
-    </param>
-    <param>
-      <key>max_value</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>min_value</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>notebook</key>
-      <value></value>
-    </param>
-    <param>
-      <key>number_rate</key>
-      <value>15</value>
-    </param>
-    <param>
-      <key>peak_hold</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>ref_level</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>samp_rate</key>
-      <value>samp_rate</value>
-    </param>
-    <param>
-      <key>show_gauge</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>title</key>
-      <value>Number Plot</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>float</value>
-    </param>
-    <param>
-      <key>units</key>
-      <value>Units</value>
-    </param>
-    <param>
-      <key>win_size</key>
-      <value></value>
-    </param>
-  </block>
   <connection>
     <source_block_id>RX_0_2_1</source_block_id>
     <sink_block_id>cdma_rx_hier1_1</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>blks2_error_rate_0</source_block_id>
-    <sink_block_id>wxgui_numbersink2_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
@@ -2688,12 +2253,6 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>blocks_vector_source_x_0_1_0_0</source_block_id>
-    <sink_block_id>blks2_error_rate_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
     <source_block_id>cdma_rx_hier1_1</source_block_id>
     <sink_block_id>blocks_probe_signal_amp</sink_block_id>
     <source_key>2</source_key>
@@ -2716,12 +2275,6 @@
     <sink_block_id>msg_debug</sink_block_id>
     <source_key>decoded_header</source_key>
     <sink_key>print</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>cdma_rx_hier1_1</source_block_id>
-    <sink_block_id>msg_debug</sink_block_id>
-    <source_key>decoded_header</source_key>
-    <sink_key>store</sink_key>
   </connection>
   <connection>
     <source_block_id>cdma_rx_hier1_1</source_block_id>
@@ -2752,11 +2305,5 @@
     <sink_block_id>blocks_tag_gate_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>virtual_source_1_0</source_block_id>
-    <sink_block_id>blks2_error_rate_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>1</sink_key>
   </connection>
 </flow_graph>

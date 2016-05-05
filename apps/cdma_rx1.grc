@@ -93,7 +93,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1056, 29)</value>
+      <value>(880, 21)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -105,7 +105,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>EsN0dB_est + 10*numpy.log10( 1.0-training_percent/100.0 ) </value>
+      <value>EsN0dB_est + 10*numpy.log10( 1.0-cp.training_percent/100.0 ) </value>
     </param>
   </block>
   <block>
@@ -132,7 +132,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1056, 95)</value>
+      <value>(1176, 247)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -175,7 +175,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(344, 138)</value>
+      <value>(360, 154)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -226,34 +226,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(496, 5)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>Es</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>1</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(1240, 29)</value>
+      <value>(1040, 21)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -292,7 +265,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(888, 955)</value>
+      <value>(880, 976)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -308,7 +281,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>1e-2</value>
+      <value>1e-1</value>
     </param>
   </block>
   <block>
@@ -335,7 +308,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(984, 899)</value>
+      <value>(1064, 976)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -378,7 +351,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(856, 103)</value>
+      <value>(1176, 143)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -413,7 +386,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(856, 29)</value>
+      <value>(712, 21)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -425,7 +398,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>EsN0dB_est + 10*numpy.log10( training_percent/100.0 ) </value>
+      <value>EsN0dB_est + 10*numpy.log10( cp.training_percent/100.0 ) </value>
     </param>
   </block>
   <block>
@@ -448,7 +421,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(864, 194)</value>
+      <value>(376, 298)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -472,7 +445,7 @@
     </param>
     <param>
       <key>min</key>
-      <value>-40</value>
+      <value>-20</value>
     </param>
     <param>
       <key>notebook</key>
@@ -499,34 +472,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(172, 78)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>chips_per_symbol</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>cp.chips_per_symbol</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(888, 421)</value>
+      <value>(1232, 21)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -565,7 +511,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(976, 415)</value>
+      <value>(952, 439)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -600,7 +546,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1312, 101)</value>
+      <value>(1384, 21)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -678,7 +624,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1136, 415)</value>
+      <value>(952, 327)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -725,7 +671,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(776, 995)</value>
+      <value>(704, 976)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -768,7 +714,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1064, 302)</value>
+      <value>(944, 238)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -811,7 +757,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(680, 170)</value>
+      <value>(752, 178)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -847,6 +793,53 @@
     </param>
   </block>
   <block>
+    <key>variable_static_text</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>converver</key>
+      <value>int_converter</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>cp.n_filt</value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>formatter</key>
+      <value>None</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(944, 126)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>grid_pos</key>
+      <value></value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>n_filt</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>n_filt</value>
+    </param>
+    <param>
+      <key>notebook</key>
+      <value></value>
+    </param>
+  </block>
+  <block>
     <key>variable</key>
     <param>
       <key>comment</key>
@@ -858,7 +851,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(536, 85)</value>
+      <value>(528, 13)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -885,7 +878,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(536, 157)</value>
+      <value>(528, 77)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -920,7 +913,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(680, 34)</value>
+      <value>(568, 298)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -967,33 +960,6 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(172, 141)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>payload_bytes_per_frame</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>cp.payload_bytes_per_frame</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
       <value>(358, 71)</value>
     </param>
     <param>
@@ -1006,7 +972,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>symbol_rate*chips_per_symbol</value>
+      <value>symbol_rate*cp.chips_per_symbol</value>
     </param>
   </block>
   <block>
@@ -1037,60 +1003,6 @@
     </param>
   </block>
   <block>
-    <key>variable</key>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(528, 229)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>symbols_per_frame</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>cp.symbols_per_frame</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(171, 8)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>training_percent</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>cp.training_percent</value>
-    </param>
-  </block>
-  <block>
     <key>variable_static_text</key>
     <param>
       <key>comment</key>
@@ -1114,7 +1026,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1064, 192)</value>
+      <value>(568, 168)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1153,7 +1065,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>0</value>
     </param>
     <param>
       <key>file</key>
@@ -1161,7 +1073,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(72, 517)</value>
+      <value>(72, 869)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1396,6 +1308,49 @@
     </param>
   </block>
   <block>
+    <key>cdma_pac_err_cal</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(384, 1110)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>cdma_pac_err_cal_0</value>
+    </param>
+    <param>
+      <key>cycsize</key>
+      <value>4096</value>
+    </param>
+    <param>
+      <key>pkt_num_tag</key>
+      <value>cdma_packet_num</value>
+    </param>
+    <param>
+      <key>winsize</key>
+      <value>1024</value>
+    </param>
+  </block>
+  <block>
     <key>cdma_rx_hier1</key>
     <param>
       <key>alias</key>
@@ -1520,7 +1475,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -1551,7 +1506,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -1582,7 +1537,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -1617,7 +1572,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -2548,7 +2503,7 @@
     </param>
     <param>
       <key>dev_addr</key>
-      <value>addr=192.168.10.3</value>
+      <value>addr=192.168.30.5</value>
     </param>
     <param>
       <key>dev_args</key>
@@ -2556,11 +2511,11 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>False</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(64, 407)</value>
+      <value>(48, 649)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2568,7 +2523,7 @@
     </param>
     <param>
       <key>id</key>
-      <value>uhd_usrp_source_0_0</value>
+      <value>uhd_usrp_source_0</value>
     </param>
     <param>
       <key>maxoutbuf</key>
@@ -2576,7 +2531,7 @@
     </param>
     <param>
       <key>clock_source0</key>
-      <value></value>
+      <value>mimo</value>
     </param>
     <param>
       <key>sd_spec0</key>
@@ -2584,7 +2539,7 @@
     </param>
     <param>
       <key>time_source0</key>
-      <value></value>
+      <value>mimo</value>
     </param>
     <param>
       <key>clock_source1</key>
@@ -2770,6 +2725,12 @@
   </connection>
   <connection>
     <source_block_id>cdma_rx_hier1_1</source_block_id>
+    <sink_block_id>cdma_pac_err_cal_0</sink_block_id>
+    <source_key>decoded_header</source_key>
+    <sink_key>errCal</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>cdma_rx_hier1_1</source_block_id>
     <sink_block_id>msg_debug</sink_block_id>
     <source_key>decoded_header</source_key>
     <sink_key>print</sink_key>
@@ -2787,7 +2748,7 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>uhd_usrp_source_0_0</source_block_id>
+    <source_block_id>uhd_usrp_source_0</source_block_id>
     <sink_block_id>cdma_rx_hier1_1</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>

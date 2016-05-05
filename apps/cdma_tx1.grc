@@ -93,7 +93,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(477, 10)</value>
+      <value>(488, 13)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -179,7 +179,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(541, 10)</value>
+      <value>(568, 13)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -192,33 +192,6 @@
     <param>
       <key>value</key>
       <value>10**(-EsN0dB/10) * Es</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(172, 78)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>chips_per_symbol</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>cp.chips_per_symbol</value>
     </param>
   </block>
   <block>
@@ -241,7 +214,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(661, 276)</value>
+      <value>(816, 138)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -347,11 +320,11 @@
     </param>
     <param>
       <key>max</key>
-      <value>cp.freqs[-1]*samp_rate</value>
+      <value>3*cp.freqs[-1]*samp_rate</value>
     </param>
     <param>
       <key>min</key>
-      <value>cp.freqs[0]*samp_rate</value>
+      <value>3*cp.freqs[0]*samp_rate</value>
     </param>
     <param>
       <key>notebook</key>
@@ -472,61 +445,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(16, 349)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>payload</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>map(int,numpy.random.randint(0,256,payload_bytes_per_frame))</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(172, 141)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>payload_bytes_per_frame</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>cp.payload_bytes_per_frame</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(358, 71)</value>
+      <value>(320, 13)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -538,7 +457,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>symbol_rate*chips_per_symbol</value>
+      <value>symbol_rate*cp.chips_per_symbol*cp.samples_per_chip</value>
     </param>
   </block>
   <block>
@@ -553,7 +472,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(352, 9)</value>
+      <value>(208, 13)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -565,34 +484,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>100e3</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(522, 217)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>symbols_per_frame</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>cp.symbols_per_frame</value>
+      <value>50e3</value>
     </param>
   </block>
   <block>
@@ -615,7 +507,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(816, 274)</value>
+      <value>(664, 282)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -670,7 +562,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>0</value>
     </param>
     <param>
       <key>file</key>
@@ -678,7 +570,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(272, 966)</value>
+      <value>(840, 670)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -713,7 +605,7 @@
     </param>
     <param>
       <key>const</key>
-      <value>Es**0.5</value>
+      <value>0.2</value>
     </param>
     <param>
       <key>affinity</key>
@@ -725,7 +617,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(208, 796)</value>
+      <value>(352, 748)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -772,7 +664,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(728, 796)</value>
+      <value>(544, 748)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -823,7 +715,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(280, 453)</value>
+      <value>(288, 460)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -906,7 +798,7 @@
     </param>
     <param>
       <key>tags</key>
-      <value>tagged_streams.make_lengthtags((payload_bytes_per_frame,), (0,), cp.length_tag_name)</value>
+      <value>tagged_streams.make_lengthtags((cp.payload_bytes_per_frame,), (0,), cp.length_tag_name)</value>
     </param>
     <param>
       <key>vlen</key>
@@ -914,7 +806,7 @@
     </param>
     <param>
       <key>vector</key>
-      <value>payload</value>
+      <value>map(int,numpy.random.randint(0,256,cp.payload_bytes_per_frame))</value>
     </param>
   </block>
   <block>
@@ -937,7 +829,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(288, 612)</value>
+      <value>(504, 460)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -992,7 +884,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(464, 768)</value>
+      <value>(96, 720)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1012,7 +904,7 @@
     </param>
     <param>
       <key>noise_voltage</key>
-      <value>(chips_per_symbol*N0/2)**0.5</value>
+      <value>(cp.chips_per_symbol*N0/2)**0.5</value>
     </param>
     <param>
       <key>seed</key>
@@ -1128,7 +1020,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -1159,7 +1051,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -1838,7 +1730,7 @@
     </param>
     <param>
       <key>dev_addr</key>
-      <value>addr=192.168.20.3</value>
+      <value>addr=192.168.30.3</value>
     </param>
     <param>
       <key>dev_args</key>
@@ -1846,11 +1738,11 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>False</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(288, 1200)</value>
+      <value>(808, 824)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1858,7 +1750,7 @@
     </param>
     <param>
       <key>id</key>
-      <value>uhd_usrp_sink_0</value>
+      <value>uhd_usrp_sink_0_0</value>
     </param>
     <param>
       <key>type</key>
@@ -1999,7 +1891,7 @@
   </block>
   <connection>
     <source_block_id>blocks_multiply_const_vxx_1</source_block_id>
-    <sink_block_id>channels_channel_model_0</sink_block_id>
+    <sink_block_id>blocks_tag_gate_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
@@ -2011,7 +1903,7 @@
   </connection>
   <connection>
     <source_block_id>blocks_tag_gate_0</source_block_id>
-    <sink_block_id>uhd_usrp_sink_0</sink_block_id>
+    <sink_block_id>uhd_usrp_sink_0_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
@@ -2029,13 +1921,13 @@
   </connection>
   <connection>
     <source_block_id>cdma_tx_hier1_0</source_block_id>
-    <sink_block_id>blocks_multiply_const_vxx_1</sink_block_id>
+    <sink_block_id>channels_channel_model_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
     <source_block_id>channels_channel_model_0</source_block_id>
-    <sink_block_id>blocks_tag_gate_0</sink_block_id>
+    <sink_block_id>blocks_multiply_const_vxx_1</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>

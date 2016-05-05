@@ -82,6 +82,60 @@
     </param>
   </block>
   <block>
+    <key>variable</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(888, 13)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>local_header_formatter</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>cdma.packet_header2(cp.bits_per_header,cp.length_tag_name,cp.num_tag_name, cp.header_mod.bits_per_symbol(),tcm_type_selector, "tcm_type")</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(736, 13)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>tcm_type_selector</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
     <key>blocks_add_xx</key>
     <param>
       <key>alias</key>
@@ -474,7 +528,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(24, 699)</value>
+      <value>(32, 702)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -917,7 +971,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(248, 19)</value>
+      <value>(304, 20)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -944,11 +998,11 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(248, 67)</value>
+      <value>(200, 20)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -956,11 +1010,11 @@
     </param>
     <param>
       <key>id</key>
-      <value>import_0_1_0</value>
+      <value>import_0_1_0_0</value>
     </param>
     <param>
       <key>import</key>
-      <value>import gnuradio.digital as digital</value>
+      <value>import cdma</value>
     </param>
   </block>
   <block>
@@ -979,7 +1033,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(352, 12)</value>
+      <value>(384, 20)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1214,7 +1268,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(0, 139)</value>
+      <value>(0, 148)</value>
     </param>
     <param>
       <key>_rotation</key>

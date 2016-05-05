@@ -89,11 +89,11 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(520, 5)</value>
+      <value>(520, 13)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -179,7 +179,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(200, 74)</value>
+      <value>(600, 13)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -192,33 +192,6 @@
     <param>
       <key>value</key>
       <value>10**(-EsN0dB/10) * Es</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(288, 72)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>chips_per_symbol</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>cp.chips_per_symbol</value>
     </param>
   </block>
   <block>
@@ -320,11 +293,11 @@
     </param>
     <param>
       <key>max</key>
-      <value>2*cp.freqs[-1]*samp_rate</value>
+      <value>3*cp.freqs[-1]*samp_rate</value>
     </param>
     <param>
       <key>min</key>
-      <value>2*cp.freqs[0]*samp_rate-1.0e-6</value>
+      <value>3*cp.freqs[0]*samp_rate-1.0e-6</value>
     </param>
     <param>
       <key>notebook</key>
@@ -337,60 +310,6 @@
     <param>
       <key>style</key>
       <value>wx.SL_HORIZONTAL</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(378, 9)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>length_tag_name</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>cp.length_tag_name</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(413, 72)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>payload_bytes_per_frame</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>cp.payload_bytes_per_frame</value>
     </param>
   </block>
   <block>
@@ -793,7 +712,7 @@
     </param>
     <param>
       <key>tags</key>
-      <value>tagged_streams.make_lengthtags((payload_bytes_per_frame,), (0,), length_tag_name)</value>
+      <value>tagged_streams.make_lengthtags((cp.payload_bytes_per_frame,), (0,), cp.length_tag_name)</value>
     </param>
     <param>
       <key>vlen</key>
@@ -801,7 +720,7 @@
     </param>
     <param>
       <key>vector</key>
-      <value>map(int,numpy.random.randint(0,256,payload_bytes_per_frame))</value>
+      <value>map(int,numpy.random.randint(0,256,cp.payload_bytes_per_frame))</value>
     </param>
   </block>
   <block>
@@ -895,7 +814,7 @@
     </param>
     <param>
       <key>noise_voltage</key>
-      <value>(chips_per_symbol*cp.samples_per_chip*N0/2)**0.5</value>
+      <value>(cp.chips_per_symbol*cp.samples_per_chip*N0/2)**0.5</value>
     </param>
     <param>
       <key>seed</key>

@@ -105,7 +105,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>EsN0dB_est + 10*numpy.log10( 1.0-training_percent/100.0 ) </value>
+      <value>EsN0dB_est + 10*numpy.log10( 1.0-cp.training_percent/100.0 ) </value>
     </param>
   </block>
   <block>
@@ -398,7 +398,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>EsN0dB_est + 10*numpy.log10( training_percent/100.0 ) </value>
+      <value>EsN0dB_est + 10*numpy.log10( cp.training_percent/100.0 ) </value>
     </param>
   </block>
   <block>
@@ -934,33 +934,6 @@
     <param>
       <key>value</key>
       <value>50e3</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(180, 20)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>training_percent</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>cp.training_percent</value>
     </param>
   </block>
   <block>
