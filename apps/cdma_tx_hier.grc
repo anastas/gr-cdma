@@ -870,7 +870,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>0</value>
     </param>
     <param>
       <key>header_formatter</key>
@@ -887,6 +887,53 @@
     <param>
       <key>id</key>
       <value>digital_packet_headergenerator_bb_0</value>
+    </param>
+    <param>
+      <key>len_tag_key</key>
+      <value>cp.length_tag_name</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>digital_packet_headergenerator_bb</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>header_formatter</key>
+      <value>local_header_formatter.formatter()</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(552, 109)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>digital_packet_headergenerator_bb_0_0</value>
     </param>
     <param>
       <key>len_tag_key</key>
@@ -1492,7 +1539,19 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
+    <source_block_id>digital_crc32_bb_0</source_block_id>
+    <sink_block_id>digital_packet_headergenerator_bb_0_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
     <source_block_id>digital_packet_headergenerator_bb_0</source_block_id>
+    <sink_block_id>header_bits</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>digital_packet_headergenerator_bb_0_0</source_block_id>
     <sink_block_id>header_bits</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
