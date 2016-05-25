@@ -89,12 +89,18 @@ print "CDMA PARAMETERS : for adaptive coded modulation"
 
 prefix="/home/anastas/gr-cdma/"  # put the prefix of your gr-cdma trunk
 
+
 length_tag_name = "cdma_packet_len"
 num_tag_name = "cdma_packet_num"
 
 #==========================================
 # header info
-bits_per_header=12+16+8+4;  #4 bits indicating modulation and code mode.
+cdma_packet_len     = 12
+cdma_tcm            = 4
+cdma_packet_num_bit = 16
+cdma_crc_len        = 8
+bits_per_header     = cdma_packet_len + cdma_tcm + cdma_packet_num_bit + cdma_crc_len
+#bits_per_header=12+16+8+4;  #4 bits indicating modulation and code mode.
 header_mod = digital.constellation_bpsk();
 symbols_per_header = bits_per_header/header_mod.bits_per_symbol()
 if (1.0*bits_per_header)/header_mod.bits_per_symbol() != symbols_per_header:
@@ -168,6 +174,11 @@ redudant_bytes_percents = [(1.0*additional_bytes_per_frame[i])/(trellis_coded_pa
 #print "you have wasted ",redudant_bytes_percents," percent of bytes per payload for ", modulation_names, " respectively, with this symbols_per_frame setting.\n"
 #print "\n"
 
+
+#=========================================
+# packet header formatter
+tcm_type_selector_default = 0
+local_header_obj = cdma.packet_header2(bits_per_header,length_tag_name,num_tag_name, header_mod.bits_per_symbol(),tcm_type_selector_default, "tcm_type") 
 
 
 #==========================================
