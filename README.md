@@ -26,11 +26,12 @@ Note: this is your git directory prefix not the installation prefix!
 prefix="YOUR_PREFIX_HERE/gr-cdma"  # put the prefix of your gr-cdma trunk
 
 2) Build the package
-> mkdir build_cdma
 
-> cd build_cdma
+method one:
 
-> cmake -DENABLE_DOXYGEN=ON ../gr-cdma
+> cd build
+
+> cmake -DENABLE_DOXYGEN=ON ../
 
 > make
 
@@ -38,6 +39,15 @@ prefix="YOUR_PREFIX_HERE/gr-cdma"  # put the prefix of your gr-cdma trunk
 
 > sudo ldconfig
 
+method two
+
+> cd build
+
+> ./build.sh
+
+press "i" or "install" to compile and install
+
+press "u" or "uninstall" to uninstall 
 
 3) compile hierarchical blocks and play with built in apps
 > cd gr-cdma/apps
