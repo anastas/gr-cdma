@@ -1108,7 +1108,7 @@
     </param>
   </block>
   <block>
-    <key>cdma_packet_headerparser_b2_default</key>
+    <key>cdma_packet_headerparser_b2</key>
     <param>
       <key>alias</key>
       <value></value>
@@ -1126,24 +1126,20 @@
       <value>1</value>
     </param>
     <param>
+      <key>header_formatter</key>
+      <value>cp.local_header_obj</value>
+    </param>
+    <param>
       <key>_coordinate</key>
-      <value>(560, 1477)</value>
+      <value>(592, 1492)</value>
     </param>
     <param>
       <key>_rotation</key>
       <value>0</value>
     </param>
     <param>
-      <key>header_len</key>
-      <value>cp.bits_per_header</value>
-    </param>
-    <param>
       <key>id</key>
-      <value>cdma_packet_headerparser_b2_default_0</value>
-    </param>
-    <param>
-      <key>len_tag_key</key>
-      <value>cp.length_tag_name</value>
+      <value>cdma_packet_headerparser_b2_0</value>
     </param>
     <param>
       <key>maxoutbuf</key>
@@ -2060,7 +2056,7 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>cdma_packet_headerparser_b2_default_0</source_block_id>
+    <source_block_id>cdma_packet_headerparser_b2_0</source_block_id>
     <sink_block_id>zzz_pad_sink_0_1_0_1_0</sink_block_id>
     <source_key>header_data</source_key>
     <sink_key>in</sink_key>
@@ -2079,7 +2075,7 @@
   </connection>
   <connection>
     <source_block_id>digital_constellation_decoder_cb_0_0</source_block_id>
-    <sink_block_id>cdma_packet_headerparser_b2_default_0</sink_block_id>
+    <sink_block_id>cdma_packet_headerparser_b2_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>

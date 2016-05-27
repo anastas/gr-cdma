@@ -101,11 +101,11 @@
     </param>
     <param>
       <key>id</key>
-      <value>local_header_formatter</value>
+      <value>update_tcm_type</value>
     </param>
     <param>
       <key>value</key>
-      <value>cdma.packet_header2(cp.bits_per_header,cp.length_tag_name,cp.num_tag_name, cp.header_mod.bits_per_symbol(),tcm_type_selector, "tcm_type")</value>
+      <value>cp.local_header_obj.set_tcm_type(tcm_type_selector)</value>
     </param>
   </block>
   <block>
@@ -352,7 +352,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(440, 245)</value>
+      <value>(440, 253)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -859,11 +859,11 @@
     </param>
     <param>
       <key>header_formatter</key>
-      <value>local_header_formatter.formatter()</value>
+      <value>cp.local_header_obj.formatter()</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(664, 245)</value>
+      <value>(672, 253)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -871,7 +871,7 @@
     </param>
     <param>
       <key>id</key>
-      <value>digital_packet_headergenerator_bb_0</value>
+      <value>digital_packet_headergenerator_bb_0_0</value>
     </param>
     <param>
       <key>len_tag_key</key>
@@ -898,7 +898,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(944, 252)</value>
+      <value>(968, 260)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1520,7 +1520,7 @@
   </connection>
   <connection>
     <source_block_id>blocks_repack_bits_bb_1_0</source_block_id>
-    <sink_block_id>digital_packet_headergenerator_bb_0</sink_block_id>
+    <sink_block_id>digital_packet_headergenerator_bb_0_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
@@ -1573,7 +1573,7 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>digital_packet_headergenerator_bb_0</source_block_id>
+    <source_block_id>digital_packet_headergenerator_bb_0_0</source_block_id>
     <sink_block_id>header_bits_1_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
