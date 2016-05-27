@@ -526,7 +526,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>-8.5</value>
+      <value>-2.5</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -1856,11 +1856,11 @@
     </param>
     <param>
       <key>cycsize</key>
-      <value>2**16</value>
+      <value>2**cp.bits_per_header_packet_index</value>
     </param>
     <param>
       <key>pkt_num_tag</key>
-      <value>packet_num</value>
+      <value>cdma_packet_num</value>
     </param>
     <param>
       <key>winsize</key>

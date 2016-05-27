@@ -94,7 +94,11 @@ num_tag_name = "cdma_packet_num"
 
 #==========================================
 # header info
-bits_per_header=12+16+8+4;  #4 bits indicating modulation and code mode.
+bits_per_header_packet_len     = 12
+bits_per_header_tcm_type       = 4
+bits_per_header_packet_index   = 16
+bits_per_header_crc_bits       = 8
+bits_per_header  = bits_per_header_packet_len + bits_per_header_tcm_type + bits_per_header_packet_index + bits_per_header_crc_bits
 header_mod = digital.constellation_bpsk();
 symbols_per_header = bits_per_header/header_mod.bits_per_symbol()
 if (1.0*bits_per_header)/header_mod.bits_per_symbol() != symbols_per_header:
@@ -199,12 +203,15 @@ rx_scaling_factor=[1,1,(float(training_percent)/100)**0.5*chips_per_symbol]
 
 #==========================================
 # signal sampling parameters
-samples_per_chip=2;
+samples_per_chip=1;
 zero_stuff=numpy.array((1,)+(samples_per_chip-1)*(0,))+0j
 pulse_training_t=numpy.kron(pulse_training,zero_stuff);
 pulse_data_t=numpy.kron(pulse_data,zero_stuff);
 #pulse_shape=zero_stuff;
-pulse_shape=numpy.array(firdes.root_raised_cosine(1,samples_per_chip,1,0.35,21))+0j;
+if samples_per_chip==1:
+  pulse_shape=numpy.array((1+0j,));
+else:
+  pulse_shape=numpy.array(firdes.root_raised_cosine(1,samples_per_chip,1,0.35,21))+0j;
 Ep=sum(abs(pulse_shape)**2);
 pulse_shape=pulse_shape/(Ep**0.5)*(samples_per_chip**0.5); # normalization
 
