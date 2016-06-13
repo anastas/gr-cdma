@@ -413,7 +413,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>-10</value>
+      <value>-2.5</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -933,7 +933,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>50e3</value>
+      <value>100e3</value>
     </param>
   </block>
   <block>
@@ -999,7 +999,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>0</value>
+      <value>1</value>
     </param>
     <param>
       <key>file</key>
@@ -1292,7 +1292,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(480, 1054)</value>
+      <value>(552, 1054)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1304,7 +1304,7 @@
     </param>
     <param>
       <key>cycsize</key>
-      <value>4096</value>
+      <value>2**cp.bits_per_header_packet_index</value>
     </param>
     <param>
       <key>pkt_num_tag</key>
@@ -1312,7 +1312,7 @@
     </param>
     <param>
       <key>winsize</key>
-      <value>1024</value>
+      <value>999</value>
     </param>
   </block>
   <block>
@@ -2348,7 +2348,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>1</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>

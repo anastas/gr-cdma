@@ -4,10 +4,11 @@
   <key>cdma_freq_timing_estimator</key>
   <category>cdma</category>
   <import>import cdma</import>
-  <make>cdma.freq_timing_estimator($seq1, $seq2, $factor, $alpha, $freqs)</make>
+  <make>cdma.freq_timing_estimator($seq1, $seq2, $factor, $lookahead, $alpha, $freqs)</make>
   <callback>set_seq1($seq1)</callback>
   <callback>set_seq2($seq2)</callback>
   <callback>set_factor($factor)</callback>
+  <callback>set_lookahead($lookahead)</callback>
   <callback>set_alpha($alpha)</callback>
   <callback>set_freqs($freqs)</callback>
 
@@ -36,6 +37,13 @@
     <name>factor</name>
     <key>factor</key>
     <value>0</value>
+    <type>raw</type>
+  </param>
+  
+  <param>
+    <name>lookahead</name>
+    <key>lookahead</key>
+    <value>10</value>
     <type>raw</type>
   </param>
 

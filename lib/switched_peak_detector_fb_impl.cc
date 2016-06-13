@@ -54,10 +54,12 @@ namespace gr {
        d_threshold_factor_rise(threshold_factor_rise),
        d_threshold_factor_fall(threshold_factor_fall),
        d_look_ahead(look_ahead), 
+       //d_look_ahead(10), 
        d_avg_alpha(alpha), 
        d_on(on),
        d_avg(0), 
-       d_found(0)
+       d_found(0),
+       d_state(0)
     {}
 
     /*
@@ -80,15 +82,52 @@ namespace gr {
         return noutput_items; 
       }
 
+      if(d_state==0) {
+        for(int i=0;i < noutput_items;i++) {
+          if(iptr[i] > d_avg*d_threshold_factor_rise) {
+            //printf("CROSSED THRESHOLD... %d\n", d_look_ahead);
+            d_state = 1;
+            set_output_multiple(d_look_ahead);
+            return i;
+          }
+          else {
+            d_avg = (d_avg_alpha)*iptr[i] + (1-d_avg_alpha)*d_avg;
+          }
+        }
+        return noutput_items;
+      }
+      else { // d_state==1
+        if (noutput_items<d_look_ahead) {
+         printf("SOMETHING IS WRONG: noutput_items %d < look_ahead %d\n",noutput_items,d_look_ahead);
+         return 0;
+        }
+        float peak_val = -(float)INFINITY;
+        int peak_ind = 0;
+        for(int i=0;i<d_look_ahead;i++) {
+          if(iptr[i] > peak_val) {
+            peak_val = iptr[i];
+            peak_ind = i;
+            d_avg = (d_avg_alpha)*iptr[i] + (1-d_avg_alpha)*d_avg;
+          }
+        }
+        optr[peak_ind] = 1;
+        d_state=0;
+        set_output_multiple(1);
+        return d_look_ahead;
+      }
+
+/*
       float peak_val = -(float)INFINITY;
       int peak_ind = 0;
       unsigned char state = 0;
       int i = 0;
+      int threshold_index=0;
 
       //printf("noutput_items %d\n",noutput_items);
       while(i < noutput_items) {
         if(state == 0) {  // below threshold
           if(iptr[i] > d_avg*d_threshold_factor_rise) {
+            threshold_index=i;
             state = 1;
           }
           else {
@@ -121,10 +160,13 @@ namespace gr {
         //printf("Leave in State 0, produced %d\n",noutput_items);
         return noutput_items;
       }
-      else {   // only return up to passing the threshold
-        //printf("Leave in State 1, only produced %d of %d\n",peak_ind,noutput_items);
+      else {   // only return up to current peak
+        //printf("Leave in State 1, only produced %d of %d\n",peak_ind+1,noutput_items);
+        //printf("Leave in State 1, only produced %d of %d\n",threshold_index,noutput_items);
         return peak_ind+1;
+        //return threshold_index;
       }
+*/
     }
 
   } /* namespace cdma */

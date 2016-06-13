@@ -120,7 +120,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>40</value>
+      <value>20</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -363,7 +363,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>50e3</value>
+      <value>100e3</value>
     </param>
   </block>
   <block>
@@ -429,7 +429,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>0</value>
+      <value>1</value>
     </param>
     <param>
       <key>file</key>
@@ -625,11 +625,11 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>0</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(288, 317)</value>
+      <value>(288, 276)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1586,7 +1586,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>1</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -2077,12 +2077,6 @@
   <connection>
     <source_block_id>blocks_vector_source_x_0_1</source_block_id>
     <sink_block_id>blocks_throttle_0_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>blocks_vector_source_x_0_1</source_block_id>
-    <sink_block_id>cdma_tx_hier_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>

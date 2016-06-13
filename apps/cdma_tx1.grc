@@ -324,7 +324,7 @@
     </param>
     <param>
       <key>min</key>
-      <value>3*cp.freqs[0]*samp_rate</value>
+      <value>3*cp.freqs[0]*samp_rate-1e-12</value>
     </param>
     <param>
       <key>notebook</key>
@@ -484,7 +484,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>50e3</value>
+      <value>100e3</value>
     </param>
   </block>
   <block>
@@ -562,7 +562,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>0</value>
+      <value>1</value>
     </param>
     <param>
       <key>file</key>
@@ -1738,7 +1738,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>1</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>

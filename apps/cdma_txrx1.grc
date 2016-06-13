@@ -526,7 +526,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>-8.5</value>
+      <value>-2.5</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -703,7 +703,7 @@
     </param>
     <param>
       <key>min</key>
-      <value>cp.freqs[0]*samp_rate</value>
+      <value>cp.freqs[0]*samp_rate-1e-12</value>
     </param>
     <param>
       <key>notebook</key>
@@ -1871,7 +1871,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -1891,7 +1891,7 @@
     </param>
     <param>
       <key>pkt_num_tag</key>
-      <value>packet_num</value>
+      <value>cdma_packet_num</value>
     </param>
     <param>
       <key>winsize</key>
@@ -2304,6 +2304,12 @@
     <sink_block_id>cdma_pac_err_cal_0</sink_block_id>
     <source_key>decoded_header</source_key>
     <sink_key>errCal</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>cdma_rx_hier1_1</source_block_id>
+    <sink_block_id>msg_debug</sink_block_id>
+    <source_key>decoded_header</source_key>
+    <sink_key>print</sink_key>
   </connection>
   <connection>
     <source_block_id>cdma_rx_hier1_1</source_block_id>

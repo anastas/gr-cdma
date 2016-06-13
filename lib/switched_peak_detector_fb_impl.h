@@ -37,6 +37,7 @@ namespace gr {
       float d_avg;
       unsigned char d_found;
       int d_on;
+      int d_state;
 
      public:
       switched_peak_detector_fb_impl(float threshold_factor_rise,

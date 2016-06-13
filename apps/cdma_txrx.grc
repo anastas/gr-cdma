@@ -526,7 +526,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>-2.5</value>
+      <value>-2.0</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -997,7 +997,7 @@
     </param>
     <param>
       <key>label</key>
-      <value>Manual/Auto</value>
+      <value>Auto/Manual</value>
     </param>
     <param>
       <key>labels</key>
@@ -1844,7 +1844,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(512, 1318)</value>
+      <value>(512, 1238)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1864,7 +1864,7 @@
     </param>
     <param>
       <key>winsize</key>
-      <value>1000</value>
+      <value>999</value>
     </param>
   </block>
   <block>

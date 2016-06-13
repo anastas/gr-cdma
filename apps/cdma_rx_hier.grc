@@ -1099,6 +1099,10 @@
       <value>cp.freqs</value>
     </param>
     <param>
+      <key>lookahead</key>
+      <value>10*cp.samples_per_chip</value>
+    </param>
+    <param>
       <key>seq1</key>
       <value>(0+0j,) if acq==0 else cp.training[cp.training_filter_length-1::-1]</value>
     </param>

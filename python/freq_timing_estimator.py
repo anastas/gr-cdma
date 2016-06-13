@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#d!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # 
 # Copyright 2014 Achilleas Anastasopoulos, Zhe Feng.
@@ -32,7 +32,7 @@ class freq_timing_estimator(gr.hier_block2):
     """
 frequency timing estimator class does frequency/timing acquisition from scratch.It uses a bank of parallel correlators at each specified frequency. It then takes the max abs value of all these and passes it through a peak detector to find timing.
     """
-    def __init__(self, seq1, seq2, factor, alpha, freqs):
+    def __init__(self, seq1, seq2, factor, lookahead, alpha, freqs):
         """
         Description:
 frequency timing estimator class does frequency/timing acquisition from scratch.It uses a bank of parallel correlators at each specified frequency. It then takes the max abs value of all these and passes it through a peak detector to find timing.
@@ -58,6 +58,7 @@ frequency timing estimator class does frequency/timing acquisition from scratch.
         self.seq1 = seq1
         self.seq2 = seq2
         self.factor = factor
+        self.lookahead = lookahead
         self.alpha = alpha
         self.freqs = freqs
         self.n = n = len(freqs)
@@ -75,7 +76,7 @@ frequency timing estimator class does frequency/timing acquisition from scratch.
           self._c2mag2[i] = blocks.complex_to_mag_squared(1)
 
         self.blocks_max = blocks.max_ff(1)
-        self.blocks_peak_detector = cdma.switched_peak_detector_fb(self.factor, self.factor, 0, self.alpha, self.on)
+        self.blocks_peak_detector = cdma.switched_peak_detector_fb(self.factor, self.factor, self.lookahead, self.alpha, self.on)
 
         self.blocks_argmax = blocks.argmax_fs(1)
         self.blocks_null_sink = blocks.null_sink(gr.sizeof_short*1)
@@ -149,6 +150,19 @@ set identical factor to rise factor and fall factor of peak detector
         self.factor = factor
         self.blocks_peak_detector.set_threshold_factor_rise(self.factor)
         self.blocks_peak_detector.set_threshold_factor_fall(self.factor)
+
+    def get_lookahead(self):
+        """
+get the lookahead parameter of peak detector
+        """
+        return self.lookahead
+
+    def set_lookahead(self, factor):
+        """
+set the lookahead parameter of peak detector
+        """
+        self.lookahead = lookahead
+        self.blocks_peak_detector.set_look_ahead(self.lookahead)
 
     def get_alpha(self):
     	"""

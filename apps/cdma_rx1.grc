@@ -413,7 +413,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>-10</value>
+      <value>-2.5</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -1065,7 +1065,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>0</value>
+      <value>1</value>
     </param>
     <param>
       <key>file</key>
@@ -1327,7 +1327,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(384, 1110)</value>
+      <value>(568, 1318)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1339,7 +1339,7 @@
     </param>
     <param>
       <key>cycsize</key>
-      <value>4096</value>
+      <value>2**cp.bits_per_header_packet_index</value>
     </param>
     <param>
       <key>pkt_num_tag</key>
@@ -1347,7 +1347,7 @@
     </param>
     <param>
       <key>winsize</key>
-      <value>1024</value>
+      <value>999</value>
     </param>
   </block>
   <block>
@@ -1572,11 +1572,11 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>0</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(384, 976)</value>
+      <value>(360, 969)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2511,7 +2511,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>1</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -2733,7 +2733,7 @@
     <source_block_id>cdma_rx_hier1_1</source_block_id>
     <sink_block_id>msg_debug</sink_block_id>
     <source_key>decoded_header</source_key>
-    <sink_key>print</sink_key>
+    <sink_key>store</sink_key>
   </connection>
   <connection>
     <source_block_id>cdma_rx_hier1_1</source_block_id>
