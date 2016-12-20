@@ -22,6 +22,8 @@
 #include "config.h"
 #endif
 
+#include <stdio.h>
+
 #include <gnuradio/io_signature.h>
 #include "switched_peak_detector_fb_impl.h"
 
