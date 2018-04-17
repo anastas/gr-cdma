@@ -27,5 +27,6 @@ install(FILES
     cdma_freq_timing_estimator.xml
     cdma_amp_var_est.xml
     cdma_switched_peak_detector_fb.xml
-    cdma_pac_err_cal.xml DESTINATION share/gnuradio/grc/blocks
+    cdma_pac_err_cal.xml
+    cdma_pi_controller.xml DESTINATION share/gnuradio/grc/blocks
 )

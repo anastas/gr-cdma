@@ -623,6 +623,57 @@
     </param>
   </block>
   <block>
+    <key>cdma_pi_controller</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(552, 548)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>cdma_pi_controller_0</value>
+    </param>
+    <param>
+      <key>Ki</key>
+      <value>Ki</value>
+    </param>
+    <param>
+      <key>Kp</key>
+      <value>Kp</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>reset</key>
+      <value>acq</value>
+    </param>
+  </block>
+  <block>
     <key>fft_filter_xxx</key>
     <param>
       <key>alias</key>
@@ -993,57 +1044,6 @@
       <value>1</value>
     </param>
   </block>
-  <block>
-    <key>test_my_iir</key>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>ff_taps</key>
-      <value>[Kp+Ki, -Kp]</value>
-    </param>
-    <param>
-      <key>fb_taps</key>
-      <value>[1,-1]</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(552, 548)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>test_my_iir_0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>reset</key>
-      <value>acq</value>
-    </param>
-  </block>
   <connection>
     <source_block_id>blocks_complex_to_mag_0</source_block_id>
     <sink_block_id>blocks_sub_xx_0</sink_block_id>
@@ -1076,13 +1076,13 @@
   </connection>
   <connection>
     <source_block_id>blocks_multiply_const_vxx_2</source_block_id>
-    <sink_block_id>pad_sink_1_0</sink_block_id>
+    <sink_block_id>cdma_pi_controller_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
     <source_block_id>blocks_multiply_const_vxx_2</source_block_id>
-    <sink_block_id>test_my_iir_0</sink_block_id>
+    <sink_block_id>pad_sink_1_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
@@ -1095,6 +1095,12 @@
   <connection>
     <source_block_id>blocks_sub_xx_0</source_block_id>
     <sink_block_id>blocks_sample_and_hold_xx_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>cdma_pi_controller_0</source_block_id>
+    <sink_block_id>pad_sink_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
@@ -1119,12 +1125,6 @@
   <connection>
     <source_block_id>pad_source_1</source_block_id>
     <sink_block_id>fft_filter_xxx_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>test_my_iir_0</source_block_id>
-    <sink_block_id>pad_sink_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>

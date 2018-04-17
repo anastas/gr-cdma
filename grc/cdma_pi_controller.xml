@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<block>
+  <name>pi_controller</name>
+  <key>cdma_pi_controller</key>
+  <category>cdma</category>
+  <import>import cdma</import>
+  <make>cdma.pi_controller($Kp, $Ki, $reset)</make>
+  <callback>set_Kp($Kp)</callback>
+  <callback>set_Ki($Ki)</callback>
+  <callback>set_reset($reset)</callback>
+  <!-- Make one 'param' node for every Parameter you want settable from the GUI.
+       Sub-nodes:
+       * name
+       * key (makes the value accessible as $keyname, e.g. in the make node)
+       * type -->
+  <param>
+    <name>Kp</name>
+    <key>Kp</key>
+    <type>float</type>
+  </param>
+  <param>
+    <name>Ki</name>
+    <key>Ki</key>
+    <type>float</type>
+  </param>
+  <param>
+    <name>Reset</name>
+    <key>reset</key>
+    <type>int</type>
+  </param>
+
+  <!-- Make one 'sink' node per input. Sub-nodes:
+       * name (an identifier for the GUI)
+       * type
+       * vlen
+       * optional (set to 1 for optional inputs) -->
+  <sink>
+    <name>in</name>
+    <type>float</type>
+  </sink>
+
+  <!-- Make one 'source' node per output. Sub-nodes:
+       * name (an identifier for the GUI)
+       * type
+       * vlen
+       * optional (set to 1 for optional inputs) -->
+  <source>
+    <name>out</name>
+    <type>float</type>
+  </source>
+</block>
